@@ -1,0 +1,13 @@
+{
+  // Cobble Labs es 100% estatico: no hay API routes ni nada que corra en el
+  // servidor, asi que se sube como assets y no como Worker. Sin campo "main"
+  // no se ejecuta codigo, y las requests a assets no se cobran.
+  "name": "cobble-labs",
+  "compatibility_date": "2026-08-25",
+  "assets": {
+    // La salida de `next build` con output: "export".
+    "directory": "./out",
+    // Next genera 404.html; sin esto, una ruta inexistente devuelve texto pelado.
+    "not_found_handling": "404-page"
+  }
+}

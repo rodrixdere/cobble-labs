@@ -1,0 +1,8 @@
+# Todo lo de texto se guarda con LF en el repo, sin importar el sistema donde se
+# edite. Sin esto, Windows mete CRLF y cada cambio de linea aparece como diff.
+* text=auto eol=lf
+
+# Binarios: que git no los toque.
+*.png binary
+*.woff2 binary
+*.jar binary

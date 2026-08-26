@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/* Cobble Labs: hoja de laboratorio.
+   La identidad no la ponen ni el color ni la tipografia, que son los de la
+   marca, sino la estructura: una hoja continua con lineas de 1px que separan
+   datos de verdad, en vez de tarjetas flotantes repetidas. De ahi salen las
+   dos reglas de forma que se respetan en todo el sitio:
+
+     superficie de datos -> esquina recta, borde de 1px, sin sombra
+     control interactivo -> radio 10px
+
+   Nada lleva radio 22 ni sombra difusa. Si algo parece flotar, esta mal. */
+@theme {
+  --color-fondo: #f8f9fb;
+  --color-panel: #ffffff;
+  --color-hueco: #f1f3f6;
+  --color-linea: #e6e9ee;
+  --color-linea-fuerte: #d3d7de;
+  --color-tinta: #0b0d12;
+  --color-tinta-media: #545c6b;
+  --color-tinta-tenue: #9aa3b2;
+
+  --color-acento: #0fb88f;
+  --color-acento-hondo: #0a8d6d;
+  --color-acento-lavado: #e6f8f2;
+  --color-ambar: #f59e0b;
+  --color-ambar-lavado: #fef4e2;
+  --color-alarma: #c0392b;
+  --color-alarma-lavado: #fdeceb;
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-pieza: 10px;
+
+  --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Escala tipografica --------------------------------------------------
+     Trece pasos, y cada uno tiene un trabajo. El nombre dice para que sirve,
+     no cuanto mide, para que elegir el tamaño sea decidir que es el texto y no
+     tantear pixeles. Cada paso trae ya su interlineado, su tracking y su peso:
+     un titulo de seccion es `text-titulo`, no cuatro clases sueltas.
+
+     Si un texto nuevo no entra en ningun paso, casi siempre el problema es que
+     no esta claro que es. Sumar un paso es la ultima opcion, no la primera. */
+
+  /* Texto de interfaz, de mas chico a mas grande. */
+  --text-nota: 9px; /* metadato minimo dentro de una celda */
+  --text-nota--line-height: 1.2;
+
+  --text-menuda: 10px; /* etiquetas y cifras de apoyo */
+  --text-menuda--line-height: 1.2;
+
+  --text-apoyo: 11px; /* segunda linea de una celda densa */
+  --text-apoyo--line-height: 1.35;
+
+  --text-cuerpo: 12px; /* el texto corriente de la interfaz */
+  --text-cuerpo--line-height: 1.45;
+
+  --text-lectura: 13px; /* parrafos explicativos y controles */
+  --text-lectura--line-height: 1.6;
+
+  --text-realce: 14px; /* nombres y campos: lo que se lee primero */
+  --text-realce--line-height: 1.45;
+  --text-realce--letter-spacing: -0.01em;
+
+  /* Titulos. */
+  --text-guia: 17px;
+  --text-guia--line-height: 1.3;
+  --text-guia--letter-spacing: -0.02em;
+  --text-guia--font-weight: 700;
+
+  --text-subtitulo: 20px;
+  --text-subtitulo--line-height: 1.25;
+  --text-subtitulo--letter-spacing: -0.02em;
+  --text-subtitulo--font-weight: 700;
+
+  --text-titulo: 22px;
+  --text-titulo--line-height: 1.2;
+  --text-titulo--letter-spacing: -0.025em;
+  --text-titulo--font-weight: 700;
+
+  --text-capitulo: 26px;
+  --text-capitulo--line-height: 1.15;
+  --text-capitulo--letter-spacing: -0.03em;
+  --text-capitulo--font-weight: 700;
+
+  --text-portada: 42px; /* el h1 de cada pagina */
+  --text-portada--line-height: 1;
+  --text-portada--letter-spacing: -0.035em;
+  --text-portada--font-weight: 700;
+
+  --text-heroe: 48px; /* el nombre en la ficha y la cifra de sinergia */
+  --text-heroe--line-height: 1;
+  --text-heroe--letter-spacing: -0.035em;
+  --text-heroe--font-weight: 700;
+
+  /* Las cifras de resultado van aparte de los titulos: compiten con ellos por
+     la atencion y no tienen que empatarles. */
+  --text-cifra: 30px;
+  --text-cifra--line-height: 1;
+  --text-cifra--letter-spacing: -0.02em;
+}
+
+:root {
+  --color-tipo-normal: #a8a878;
+  --color-tipo-fire: #f08030;
+  --color-tipo-water: #6890f0;
+  --color-tipo-electric: #f8d030;
+  --color-tipo-grass: #78c850;
+  --color-tipo-ice: #98d8d8;
+  --color-tipo-fighting: #c03028;
+  --color-tipo-poison: #a040a0;
+  --color-tipo-ground: #e0c068;
+  --color-tipo-flying: #a890f0;
+  --color-tipo-psychic: #f85888;
+  --color-tipo-bug: #a8b820;
+  --color-tipo-rock: #b8a038;
+  --color-tipo-ghost: #705898;
+  --color-tipo-dragon: #7038f8;
+  --color-tipo-dark: #705848;
+  --color-tipo-steel: #b8b8d0;
+  --color-tipo-fairy: #ee99ac;
+
+  --alto-cabecera: 64px;
+
+  /* Los unicos tres planos que existen. Nada inventa un z-index suelto: si
+     algo necesita apilarse, entra en uno de estos o es que el layout esta mal.
+       cabecera -> la barra pegada arriba
+       velo     -> el fondo oscurecido de un modal
+       modal    -> el panel del modal, siempre encima del velo
+     El salto al enlace de accesibilidad va arriba de todo por definicion. */
+  --z-cabecera: 30;
+  --z-velo: 40;
+  --z-modal: 41;
+  --z-salto: 50;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-tinta);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv05" 1;
+}
+
+::selection {
+  background: var(--color-acento-lavado);
+  color: var(--color-acento-hondo);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* Los titulos no parten en una linea huerfana. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Nada de espera de 300ms al tocar un control. */
+button,
+a,
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* Los numeros no bailan nunca: toda cifra va en mono y tabular. */
+.cifra {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* La etiqueta chica de metadato. Es el contrapunto del display: mono,
+   mayusculas y muy abierta contra titulos enormes y cerrados. */
+.rotulo {
+  font-family: var(--font-mono);
+  font-size: var(--text-menuda);
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tinta-tenue);
+}
+
+/* La hoja: la superficie continua sobre la que se apoya el contenido. Lleva
+   linea a los costados para que se lea como una hoja y no como el fondo. */
+.hoja {
+  background: var(--color-panel);
+  border-left: 1px solid var(--color-linea);
+  border-right: 1px solid var(--color-linea);
+}
+
+/* Retratos: pixel art escalado por factor entero, sin suavizado. */
+.pixel {
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

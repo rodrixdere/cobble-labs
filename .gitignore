@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+.env*
+*.tsbuildinfo
+next-env.d.ts
+
+# Se regeneran con `npm run extraer` desde el jar de Cobblemon.
+public/cobblemon/
+src/data/pokemon.json
+
+# Los bajan `npm run retratos`. El zip queda cacheado para no rebajarlo.
+src/data/retratos.json
+.cache/
+
+# Rutas a la instancia local de Minecraft. Cambian en cada maquina.
+scripts/rutas.local.json
+
+# Salida de `next build` con output: "export".
+out/

@@ -1,0 +1,1850 @@
+[
+  {
+    "clave": "repeatball",
+    "nombre": "Acopio Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "mysticwater",
+    "nombre": "Agua Mística",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "friendball",
+    "nombre": "Amigo Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "loveball",
+    "nombre": "Amor Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "clearamulet",
+    "nombre": "Amuleto Puro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "nevermeltice",
+    "nombre": "Antiderretir",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "softsand",
+    "nombre": "Arena Fina",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "auspiciousarmor",
+    "nombre": "Armadura Auspiciosa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "maliciousarmor",
+    "nombre": "Armadura Maldita",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "focussash",
+    "nombre": "Banda Aguante",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "bindingband",
+    "nombre": "Banda Atadura",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerband",
+    "nombre": "Banda Recia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "shucaberry",
+    "nombre": "Baya Acardo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "chartiberry",
+    "nombre": "Baya Alcho",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "kelpsyberry",
+    "nombre": "Baya Algama",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "belueberry",
+    "nombre": "Baya Andano",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "magoberry",
+    "nombre": "Baya Ango",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "habanberry",
+    "nombre": "Baya Anjiro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "magostberry",
+    "nombre": "Baya Aostan",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "starfberry",
+    "nombre": "Baya Arabol",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "oranberry",
+    "nombre": "Baya Aranja",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "apicotberry",
+    "nombre": "Baya Aricoc",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "salacberry",
+    "nombre": "Baya Aslac",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "chestoberry",
+    "nombre": "Baya Atania",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "babiriberry",
+    "nombre": "Baya Baribá",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "keeberry",
+    "nombre": "Baya Biglia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "occaberry",
+    "nombre": "Baya Caoca",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "persimberry",
+    "nombre": "Baya Caquic",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "chilanberry",
+    "nombre": "Baya Chilan",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "custapberry",
+    "nombre": "Baya Chiri",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "colburberry",
+    "nombre": "Baya Dillo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "kasibberry",
+    "nombre": "Baya Drasi",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "enigmaberry",
+    "nombre": "Baya Enigma",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "razzberry",
+    "nombre": "Baya Frambu",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "ganlonberry",
+    "nombre": "Baya Gonlan",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "pomegberry",
+    "nombre": "Baya Grana",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "wacanberry",
+    "nombre": "Baya Gualot",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "aguavberry",
+    "nombre": "Baya Guaya",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "roseliberry",
+    "nombre": "Baya Hibis",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "figyberry",
+    "nombre": "Baya Higog",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "qualotberry",
+    "nombre": "Baya Íspero",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "jabocaberry",
+    "nombre": "Baya Jaboca",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "kebiaberry",
+    "nombre": "Baya Kebia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "cobaberry",
+    "nombre": "Baya Kouba",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "micleberry",
+    "nombre": "Baya Lagro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "nanabberry",
+    "nombre": "Baya Latano",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "liechiberry",
+    "nombre": "Baya Lichi",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "rowapberry",
+    "nombre": "Baya Magua",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "cornnberry",
+    "nombre": "Baya Mais",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "marangaberry",
+    "nombre": "Baya Maranga",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "pechaberry",
+    "nombre": "Baya Meloc",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "hondewberry",
+    "nombre": "Baya Meluce",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "nomelberry",
+    "nombre": "Baya Monli",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "blukberry",
+    "nombre": "Baya Oram",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "iapapaberry",
+    "nombre": "Baya Pabaya",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "passhoberry",
+    "nombre": "Baya Pasio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "payapaberry",
+    "nombre": "Baya Payapa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "wepearberry",
+    "nombre": "Baya Peragu",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "aspearberry",
+    "nombre": "Baya Perasi",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "pinapberry",
+    "nombre": "Baya Pinia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "pamtreberry",
+    "nombre": "Baya Plama",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "chopleberry",
+    "nombre": "Baya Pomaro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "rabutaberry",
+    "nombre": "Baya Rautan",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "yacheberry",
+    "nombre": "Baya Rimoya",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "durinberry",
+    "nombre": "Baya Rudion",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "rawstberry",
+    "nombre": "Baya Safre",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "watmelberry",
+    "nombre": "Baya Sambia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "rindoberry",
+    "nombre": "Baya Tamar",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "tamatoberry",
+    "nombre": "Baya Tamate",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "grepaberry",
+    "nombre": "Baya Uvav",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "spelonberry",
+    "nombre": "Baya Wikano",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "wikiberry",
+    "nombre": "Baya Wiki",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "petayaberry",
+    "nombre": "Baya Yapati",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "tangaberry",
+    "nombre": "Baya Yecana",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "leppaberry",
+    "nombre": "Baya Zanama",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "sitrusberry",
+    "nombre": "Baya Zidra",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "lumberry",
+    "nombre": "Baya Ziuela",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "lansatberry",
+    "nombre": "Baya Zonlan",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "cheriberry",
+    "nombre": "Baya Zreza",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": true
+  },
+  {
+    "clave": "ringtarget",
+    "nombre": "Blanco",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ironball",
+    "nombre": "Bola Férrea",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "lightball",
+    "nombre": "Bola Luminosa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "heavydutyboots",
+    "nombre": "Botas Gruesas",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ejectbutton",
+    "nombre": "Botón Escape",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "galaricacuff",
+    "nombre": "Brazal Galanuez",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerbracer",
+    "nombre": "Brazal Recio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "diveball",
+    "nombre": "Buceo Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "covertcloak",
+    "nombre": "Capa Furtiva",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "shellbell",
+    "nombre": "Cascabel Concha",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "rockyhelmet",
+    "nombre": "Casco Dentado",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "lureball",
+    "nombre": "Cebo Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "assaultvest",
+    "nombre": "Chaleco Asalto",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "focusband",
+    "nombre": "Cinta Aguante",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "choiceband",
+    "nombre": "Cinta Elección",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "expertbelt",
+    "nombre": "Cinta Experto",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "muscleband",
+    "nombre": "Cinta Fuerte",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "blackbelt",
+    "nombre": "Cinturón Negro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerbelt",
+    "nombre": "Cinturón Recio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "laggingtail",
+    "nombre": "Cola Plúmbea",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "razorfang",
+    "nombre": "Colmillo Agudo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dragonfang",
+    "nombre": "Colmillo Dragón",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sportball",
+    "nombre": "Competi Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "lovesweet",
+    "nombre": "Confite Corazón",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "starsweet",
+    "nombre": "Confite Estrella",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "flowersweet",
+    "nombre": "Confite Flor",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "strawberrysweet",
+    "nombre": "Confite Fresa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "berrysweet",
+    "nombre": "Confite Fruto",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ribbonsweet",
+    "nombre": "Confite Lazo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "cloversweet",
+    "nombre": "Confite Trébol",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "galaricawreath",
+    "nombre": "Corona Galanuez",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "terrainextender",
+    "nombre": "Cubresuelos",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "twistedspoon",
+    "nombre": "Cuchara Torcida",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "masterpieceteacup",
+    "nombre": "Cuenco Exquisito",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "unremarkableteacup",
+    "nombre": "Cuenco Mediocre",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "loadeddice",
+    "nombre": "Dado Trucado",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "deepseatooth",
+    "nombre": "Diente Marino",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dubiousdisc",
+    "nombre": "Disco Extraño",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fossilizeddrake",
+    "nombre": "Dracofósil",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "whippeddream",
+    "nombre": "Dulce de Nata",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "electirizer",
+    "nombre": "Electrizador",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dreamball",
+    "nombre": "Ensueño Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "beastball",
+    "nombre": "Ente Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "prismscale",
+    "nombre": "Escama Bella",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dragonscale",
+    "nombre": "Escama Dragón",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "deepseascale",
+    "nombre": "Escama Marina",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "abilityshield",
+    "nombre": "Escudo Habilidad",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "throatspray",
+    "nombre": "Espray Bucal",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "poisonbarb",
+    "nombre": "Flecha Venenosa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sailfossil",
+    "nombre": "Fósil Aleta",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "armorfossil",
+    "nombre": "Fósil Coraza",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "skullfossil",
+    "nombre": "Fósil Craneo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "domefossil",
+    "nombre": "Fósil Domo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "clawfossil",
+    "nombre": "Fósil Garra",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "helixfossil",
+    "nombre": "Fósil Hélix",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "jawfossil",
+    "nombre": "Fósil Mandíbula",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "plumefossil",
+    "nombre": "Fósil Pluma",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "rootfossil",
+    "nombre": "Fósil Raíz",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "coverfossil",
+    "nombre": "Fósil Tapa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "poweranklet",
+    "nombre": "Franja Recia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "safetygoggles",
+    "nombre": "Gafa Protectora",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "blackglasses",
+    "nombre": "Gafas de Sol",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "choicespecs",
+    "nombre": "Gafas Elección",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "wiseglasses",
+    "nombre": "Gafas Especiales",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "razorclaw",
+    "nombre": "Garra Afilada",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "gripclaw",
+    "nombre": "Garra Garfio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "quickclaw",
+    "nombre": "Garra Rápida",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "steelgem",
+    "nombre": "Gema Acero",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "watergem",
+    "nombre": "Gema Agua",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "buggem",
+    "nombre": "Gema Bicho",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dragongem",
+    "nombre": "Gema Dragón",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "electricgem",
+    "nombre": "Gema Eléctrico",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ghostgem",
+    "nombre": "Gema Fantasma",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "firegem",
+    "nombre": "Gema Fuego",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fairygem",
+    "nombre": "Gema Hada",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "icegem",
+    "nombre": "Gema Hielo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fightinggem",
+    "nombre": "Gema Lucha",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "normalgem",
+    "nombre": "Gema Normal",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "grassgem",
+    "nombre": "Gema Planta",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "psychicgem",
+    "nombre": "Gema Psíquico",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "rockgem",
+    "nombre": "Gema Roca",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "darkgem",
+    "nombre": "Gema Siniestro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "groundgem",
+    "nombre": "Gema Tierra",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "poisongem",
+    "nombre": "Gema Veneno",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "flyinggem",
+    "nombre": "Gema Volador",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "airballoon",
+    "nombre": "Globo Helio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "cherishball",
+    "nombre": "Gloria Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "punchingglove",
+    "nombre": "Guante de Boxeo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "spelltag",
+    "nombre": "Hechizo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "whiteherb",
+    "nombre": "Hierba Blanca",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "mirrorherb",
+    "nombre": "Hierba Copia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "mentalherb",
+    "nombre": "Hierba Mental",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerherb",
+    "nombre": "Hierba Única",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "premierball",
+    "nombre": "Honor Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fossilizedfish",
+    "nombre": "Ictiofósil",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "magnet",
+    "nombre": "Imán",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "destinyknot",
+    "nombre": "Lazo Destino",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerlens",
+    "nombre": "Lente Recia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "flameorb",
+    "nombre": "Llamasfera",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "blacksludge",
+    "nombre": "Lodo Negro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "luxuryball",
+    "nombre": "Lujo Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "moonball",
+    "nombre": "Luna Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "widelens",
+    "nombre": "Lupa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "magmarizer",
+    "nombre": "Magmatizador",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "netball",
+    "nombre": "Malla Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "tartapple",
+    "nombre": "Manzana Ácida",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sweetapple",
+    "nombre": "Manzana Dulce",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "syrupyapple",
+    "nombre": "Manzana melosa",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "masterball",
+    "nombre": "Master Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "upgrade",
+    "nombre": "Mejora",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "metalalloy",
+    "nombre": "Metal compuesto",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "metronome",
+    "nombre": "Metrónomo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "eviolite",
+    "nombre": "Mineral Evolutivo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ejectpack",
+    "nombre": "Mochila Escape",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "shedshell",
+    "nombre": "Muda Concha",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "luminousmoss",
+    "nombre": "Musgo Brillante",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "nestball",
+    "nombre": "Nido Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "levelball",
+    "nombre": "Nivel Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "duskball",
+    "nombre": "Ocaso Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fossilizedbird",
+    "nombre": "Ornitofósil",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "silkscarf",
+    "nombre": "Pañuelo de Seda",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "choicescarf",
+    "nombre": "Pañuelo Elección",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "protectivepads",
+    "nombre": "Paracontacto",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "utilityumbrella",
+    "nombre": "Parasol Multiuso",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "parkball",
+    "nombre": "Parque Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "scopelens",
+    "nombre": "Periscopio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "powerweight",
+    "nombre": "Pesa Recia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "heavyball",
+    "nombre": "Peso Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sharpbeak",
+    "nombre": "Pico Afilado",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "waterstone",
+    "nombre": "Piedra Agua",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "dawnstone",
+    "nombre": "Piedra Alba",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "shinystone",
+    "nombre": "Piedra Día",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "hardstone",
+    "nombre": "Piedra Dura",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "firestone",
+    "nombre": "Piedra Fuego",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "icestone",
+    "nombre": "Piedra Hielo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "leafstone",
+    "nombre": "Piedra Hoja",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "moonstone",
+    "nombre": "Piedra Lunar",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "duskstone",
+    "nombre": "Piedra Noche",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ovalstone",
+    "nombre": "Piedra Oval",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "floatstone",
+    "nombre": "Piedra Pómez",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sunstone",
+    "nombre": "Piedra Solar",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "thunderstone",
+    "nombre": "Piedra Trueno",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "cellbattery",
+    "nombre": "Pila",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fossilizeddino",
+    "nombre": "Plesiofósil",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fairyfeather",
+    "nombre": "Pluma feérica",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "pokeball",
+    "nombre": "Poké Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "brightpowder",
+    "nombre": "Polvo Brillo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "metalpowder",
+    "nombre": "Polvo Metálico",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "silverpowder",
+    "nombre": "Polvo Plata",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "quickpowder",
+    "nombre": "Polvo Veloz",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "protector",
+    "nombre": "Protector",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "fastball",
+    "nombre": "Rapid Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "lightclay",
+    "nombre": "Refleluz",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "leftovers",
+    "nombre": "Restos",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "metalcoat",
+    "nombre": "Revestimiento Metálico",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "heatrock",
+    "nombre": "Roca Calor",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "kingsrock",
+    "nombre": "Roca del Rey",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "icyrock",
+    "nombre": "Roca Helada",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "damprock",
+    "nombre": "Roca Lluvia",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "smoothrock",
+    "nombre": "Roca Suave",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "safariball",
+    "nombre": "Safari Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "healball",
+    "nombre": "Sana Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "sachet",
+    "nombre": "Saquito Fragante",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "weaknesspolicy",
+    "nombre": "Seguro Debilidad",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "blunderpolicy",
+    "nombre": "Seguro Fallo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "mistyseed",
+    "nombre": "Semilla bruma",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "electricseed",
+    "nombre": "Semilla electro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "grassyseed",
+    "nombre": "Semilla hierba",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "miracleseed",
+    "nombre": "Semilla Milagro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "psychicseed",
+    "nombre": "Semilla psique",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "roomservice",
+    "nombre": "Servicio Raro",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "greatball",
+    "nombre": "Super Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "redcard",
+    "nombre": "Tarjeta Roja",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "reapercloth",
+    "nombre": "Tela Terrible",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "zoomlens",
+    "nombre": "Telescopio",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "crackedpot",
+    "nombre": "Tetera Agrietada",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "chippedpot",
+    "nombre": "Tetera Rota",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "stickybarb",
+    "nombre": "Toxiestrella",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "toxicorb",
+    "nombre": "Toxisfera",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "absorbbulb",
+    "nombre": "Tubérculo",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "timerball",
+    "nombre": "Turno Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "ultraball",
+    "nombre": "Ultra Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "quickball",
+    "nombre": "Veloz Ball",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "lifeorb",
+    "nombre": "Vidasfera",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  },
+  {
+    "clave": "berryjuice",
+    "nombre": "Zumo de bayas",
+    "desc": "",
+    "megaPara": null,
+    "esBaya": false
+  }
+]
