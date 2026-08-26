@@ -5,12 +5,13 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 
-# Se regeneran con `npm run extraer` desde el jar de Cobblemon.
-public/cobblemon/
-src/data/pokemon.json
+# Los datos generados SI se versionan, aunque salgan de `npm run extraer` y
+# `npm run retratos`. Sin ellos el build falla, y el servidor que construye no
+# tiene la instancia de Minecraft de donde salen: es la unica forma de que
+# Cloudflare pueda compilar en cada push, y de que alguien que clone el repo
+# pueda correrlo sin tener Cobblemon instalado.
 
-# Los bajan `npm run retratos`. El zip queda cacheado para no rebajarlo.
-src/data/retratos.json
+# El zip del pack de iconos no, que son 12 MB y solo sirve para regenerarlos.
 .cache/
 
 # Rutas a la instancia local de Minecraft. Cambian en cada maquina.

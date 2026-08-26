@@ -60,8 +60,10 @@ Hace falta Node 20 o más nuevo.
 npm install
 ```
 
-Los datos no están en el repo: se generan desde una instancia de Minecraft con
-Cobblemon. Apuntá las dos variables a la tuya y corré el extractor.
+Los datos ya están en el repo, así que con eso alcanza para levantarlo. Solo
+hace falta regenerarlos si actualizás el modpack, y para eso sí necesitás una
+instancia de Minecraft con Cobblemon: apuntá las dos variables a la tuya y corré
+el extractor.
 
 ```bash
 # bash
@@ -100,14 +102,35 @@ Ursaring entra, Ursaluna entra con él aunque sea de otra generación.
 No hay nada que corra en el servidor, así que el sitio se compila a HTML y se
 sirve como archivos estáticos. `next build` deja todo en `out/`.
 
+Cada push a `main` dispara el build y el deploy en Cloudflare. Los ajustes, en
+Workers & Pages, el Worker, Settings, Builds:
+
+| | |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Root directory | la raíz del repo |
+
+El nombre del Worker tiene que coincidir con el `name` de `wrangler.jsonc`
+(`cobble-labs`) o el build falla.
+
+Para subir a mano, sin pasar por GitHub:
+
 ```bash
-npm run deploy    # compila y sube a Cloudflare Workers
+npm run deploy    # compila y sube
 npm run preview   # lo mismo pero local, para ver qué se va a subir
 ```
 
-La configuración está en `wrangler.jsonc`. No declara `main`, o sea que no se
-ejecuta código: son solo assets, y en Cloudflare las requests a assets estáticos
-no se cobran.
+`wrangler.jsonc` no declara `main`, o sea que no se ejecuta código: son solo
+assets, y en Cloudflare las requests a assets estáticos no se cobran.
+
+### Por qué los datos generados sí están en el repo
+
+`src/data/pokemon.json`, `src/data/retratos.json` y `public/cobblemon/` los
+generan `npm run extraer` y `npm run retratos`, pero igual se versionan. El
+servidor que compila no tiene la instancia de Minecraft de donde salen, así que
+sin ellos el build falla. Son unos 5 MB, y el efecto secundario es bueno: quien
+clone el repo puede correrlo sin tener Cobblemon instalado.
 
 ## Cómo está organizado
 
