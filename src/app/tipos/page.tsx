@@ -4,9 +4,15 @@ import Link from "next/link";
 import TablaTipos from "@/components/TablaTipos";
 
 export const metadata: Metadata = {
-  title: "Tipos · Cobble Labs",
+  title: "Tipos",
   description:
     "La tabla de efectividad de tipos que usa Cobblemon, con la explicación de cómo se lee y cómo se multiplican los tipos dobles.",
+  alternates: { canonical: "/tipos" },
+  openGraph: {
+    title: "Tipos · Cobble Labs",
+    description: "La tabla de efectividad de tipos que usa Cobblemon, con la explicación de cómo se lee y cómo se multiplican los tipos dobles.",
+    url: "/tipos",
+  },
 };
 
 // Los ejemplos son de Pokemon del roster y estan verificados contra la propia

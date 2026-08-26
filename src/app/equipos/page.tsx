@@ -5,9 +5,15 @@ import ArmadorEquipo from "@/components/ArmadorEquipo";
 import { CATALOGO, ROSTER } from "@/data/roster-combate";
 
 export const metadata: Metadata = {
-  title: "Equipos · Cobble Labs",
+  title: "Equipos",
   description:
     "Armá tu equipo de seis con recomendaciones que explican por qué cada Pokémon mejora tu equipo, y probalo en el Battle Bot.",
+  alternates: { canonical: "/equipos" },
+  openGraph: {
+    title: "Equipos · Cobble Labs",
+    description: "Armá tu equipo de seis con recomendaciones que explican por qué cada Pokémon mejora tu equipo, y probalo en el Battle Bot.",
+    url: "/equipos",
+  },
 };
 
 export default function Equipos() {

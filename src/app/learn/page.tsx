@@ -6,9 +6,15 @@ import { defensaContra } from "@/engine/tabla-tipos";
 import { TOTAL_MOVIMIENTOS } from "@/data/textos";
 
 export const metadata: Metadata = {
-  title: "Learn · Cobble Labs",
+  title: "Learn",
   description:
     "Cómo se lee la tabla de tipos, cómo se arma un equipo y qué significan las stats, las habilidades y los movimientos del servidor.",
+  alternates: { canonical: "/learn" },
+  openGraph: {
+    title: "Learn · Cobble Labs",
+    description: "Cómo se lee la tabla de tipos, cómo se arma un equipo y qué significan las stats, las habilidades y los movimientos del servidor.",
+    url: "/learn",
+  },
 };
 
 // Todas las cifras que aparecen en el texto se calculan del roster, no se

@@ -124,6 +124,27 @@ npm run preview   # lo mismo pero local, para ver qué se va a subir
 `wrangler.jsonc` no declara `main`, o sea que no se ejecuta código: son solo
 assets, y en Cloudflare las requests a assets estáticos no se cobran.
 
+### SEO
+
+El sitio vive en `https://cobble-lab.com`, y esa dirección está en un solo
+lugar: `src/data/sitio.ts`. De ahí salen el sitemap, el robots y la canónica.
+
+Todas las páginas declaran canónica hacia el dominio. Hace falta porque el
+mismo contenido se sirve también en `cobble-labs.rodrixdere.workers.dev`, y sin
+esa señal Google elige por su cuenta cuál indexar.
+
+`sitemap.ts` se arma del roster, no de una lista a mano: son 415 URLs y las
+fichas nuevas entran solas cuando se actualiza el mod.
+
+La tarjeta social es `public/og.png`, un PNG estático. **No** se usa la ruta
+`opengraph-image` de Next: emite un archivo sin extensión y Cloudflare lo sirve
+sin `Content-Type`, así que las redes no muestran la imagen. Verificado contra
+el host real. El generador quedó en el taller, con las instrucciones para
+rehacerla.
+
+Las rutas de metadata llevan `export const dynamic = "force-static"`, que con
+`output: "export"` es obligatorio o el build falla.
+
 ### Por qué los datos generados sí están en el repo
 
 `src/data/pokemon.json`, `src/data/retratos.json` y `public/cobblemon/` los

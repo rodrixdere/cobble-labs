@@ -5,9 +5,15 @@ import BattleBot from "@/components/BattleBot";
 import { CATALOGO, ROSTER } from "@/data/roster-combate";
 
 export const metadata: Metadata = {
-  title: "Battle Bot · Cobble Labs",
+  title: "Battle Bot",
   description:
     "Calculadora de daño con clima y terreno, motor de combate contra un pool de rivales, y probador de equipos.",
+  alternates: { canonical: "/battle-bot" },
+  openGraph: {
+    title: "Battle Bot · Cobble Labs",
+    description: "Calculadora de daño con clima y terreno, motor de combate contra un pool de rivales, y probador de equipos.",
+    url: "/battle-bot",
+  },
 };
 
 export default function PaginaBattleBot() {

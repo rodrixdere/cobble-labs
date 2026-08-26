@@ -39,10 +39,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const p = porSlug(slug);
-  if (!p) return { title: "No encontrado · Cobble Labs" };
+  if (!p) return { title: "No encontrado" };
+
+  // La descripcion del juego es la mejor que hay, pero muchas no dicen nada de
+  // lo que la gente busca. Se le antepone el dato duro: tipos y numero.
+  const tipos = p.tipos.map((t) => NOMBRE_TIPO[t]).join(" y ");
+  const resumen = `${p.nombre} en Cobblemon: tipo ${tipos}, stats base, habilidades, movimientos y dónde aparece.`;
+
   return {
-    title: `${p.nombre} · Cobble Labs`,
-    description: p.descripcion || `Stats, movimientos y habilidades de ${p.nombre}.`,
+    title: p.nombre,
+    description: p.descripcion ? `${resumen} ${p.descripcion}`.slice(0, 300) : resumen,
+    alternates: { canonical: `/pokemon/${p.slug}` },
+    openGraph: {
+      type: "article",
+      title: `${p.nombre} · Cobble Labs`,
+      description: resumen,
+      url: `/pokemon/${p.slug}`,
+      images: [{ url: `/cobblemon/retratos/${p.assets}.png` }],
+    },
   };
 }
 
