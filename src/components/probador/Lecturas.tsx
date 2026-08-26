@@ -26,7 +26,7 @@ export default function Lecturas({ cruce }: { cruce: Cruce }) {
   const parejo = porcentajeA > 43 && porcentajeA < 57;
 
   return (
-    <ul className="mt-5 grid grid-cols-2 gap-x-10 gap-y-2.5 text-lectura text-tinta-media">
+    <ul className="mt-5 grid gap-x-10 lg:grid-cols-2 gap-y-2.5 text-lectura text-tinta-media">
       {mejor ? (
         <li>
           Conviene abrir con <Nombre>{mejor.nombre}</Nombre>:{" "}

@@ -16,9 +16,9 @@ const PENDIENTES = [
 
 export default function SeccionPendientes() {
   return (
-    <section className="grid grid-cols-2 gap-px border-t border-linea bg-linea">
+    <section className="grid gap-px border-t border-linea bg-linea md:grid-cols-2">
       {PENDIENTES.map((p) => (
-        <div key={p.titulo} className="bg-panel px-8 py-6">
+        <div key={p.titulo} className="bg-panel px-4 md:px-8 py-6">
           <h2 className="rotulo border-b border-linea pb-2">{p.titulo}</h2>
           <p className="mt-3 max-w-[52ch] text-lectura text-tinta-media">
             {p.detalle}

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function PaginaBattleBot() {
   return (
     <main className="mx-auto max-w-[1400px] hoja">
-      <div className="px-8 pb-6 pt-9">
+      <div className="px-4 md:px-8 pb-6 pt-9">
         <h1 className="font-display text-portada">
           Battle Bot
         </h1>
@@ -27,7 +27,7 @@ export default function PaginaBattleBot() {
 
       <Suspense
         fallback={
-          <div className="border-t border-linea px-8 py-24 text-center text-lectura text-tinta-tenue">
+          <div className="border-t border-linea px-4 md:px-8 py-24 text-center text-lectura text-tinta-tenue">
             Cargando las herramientas…
           </div>
         }

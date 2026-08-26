@@ -16,7 +16,7 @@ const CIFRAS = [
 export default function Home() {
   return (
     <main className="mx-auto max-w-[1400px] hoja">
-      <div className="flex items-end justify-between gap-10 px-8 pb-6 pt-9">
+      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5 px-4 pb-6 pt-9 md:px-8">
         <div>
           <h1 className="font-display text-portada">
             Pokédex
@@ -28,7 +28,7 @@ export default function Home() {
           </p>
         </div>
 
-        <dl className="flex shrink-0 gap-8 pb-1">
+        <dl className="flex gap-6 pb-1 sm:gap-8">
           {CIFRAS.map((c) => (
             <div key={c.rotulo}>
               <dt className="rotulo">{c.rotulo}</dt>
@@ -42,7 +42,7 @@ export default function Home() {
 
       <Suspense
         fallback={
-          <div className="border-t border-linea px-8 py-28 text-center text-lectura text-tinta-tenue">
+          <div className="border-t border-linea px-4 md:px-8 py-28 text-center text-lectura text-tinta-tenue">
             Cargando el índice…
           </div>
         }

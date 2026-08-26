@@ -1,11 +1,12 @@
 "use client";
 
-import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { CaretDown, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useDeferredValue, useMemo, useState } from "react";
 
 import CeldaPokemon from "@/components/CeldaPokemon";
 import { NOMBRE_TIPO, TIPOS, type PokemonEnRejilla } from "@/data/pokemon";
+import Desplegable from "@/ui/Desplegable";
 import Opcion from "@/ui/Opcion";
 import FilaElegible from "@/ui/FilaElegible";
 
@@ -113,8 +114,12 @@ export default function Explorador({
   };
 
   return (
-    <div className="grid grid-cols-[248px_1fr] border-t border-linea">
-      <aside className="sticky top-[var(--alto-cabecera)] h-[calc(100dvh-var(--alto-cabecera))] overflow-y-auto border-r border-linea px-5 py-5">
+    // Los filtros son columna fija solo cuando hay ancho de sobra. Abajo de
+    // lg se apilan arriba de la rejilla, sin sticky ni alto de viewport: en un
+    // telefono eso deja una lista de tipos que se scrollea sola adentro de la
+    // pagina y confunde.
+    <div className="grid border-t border-linea lg:grid-cols-[248px_1fr]">
+      <aside className="border-b border-linea px-4 py-5 md:px-5 lg:sticky lg:top-[var(--alto-cabecera)] lg:h-[calc(100dvh-var(--alto-cabecera))] lg:overflow-y-auto lg:border-b-0 lg:border-r">
         <label className="relative block">
           <span className="sr-only">Buscar por nombre o número</span>
           <MagnifyingGlass
@@ -138,7 +143,7 @@ export default function Explorador({
         </label>
 
         <h2 className="rotulo mt-7">Generación</h2>
-        <div className="mt-2.5 flex flex-wrap gap-1">
+        <div className="mt-2.5 grid grid-cols-4 gap-1 sm:grid-cols-7 lg:grid-cols-3">
           {generaciones.map((g) => {
             const activa = gensElegidas.includes(g);
             return (
@@ -147,7 +152,7 @@ export default function Explorador({
                 estilo="contorno"
                 puesta={activa}
                 onElegir={() => alternar("gen", String(g))}
-                ubicacion="min-w-[52px] flex-1 justify-center"
+                ubicacion="justify-center"
               >
                 Gen {g}
               </Opcion>
@@ -156,33 +161,69 @@ export default function Explorador({
         </div>
 
         <h2 className="rotulo mt-7">Tipo</h2>
-        <ul className="mt-2">
-          {TIPOS.map((t) => {
-            const activo = tiposElegidos.includes(t);
-            const cuenta = conteoPorTipo[t] ?? 0;
-            return (
-              <li key={t}>
-                <FilaElegible
-                  puesta={activo}
-                  holgura="apretada"
-                  onElegir={() => alternar("tipo", t)}
-                >
-                  <span
-                    aria-hidden
-                    className="h-2.5 w-2.5 shrink-0"
-                    style={{ background: `var(--color-tipo-${t})` }}
-                  />
-                  <span className="flex-1 truncate text-lectura">
-                    {NOMBRE_TIPO[t]}
+        {/* Los dieciocho tipos entran en un desplegable en vez de una lista
+            abierta: son mas alto que todo el resto de los filtros juntos, y en
+            angosto empujaban la rejilla fuera de la pantalla. El boton dice
+            cuantos hay elegidos para que el filtro no quede escondido. */}
+        <Desplegable
+          titulo="Filtrar por tipo"
+          panel="w-full max-h-[320px] overflow-y-auto overscroll-contain py-1"
+          boton="mt-2 flex w-full items-center justify-between gap-2 rounded-pieza border border-linea-fuerte px-3 py-2 text-lectura text-tinta-media hover:border-tinta-tenue hover:text-tinta"
+          etiqueta={
+            <>
+              <span className="flex min-w-0 items-center gap-2">
+                {tiposElegidos.length > 0 ? (
+                  <span aria-hidden className="flex shrink-0 gap-1">
+                    {tiposElegidos.slice(0, 4).map((t) => (
+                      <span
+                        key={t}
+                        className="h-2.5 w-2.5"
+                        style={{ background: `var(--color-tipo-${t})` }}
+                      />
+                    ))}
                   </span>
-                  <span className="cifra text-apoyo text-tinta-tenue">
-                    {cuenta}
-                  </span>
-                </FilaElegible>
-              </li>
-            );
-          })}
-        </ul>
+                ) : null}
+                <span className="truncate">
+                  {tiposElegidos.length === 0
+                    ? "Todos los tipos"
+                    : tiposElegidos.length === 1
+                      ? NOMBRE_TIPO[tiposElegidos[0]]
+                      : `${tiposElegidos.length} tipos`}
+                </span>
+              </span>
+              <CaretDown size={13} aria-hidden className="shrink-0" />
+            </>
+          }
+        >
+          {() => (
+            <ul>
+              {TIPOS.map((t) => {
+                const activo = tiposElegidos.includes(t);
+                return (
+                  <li key={t}>
+                    <FilaElegible
+                      puesta={activo}
+                      holgura="apretada"
+                      onElegir={() => alternar("tipo", t)}
+                    >
+                      <span
+                        aria-hidden
+                        className="h-2.5 w-2.5 shrink-0"
+                        style={{ background: `var(--color-tipo-${t})` }}
+                      />
+                      <span className="flex-1 truncate text-lectura">
+                        {NOMBRE_TIPO[t]}
+                      </span>
+                      <span className="cifra text-apoyo text-tinta-tenue">
+                        {conteoPorTipo[t] ?? 0}
+                      </span>
+                    </FilaElegible>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </Desplegable>
 
         {hayFiltros ? (
           <button
@@ -196,7 +237,7 @@ export default function Explorador({
       </aside>
 
       <section>
-        <div className="flex items-center justify-between border-b border-linea px-5 py-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-linea px-4 py-2.5 md:px-5">
           <p aria-live="polite" className="cifra text-apoyo text-tinta-media">
             {resultado.length}{" "}
             <span className="text-tinta-tenue">de {pokemon.length}</span>
@@ -236,7 +277,7 @@ export default function Explorador({
             </button>
           </div>
         ) : (
-          <ul className="grid grid-cols-6 gap-px bg-linea">
+          <ul className="grid grid-cols-2 gap-px bg-linea sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {resultado.map((p) => (
               <li
                 key={p.slug}

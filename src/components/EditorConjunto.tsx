@@ -121,7 +121,7 @@ export default function EditorConjunto({
         </div>
       }
     >
-      <div className="grid grid-cols-[1fr_260px_300px] gap-px bg-linea">
+      <div className="grid gap-px bg-linea lg:grid-cols-[1fr_260px_300px]">
         {/* Movimientos */}
         <section className="bg-panel px-5 py-4">
           <div className="flex items-baseline justify-between">

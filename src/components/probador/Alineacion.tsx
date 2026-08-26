@@ -39,7 +39,7 @@ export default function Alineacion({
         {accion}
       </div>
 
-      <ul className="mt-3 grid grid-cols-3 gap-px bg-linea">
+      <ul className="mt-3 grid grid-cols-2 gap-px bg-linea sm:grid-cols-3">
         {Array.from({ length: MAXIMO_MIEMBROS }, (_, i) => {
           const c = conjuntos[i];
           const p = c ? indice.get(c.slug) : undefined;

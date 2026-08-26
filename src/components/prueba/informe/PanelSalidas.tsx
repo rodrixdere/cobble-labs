@@ -19,7 +19,7 @@ export default function PanelSalidas({
   );
 
   return (
-    <div className="grid grid-cols-2 gap-x-10 border-t border-linea px-8 py-6">
+    <div className="grid gap-x-10 lg:grid-cols-2 border-t border-linea px-4 md:px-8 py-6">
       <div>
         <h3 className="rotulo border-b border-linea pb-2">
           Con cuál conviene abrir

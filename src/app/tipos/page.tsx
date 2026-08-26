@@ -45,7 +45,7 @@ const EJEMPLOS = [
 export default function Tipos() {
   return (
     <main className="mx-auto max-w-[1400px] hoja">
-      <div className="flex items-end justify-between gap-10 px-8 pb-6 pt-9">
+      <div className="flex items-end justify-between gap-10 px-4 md:px-8 pb-6 pt-9">
         <div>
           <h1 className="font-display text-portada">
             Tipos
@@ -62,7 +62,7 @@ export default function Tipos() {
         <TablaTipos />
       </div>
 
-      <section className="border-t border-linea px-8 py-8">
+      <section className="border-t border-linea px-4 md:px-8 py-8">
         <h2 className="font-display text-capitulo">
           Cómo se lee
         </h2>
@@ -73,7 +73,7 @@ export default function Tipos() {
           se dejan en blanco para que salten a la vista las que importan.
         </p>
 
-        <ul className="mt-6 grid grid-cols-4 gap-px bg-linea">
+        <ul className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-px bg-linea">
           {EJEMPLOS.map((e) => (
             <li key={e.titulo} className="bg-panel p-5">
               <h3 className="rotulo">{e.titulo}</h3>
@@ -100,6 +100,7 @@ export default function Tipos() {
               aguanta y la fila qué rompe. En{" "}
               <Link
                 href="/equipos"
+                prefetch={false}
                 className="font-semibold text-acento-hondo underline underline-offset-4"
               >
                 Equipos

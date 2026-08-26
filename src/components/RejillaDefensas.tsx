@@ -27,7 +27,7 @@ export default function RejillaDefensas({
         {acciones}
       </div>
 
-      <ul className="mt-3 grid grid-cols-6 gap-px bg-linea">
+      <ul className="mt-3 grid grid-cols-3 gap-px md:grid-cols-6 bg-linea">
         {valores.map(({ tipo, x }) => (
           <li
             key={tipo}

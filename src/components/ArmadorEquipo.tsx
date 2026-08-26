@@ -107,7 +107,7 @@ export default function ArmadorEquipo({
 
   return (
     <>
-      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 px-8 pb-5 pt-9">
+      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4 px-4 md:px-8 pb-5 pt-9">
         <div>
           <h1 className="font-display text-portada">Equipos</h1>
           <p className="mt-3 max-w-[62ch] text-realce leading-relaxed text-tinta-media">
@@ -125,7 +125,7 @@ export default function ArmadorEquipo({
         />
       </div>
 
-      <ul className="grid grid-cols-6 gap-px border-y border-linea bg-linea">
+      <ul className="grid grid-cols-2 gap-px border-y border-linea bg-linea sm:grid-cols-3 lg:grid-cols-6">
         {Array.from({ length: MAXIMO_MIEMBROS }, (_, i) => {
           const conjunto = conjuntos[i];
           const pokemon = conjunto ? indice.get(conjunto.slug) : undefined;
@@ -175,7 +175,7 @@ export default function ArmadorEquipo({
 
       {equipo.completo ? (
         <section className="border-t border-linea">
-          <div className="px-8 pb-4 pt-6">
+          <div className="px-4 md:px-8 pb-4 pt-6">
             <h2 className="font-display text-titulo">Optimización del equipo</h2>
             <p className="mt-1 max-w-[70ch] text-lectura text-tinta-media">
               {estado.detalle} Cada cambio se mide contra la sinergia actual:

@@ -20,14 +20,14 @@ export default function AnalisisEquipo({
 
   return (
     <section className="border-t border-linea">
-      <div className="px-8 pb-4 pt-6">
+      <div className="px-4 md:px-8 pb-4 pt-6">
         <h2 className="font-display text-titulo">
           Análisis del equipo
         </h2>
       </div>
 
       {/* Sinergia: el número con sus partes a la vista, no una nota mágica. */}
-      <div className="grid grid-cols-[260px_1fr] gap-px border-t border-linea bg-linea">
+      <div className="grid gap-px border-t border-linea bg-linea lg:grid-cols-[260px_1fr]">
         <div className="bg-panel px-6 py-5 text-center">
           <p className="rotulo">Sinergia</p>
           <p className="cifra mt-2 text-heroe text-acento-hondo">
@@ -65,7 +65,7 @@ export default function AnalisisEquipo({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-10 border-t border-linea px-8 py-6">
+      <div className="grid grid-cols-2 gap-x-10 border-t border-linea px-4 md:px-8 py-6">
         <RejillaDefensas
           valores={cobertura.map((c) => ({ tipo: c.tipo, x: c.mejor }))}
           sentido="ataque"
@@ -75,7 +75,7 @@ export default function AnalisisEquipo({
 
         <div>
           <h3 className="rotulo border-b border-linea pb-2">Defensas del equipo</h3>
-          <ul className="mt-3 grid grid-cols-6 gap-px bg-linea">
+          <ul className="mt-3 grid grid-cols-3 gap-px md:grid-cols-6 bg-linea">
             {defensas.map((d) => {
               const saldo = d.resisten + d.inmunes - d.debiles;
               return (
@@ -112,7 +112,7 @@ export default function AnalisisEquipo({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-x-10 border-t border-linea px-8 py-6">
+      <div className="grid grid-cols-3 gap-x-10 border-t border-linea px-4 md:px-8 py-6">
         <div>
           <h3 className="rotulo border-b border-linea pb-2">Lo que está flojo</h3>
           <ul className="mt-3 space-y-2 text-lectura leading-relaxed text-tinta-media">
@@ -240,7 +240,7 @@ export default function AnalisisEquipo({
         </div>
       </div>
 
-      <div className="border-t border-linea px-8 py-6">
+      <div className="border-t border-linea px-4 md:px-8 py-6">
         <h3 className="rotulo border-b border-linea pb-2">
           Las amenazas más grandes
         </h3>

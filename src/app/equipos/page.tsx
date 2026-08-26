@@ -15,7 +15,7 @@ export default function Equipos() {
     <main className="mx-auto max-w-[1400px] hoja">
       <Suspense
         fallback={
-          <div className="px-8 py-28 text-center text-lectura text-tinta-tenue">
+          <div className="px-4 md:px-8 py-28 text-center text-lectura text-tinta-tenue">
             Cargando el armador…
           </div>
         }

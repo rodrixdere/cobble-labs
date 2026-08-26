@@ -94,7 +94,7 @@ export default function FichaPokemon({
       {/* Cabecera: el retrato sobre un campo tenido por el tipo principal, y al
           lado la identidad. Es la unica zona con color de tipo de fondo, y va
           en degradado suave, nunca como bloque plano. */}
-      <div className="grid grid-cols-[320px_1fr] border-b border-linea">
+      <div className="grid border-b border-linea md:grid-cols-[320px_1fr]">
         <div
           className="flex items-center justify-center border-r border-linea py-8"
           style={{
@@ -111,7 +111,7 @@ export default function FichaPokemon({
           />
         </div>
 
-        <div className="flex flex-col justify-center px-8 py-7">
+        <div className="flex flex-col justify-center px-4 md:px-8 py-7">
           <p className="cifra text-apoyo text-tinta-tenue">
             Nº {String(dex).padStart(3, "0")} · Gen {generacion}
           </p>
@@ -160,7 +160,7 @@ export default function FichaPokemon({
         </div>
       </div>
 
-      <div className="grid grid-cols-[320px_1fr]">
+      <div className="grid md:grid-cols-[320px_1fr]">
         {/* Columna de identidad: datos duros, uno por linea, sin tarjetas. */}
         <aside className="border-r border-linea px-6 py-6">
           {meta ? (
@@ -227,7 +227,7 @@ export default function FichaPokemon({
           ) : null}
         </aside>
 
-        <section className="px-8 py-6">
+        <section className="px-4 md:px-8 py-6">
           <Pestanias
             activa={pestania}
             onCambiar={setPestania}
@@ -236,7 +236,7 @@ export default function FichaPokemon({
                 clave: "stats",
                 nombre: "Stats",
                 contenido: () => (
-                  <div className="mt-6 grid grid-cols-2 gap-x-10 gap-y-9">
+                  <div className="mt-6 grid gap-x-10 gap-y-9 lg:grid-cols-2">
                     <BarrasStats
                       stats={forma.stats}
                       tipo={forma.tipos[0]}

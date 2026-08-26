@@ -110,7 +110,7 @@ export default function InformePrueba({
 
   return (
     <div aria-live="polite">
-      <dl className="grid grid-cols-6 gap-px border-t border-linea bg-linea">
+      <dl className="grid grid-cols-3 gap-px md:grid-cols-6 border-t border-linea bg-linea">
         <Cifra
           rotulo="Victorias"
           valor={`${resultado.porcentaje.toFixed(1)} %`}
@@ -136,7 +136,7 @@ export default function InformePrueba({
       {/* De donde salio el numero: cuantos combates, con que semilla y contra
           que. Va arriba de todo el detalle porque sin esto el porcentaje no se
           puede juzgar ni reproducir. */}
-      <div className="border-t border-linea px-8 py-3">
+      <div className="border-t border-linea px-4 md:px-8 py-3">
         <p className="cifra text-apoyo text-tinta-tenue">
           {resultado.combates} combates · semilla {resultado.semilla} ·{" "}
           {resultado.distribucion
@@ -153,7 +153,7 @@ export default function InformePrueba({
         ) : null}
       </div>
 
-      <div className="border-t border-linea px-8 py-3">
+      <div className="border-t border-linea px-4 md:px-8 py-3">
         <Pestanias
           pestanias={pestanias}
           activa={pestania}

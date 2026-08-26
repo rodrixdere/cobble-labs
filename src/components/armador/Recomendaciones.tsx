@@ -32,7 +32,7 @@ export default function Recomendaciones({
 }) {
   return (
     <section className="border-t border-linea">
-      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 px-8 pb-4 pt-6">
+      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 px-4 md:px-8 pb-4 pt-6">
         <div>
           <h2 className="font-display text-titulo">
             {titulo}
@@ -57,12 +57,12 @@ export default function Recomendaciones({
       </div>
 
       {recomendaciones.length === 0 ? (
-        <p className="border-t border-linea px-8 py-10 text-center text-lectura text-tinta-tenue">
+        <p className="border-t border-linea px-4 md:px-8 py-10 text-center text-lectura text-tinta-tenue">
           Con ese criterio no hay ningún candidato que aporte algo que el equipo
           no tenga ya.
         </p>
       ) : (
-        <ul className="grid grid-cols-5 gap-px border-t border-linea bg-linea">
+        <ul className="grid gap-px border-t border-linea bg-linea sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {recomendaciones.map((r) => (
             <li key={r.pokemon.slug} className="flex flex-col bg-panel">
               <div className="flex items-start gap-3 px-4 pt-4">
@@ -140,7 +140,7 @@ export function Optimizacion({
 }) {
   if (reemplazos.length === 0) {
     return (
-      <p className="border-t border-linea px-8 py-10 text-center text-lectura text-tinta-media">
+      <p className="border-t border-linea px-4 md:px-8 py-10 text-center text-lectura text-tinta-media">
         Ningún cambio de un solo Pokémon mejora la sinergia de este equipo.
         Para subirla más habría que tocar movimientos, objetos o naturalezas.
       </p>
@@ -150,7 +150,7 @@ export function Optimizacion({
   return (
     <ul className="divide-y divide-linea border-t border-linea">
       {reemplazos.map((r) => (
-        <li key={r.sale.pokemon.slug} className="flex items-center gap-5 px-8 py-3.5">
+        <li key={r.sale.pokemon.slug} className="flex items-center gap-5 px-4 md:px-8 py-3.5">
           <span className="flex items-center gap-2.5">
             <span className="flex h-9 w-10 items-center justify-center opacity-55">
               <Retrato

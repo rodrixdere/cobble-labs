@@ -31,7 +31,7 @@ export default function Aviso({
     <p
       aria-live="polite"
       className={cx(
-        "flex items-center gap-2 border-b border-linea px-8 py-2 text-cuerpo",
+        "flex items-center gap-2 border-b border-linea px-4 md:px-8 py-2 text-cuerpo",
         POR_TONO[tono],
         ubicacion
       )}

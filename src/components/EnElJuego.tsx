@@ -62,7 +62,7 @@ export default function EnElJuego({
         )}
       </section>
 
-      <div className="grid grid-cols-2 gap-x-10">
+      <div className="grid gap-x-10 lg:grid-cols-2">
         <section>
           <h3 className="rotulo border-b border-linea pb-2">Crianza</h3>
           <dl className="mt-2 divide-y divide-linea">

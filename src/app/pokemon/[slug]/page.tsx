@@ -196,7 +196,7 @@ export default async function Ficha({
 
   return (
     <main className="mx-auto max-w-[1400px] hoja">
-      <nav aria-label="Migas de pan" className="px-8 pt-5">
+      <nav aria-label="Migas de pan" className="px-4 md:px-8 pt-5">
         <Link
           href="/"
           className="text-cuerpo text-tinta-media transition-colors duration-150 hover:text-tinta"

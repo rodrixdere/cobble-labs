@@ -10,8 +10,14 @@ import { NOMBRE_TIPO, type PokemonEnRejilla } from "@/data/pokemon";
 // pared de tarjetas iguales.
 export default function CeldaPokemon({ p }: { p: PokemonEnRejilla }) {
   return (
+    // Sin prefetch: con output "export", Next escribe el payload de la ruta
+    // dinamica en `__next.pokemon/$d$slug.txt` pero lo pide con puntos,
+    // `__next.pokemon.$d$slug.txt`, asi que cada celda deja una request 404.
+    // Son sesenta por pantalla y no traen nada. La navegacion no pierde: el
+    // HTML ya esta armado en el CDN.
     <Link
       href={`/pokemon/${p.slug}`}
+      prefetch={false}
       className="group relative flex h-[208px] flex-col bg-panel transition-colors duration-150 hover:bg-hueco focus-visible:z-10"
     >
       <span className="flex items-baseline justify-between px-3 pt-2.5">

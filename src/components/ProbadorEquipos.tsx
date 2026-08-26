@@ -131,8 +131,8 @@ export default function ProbadorEquipos({
     : [];
 
   return (
-    <div className="px-8 py-6">
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-6">
+    <div className="px-4 md:px-8 py-6">
+      <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr]">
         <Alineacion
           titulo="Equipo 1"
           conjuntos={equipos.a}
@@ -208,7 +208,7 @@ export default function ProbadorEquipos({
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+            <div className="grid items-center gap-6 sm:grid-cols-[1fr_auto_1fr]">
               <Marcador
                 rotulo="Equipo 1"
                 porcentaje={cruce.porcentajeA}

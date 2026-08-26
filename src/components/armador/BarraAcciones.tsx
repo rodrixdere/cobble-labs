@@ -37,7 +37,7 @@ export default function BarraAcciones({
   onProbar,
 }: Props) {
   return (
-    <div className="flex flex-wrap items-center gap-x-1 gap-y-2 border-b border-linea px-8 py-3">
+    <div className="flex flex-wrap items-center gap-x-1 gap-y-2 border-b border-linea px-4 md:px-8 py-3">
       <Boton onClick={onCompartir} disabled={vacio}>
         <Copy size={13} aria-hidden />
         Compartir

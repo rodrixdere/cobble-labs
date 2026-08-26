@@ -32,7 +32,7 @@ export default function TablaTipos() {
 
   return (
     <>
-      <div className="flex items-center gap-2 border-b border-linea px-8 py-3">
+      <div className="flex items-center gap-2 border-b border-linea px-4 md:px-8 py-3">
         <span className="rotulo">Resaltar</span>
         <div className="flex flex-wrap gap-1">
           {TIPOS.map((t) => (
@@ -61,8 +61,15 @@ export default function TablaTipos() {
         ) : null}
       </div>
 
-      <div className="grid grid-cols-[auto_1fr]">
-        <div className="overflow-x-auto border-r border-linea px-8 py-6">
+      {/* La tabla son 18 por 18 y no hay pantalla angosta que la contenga:
+          scrollea adentro de su caja para que la pagina nunca se corra a lo
+          ancho. La leyenda baja debajo cuando no entra al lado. */}
+      <div className="grid lg:grid-cols-[auto_1fr]">
+        {/* `relative` no es decorativo: cada celda lleva un span .sr-only, que
+            es position:absolute. Sin un ancestro posicionado se resuelven
+            contra el documento y lo estiran a lo ancho aunque midan un pixel,
+            asi que el overflow de esta caja no alcanzaba a contenerlos. */}
+        <div className="relative min-w-0 overflow-x-auto border-b border-linea px-4 py-6 md:px-8 lg:border-b-0 lg:border-r">
         <table className="border-collapse">
           <caption className="sr-only">
             Tabla de efectividad: cada fila es el tipo que ataca y cada columna
@@ -70,7 +77,10 @@ export default function TablaTipos() {
           </caption>
           <thead>
             <tr>
-              <th scope="col" className="rotulo p-0 pr-2 text-right align-bottom">
+              <th
+                scope="col"
+                className="rotulo sticky left-0 z-10 bg-panel p-0 pr-2 text-right align-bottom"
+              >
                 Ataca ↓
               </th>
               {TIPOS.map((d) => (
@@ -93,9 +103,12 @@ export default function TablaTipos() {
               const filaActiva = elegido === a;
               return (
                 <tr key={a}>
+                  {/* La etiqueta de la fila queda fija al correr la tabla: son
+                      18 columnas y sin esto, apenas scrolleas, no sabes que
+                      tipo estas leyendo. */}
                   <th
                     scope="row"
-                    className={`py-px pr-2 text-right transition-opacity duration-150 ${
+                    className={`sticky left-0 z-10 bg-panel py-px pr-2 text-right transition-opacity duration-150 ${
                       elegido && !filaActiva ? "opacity-40" : ""
                     }`}
                   >
@@ -132,7 +145,7 @@ export default function TablaTipos() {
         </table>
         </div>
 
-        <div className="px-8 py-6">
+        <div className="px-4 py-6 md:px-8">
           <h3 className="rotulo border-b border-linea pb-2">Leyenda</h3>
           <dl className="mt-3 space-y-1.5 text-lectura">
             {LEYENDA.map((l) => (

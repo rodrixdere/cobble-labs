@@ -26,10 +26,12 @@ type Props = {
   pie?: ReactNode;
 };
 
+// Ancho deseado con techo en el viewport: en un telefono el panel ocupa lo que
+// haya menos un margen, y nunca empuja la pagina a lo ancho.
 const ANCHOS = {
-  angosto: "w-[440px]",
-  medio: "w-[720px]",
-  hoja: "w-[1000px]",
+  angosto: "w-[calc(100vw-2rem)] max-w-[440px]",
+  medio: "w-[calc(100vw-2rem)] max-w-[720px]",
+  hoja: "w-[calc(100vw-2rem)] max-w-[1000px]",
 };
 
 export default function Modal({

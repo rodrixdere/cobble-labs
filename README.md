@@ -132,8 +132,9 @@ pueden probar solas. Los 77 tests corren en menos de dos segundos.
 No hay base de datos ni backend: los equipos guardados viven en el
 `localStorage` del navegador.
 
-Por ahora es solo escritorio, a propósito. Hay un ancho mínimo en el layout en
-vez de una versión móvil a medio hacer.
+Anda de 360px para arriba. Las pantallas densas cambian de forma según el
+ancho: la Pokédex va de 2 a 6 columnas, las columnas laterales se apilan, y la
+tabla de tipos scrollea dentro de su caja con la etiqueta de fila fija.
 
 ## Licencia y créditos
 

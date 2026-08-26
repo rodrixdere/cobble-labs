@@ -10,7 +10,7 @@ export default function PanelEnfrentamientos({
   resultado: ResultadoPrueba;
 }) {
   return (
-    <div className="border-t border-linea px-8 py-6">
+    <div className="border-t border-linea px-4 md:px-8 py-6">
       <p className="text-cuerpo text-tinta-tenue">
         Cada equipo rival del pool, del peor cruce al mejor.
       </p>

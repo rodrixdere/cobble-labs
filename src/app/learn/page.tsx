@@ -227,7 +227,7 @@ const CAPITULOS: Capitulo[] = [
 export default function Learn() {
   return (
     <main className="mx-auto max-w-[1400px] hoja">
-      <div className="px-8 pb-6 pt-9">
+      <div className="px-4 md:px-8 pb-6 pt-9">
         <h1 className="font-display text-portada">
           Learn
         </h1>
@@ -238,7 +238,7 @@ export default function Learn() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[280px_1fr] border-t border-linea">
+      <div className="grid border-t border-linea lg:grid-cols-[280px_1fr]">
         <nav
           aria-label="Índice"
           className="sticky top-[var(--alto-cabecera)] h-[calc(100dvh-var(--alto-cabecera))] overflow-y-auto border-r border-linea px-6 py-6"
@@ -289,6 +289,7 @@ function Enlace({ href, children }: { href: string; children: React.ReactNode })
   return (
     <Link
       href={href}
+      prefetch={false}
       className="font-semibold text-acento-hondo underline underline-offset-4 transition-colors duration-150 hover:text-tinta"
     >
       {children}

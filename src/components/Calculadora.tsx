@@ -115,7 +115,7 @@ export default function Calculadora({
   return (
     <>
       {/* Campo de batalla: todo lo que multiplica el daño sin ser el movimiento. */}
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-b border-linea px-8 py-3">
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-b border-linea px-4 md:px-8 py-3">
         <Grupo rotulo="Clima">
           {CLIMAS.map((c) => (
             <Opcion
@@ -153,7 +153,7 @@ export default function Calculadora({
         </Grupo>
       </div>
 
-      <div className="grid grid-cols-[1fr_320px_1fr] gap-px bg-linea">
+      <div className="grid gap-px bg-linea lg:grid-cols-[1fr_320px_1fr]">
         <div className="bg-panel">
           <PanelCombatiente
             rotulo="Ataca"
@@ -283,7 +283,7 @@ export default function Calculadora({
         </div>
       </div>
 
-      <section className="border-t border-linea px-8 py-6">
+      <section className="border-t border-linea px-4 md:px-8 py-6">
         <h2 className="rotulo border-b border-linea pb-2">
           {resultados.length === 1 ? "El movimiento" : `Los ${resultados.length} movimientos`} contra {defensor.nombre}
         </h2>

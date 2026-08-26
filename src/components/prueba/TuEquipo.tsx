@@ -19,7 +19,7 @@ export default function TuEquipo({
   onRecargar: () => void;
 }) {
   return (
-    <div className="bg-panel px-8 py-6">
+    <div className="bg-panel px-4 md:px-8 py-6">
       <div className="flex items-baseline justify-between border-b border-linea pb-2">
         <h2 className="rotulo">Tu equipo</h2>
         <Boton variante="enlace" onClick={onRecargar}>
@@ -34,7 +34,7 @@ export default function TuEquipo({
           botón <span className="font-semibold">Probar mi equipo</span>.
         </p>
       ) : (
-        <ul className="mt-3 grid grid-cols-6 gap-px bg-linea">
+        <ul className="mt-3 grid grid-cols-3 gap-px md:grid-cols-6 bg-linea">
           {equipo.map((l, i) => {
             const p = indice.get(l.slug);
             return (

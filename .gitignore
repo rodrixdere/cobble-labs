@@ -18,3 +18,6 @@ scripts/rutas.local.json
 
 # Salida de `next build` con output: "export".
 out/
+
+# Estado local de wrangler.
+.wrangler/

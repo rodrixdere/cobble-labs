@@ -30,7 +30,7 @@ export default function PanelCambios({
   const nombre = (slug: string) => indice.get(slug)?.nombre ?? slug;
 
   return (
-    <div className="border-t border-linea px-8 py-6">
+    <div className="border-t border-linea px-4 md:px-8 py-6">
       <p className="text-cuerpo text-tinta-media">
         Se saca a uno, entra el mejor candidato para ese hueco y se corre la
         misma prueba con la misma semilla. El porcentaje de mejora sale de esa

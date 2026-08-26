@@ -44,20 +44,22 @@ export default function RootLayout({
       lang="es"
       className={`${sora.variable} ${inter.variable} ${jetbrains.variable}`}
     >
-      {/* Ancho minimo en vez de version movil: esta primera etapa es solo
-          escritorio, y una pantalla angosta se corre en horizontal antes que
-          romperse en un movil a medio hacer. */}
-      <body className="min-w-[1180px] font-sans">
+      <body className="font-sans">
         <a
           href="#contenido"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-50 focus:rounded-pieza focus:bg-tinta focus:px-3 focus:py-2 focus:text-sm focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[var(--z-salto)] focus:rounded-pieza focus:bg-tinta focus:px-3 focus:py-2 focus:text-lectura focus:text-white"
         >
           Saltar al contenido
         </a>
 
-        <header className="sticky top-0 z-30 h-[var(--alto-cabecera)] border-b border-linea bg-panel">
-          <div className="mx-auto flex h-full max-w-[1400px] items-stretch px-8">
-            <Link href="/" className="flex items-center pr-8" translate="no">
+        <header className="sticky top-0 z-[var(--z-cabecera)] h-[var(--alto-cabecera)] border-b border-linea bg-panel">
+          <div className="mx-auto flex h-full max-w-[1400px] items-stretch px-4 md:px-8">
+            <Link
+              href="/"
+              prefetch={false}
+              className="flex shrink-0 items-center pr-4 md:pr-8"
+              translate="no"
+            >
               <Marca />
             </Link>
 
@@ -67,7 +69,7 @@ export default function RootLayout({
 
         <div id="contenido">{children}</div>
 
-        <footer className="mx-auto max-w-[1400px] border-t border-linea px-8 py-8">
+        <footer className="mx-auto max-w-[1400px] border-t border-linea px-4 py-8 md:px-8">
           <p className="max-w-[70ch] text-lectura leading-relaxed text-tinta-media">
             Cobble Labs es una herramienta de comunidad. Los datos de especies,
             movimientos, habilidades y apariciones se leen del jar de Cobblemon

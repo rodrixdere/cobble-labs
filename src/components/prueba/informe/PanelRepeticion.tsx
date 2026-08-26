@@ -22,7 +22,7 @@ export default function PanelRepeticion({
 
   if (!guardado) {
     return (
-      <div className="border-t border-linea px-8 py-6">
+      <div className="border-t border-linea px-4 md:px-8 py-6">
         <p className="py-8 text-center text-lectura text-tinta-tenue">
           No se guardó ningún combate entero.
         </p>
@@ -31,7 +31,7 @@ export default function PanelRepeticion({
   }
 
   return (
-    <div className="border-t border-linea px-8 py-6">
+    <div className="border-t border-linea px-4 md:px-8 py-6">
       <h3 className="rotulo border-b border-linea pb-2">
         {guardado.motivo} contra {guardado.rival.nombre}
       </h3>

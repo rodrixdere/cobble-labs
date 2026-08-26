@@ -148,7 +148,7 @@ export default function PruebaEquipo({
 
   return (
     <div className="border-t border-linea">
-      <div className="grid grid-cols-[1fr_340px] gap-px bg-linea">
+      <div className="grid gap-px bg-linea lg:grid-cols-[1fr_340px]">
         <TuEquipo equipo={equipo} indice={indice} onRecargar={recargar} />
 
         <PanelDeConfiguracion
