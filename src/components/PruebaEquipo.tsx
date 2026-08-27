@@ -52,6 +52,11 @@ export default function PruebaEquipo({
   const [cuartetos, setCuartetos] = useState<Cuarteto[]>([]);
   const [cambio, setCambio] = useState<Cambio | null>(null);
   const [historial, setHistorial] = useState<Corrida[]>([]);
+  // Los equipos guardados salen de localStorage: leerlos en el render deja al
+  // servidor con la lista vacia y al cliente con otra, y la hidratacion falla.
+  const [guardados, setGuardados] = useState<
+    { nombre: string; miembros: Conjunto[] }[]
+  >([]);
   const [corriendo, empezar] = useTransition();
 
   const traerDelArmador = () => rehidratar(leerActual(), indice, catalogo);
@@ -60,6 +65,7 @@ export default function PruebaEquipo({
   // efecto y no en el render porque localStorage no existe en el servidor.
   useEffect(() => {
     setConjuntos(traerDelArmador());
+    setGuardados(listarEquipos().map((e) => ({ nombre: e.nombre, miembros: e.miembros })));
     // Solo al montar: despues el usuario decide cuando volver a cargarlo.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -73,11 +79,6 @@ export default function PruebaEquipo({
   const equipo = useMemo(
     () => armarBando(conjuntos, indice, catalogo),
     [conjuntos, indice, catalogo]
-  );
-
-  const guardados = useMemo(
-    () => listarEquipos().map((e) => ({ nombre: e.nombre, miembros: e.miembros })),
-    []
   );
 
   // El pool se arma con su propio azar derivado de la semilla, para que la
