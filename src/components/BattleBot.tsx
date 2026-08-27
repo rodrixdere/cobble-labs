@@ -16,10 +16,12 @@ type Props = {
 };
 
 const HERRAMIENTAS = [
+  // El nombre dice lo que devuelve, un informe, para no pisarse con el
+  // probador de equipos, que es la tercera y compara dos equipos entre si.
   {
     clave: "prueba",
-    nombre: "Probar mi equipo",
-    bajada: "Tu equipo contra un pool de rivales, con informe completo",
+    nombre: "Informe de mi equipo",
+    bajada: "Cómo le va a tu equipo contra un pool de rivales",
   },
   {
     clave: "calculadora",
@@ -45,17 +47,21 @@ export default function BattleBot({ roster, catalogo }: Props) {
 
   return (
     <div className="border-t border-linea">
-      <div className="flex items-stretch gap-px bg-linea">
+      {/* Tres a lo ancho solo cuando hay lugar: en angosto los nombres no entran
+          sin partirse palabra por palabra. */}
+      <div className="grid gap-px bg-linea md:grid-cols-3">
         {HERRAMIENTAS.map((h) => (
           <button
             key={h.clave}
             type="button"
             aria-pressed={herramienta === h.clave}
             onClick={() => setHerramienta(h.clave)}
-            className={`flex-1 px-6 py-4 text-left transition-colors duration-150 ${
+            // La elegida lleva la regla de 2px del acento, como la seccion activa
+            // de la cabecera: el cambio de fondo solo no se ve en un telefono.
+            className={`border-l-2 px-4 py-3.5 text-left transition-colors duration-150 md:border-l-0 md:border-t-2 md:px-6 md:py-4 ${
               herramienta === h.clave
-                ? "bg-panel"
-                : "bg-fondo text-tinta-media hover:bg-panel hover:text-tinta"
+                ? "border-l-acento bg-panel md:border-t-acento"
+                : "border-l-transparent bg-fondo text-tinta-media hover:bg-panel hover:text-tinta md:border-t-transparent"
             }`}
           >
             <span
