@@ -29,7 +29,9 @@ export default function FilaDeAnalisis({
   cifra: ReactNode;
 }) {
   return (
-    <li className="flex items-center gap-4 py-3">
+    // En angosto la barra se lleva la segunda linea entera: es lo unico que
+    // puede achicarse sin que la fila deje de leerse.
+    <li className="flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:flex-nowrap sm:gap-4">
       {posicion !== undefined ? (
         <span className="cifra w-[18px] shrink-0 text-cuerpo text-tinta-tenue">
           {posicion}
@@ -47,7 +49,7 @@ export default function FilaDeAnalisis({
         ) : null}
       </span>
 
-      <span className="w-[150px] shrink-0">
+      <span className="min-w-0 flex-1 sm:w-[150px] sm:flex-none">
         <span className="block truncate text-lectura font-semibold">{nombre}</span>
         {detalle ? (
           <span className="block truncate text-apoyo text-tinta-tenue">
@@ -60,7 +62,7 @@ export default function FilaDeAnalisis({
         valor={proporcion}
         tono={favorable ? "acento" : "alarma"}
         etiqueta={nombre}
-        ubicacion="flex-1"
+        ubicacion="order-last w-full sm:order-none sm:w-auto sm:flex-1"
       />
 
       <span

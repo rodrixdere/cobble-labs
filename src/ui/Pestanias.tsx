@@ -61,7 +61,9 @@ export default function Pestanias<C extends string>({
         onKeyDown={(e) => {
           if (mover(e.key)) e.preventDefault();
         }}
-        className="flex items-center gap-1 border-b border-linea pb-3"
+        // Corre a lo ancho antes que partir una pestaña en dos lineas. El margen
+        // negativo deja aire para que el foco no se recorte en los extremos.
+        className="tira -mx-1 flex items-center gap-1 border-b border-linea px-1 pb-3"
       >
         {pestanias.map((p) => {
           const puesta = p.clave === activa;
@@ -76,7 +78,7 @@ export default function Pestanias<C extends string>({
               tabIndex={puesta ? 0 : -1}
               onClick={() => onCambiar(p.clave)}
               className={cx(
-                "rounded-pieza px-3 py-1.5 text-lectura transition-colors duration-150",
+                "shrink-0 whitespace-nowrap rounded-pieza px-3 py-1.5 text-lectura transition-colors duration-150",
                 puesta
                   ? "bg-hueco font-semibold text-tinta"
                   : "text-tinta-media hover:bg-hueco hover:text-tinta"

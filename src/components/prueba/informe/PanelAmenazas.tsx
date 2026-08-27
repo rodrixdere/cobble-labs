@@ -9,8 +9,8 @@ export default function PanelAmenazas({
   resultado: ResultadoPrueba;
 }) {
   return (
-    <div className="grid gap-x-10 lg:grid-cols-2 border-t border-linea px-4 md:px-8 py-6">
-      <div>
+    <div className="grid gap-y-8 border-t border-linea px-4 md:px-8 py-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0">
+      <div className="min-w-0">
         <h3 className="rotulo border-b border-linea pb-2">
           Los que más te tumbaron
         </h3>
@@ -36,7 +36,7 @@ export default function PanelAmenazas({
         )}
       </div>
 
-      <div>
+      <div className="min-w-0">
         <h3 className="rotulo border-b border-linea pb-2">Cómo rindió cada uno</h3>
 
         <ul className="mt-2 divide-y divide-linea">

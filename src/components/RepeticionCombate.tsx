@@ -110,7 +110,7 @@ export default function RepeticionCombate({
               setCorriendo(false);
               setTurno(Number(e.target.value));
             }}
-            className="h-1 flex-1 accent-acento"
+            className="h-6 flex-1 accent-acento"
           />
         </label>
 

@@ -96,7 +96,7 @@ export default function FichaPokemon({
           en degradado suave, nunca como bloque plano. */}
       <div className="grid border-b border-linea md:grid-cols-[320px_1fr]">
         <div
-          className="flex items-center justify-center border-r border-linea py-8"
+          className="flex items-center justify-center border-b border-linea py-8 md:border-b-0 md:border-r"
           style={{
             background: `radial-gradient(circle at 50% 45%, color-mix(in oklch, var(--color-tipo-${forma.tipos[0]}) 26%, transparent), transparent 72%)`,
           }}
@@ -111,7 +111,7 @@ export default function FichaPokemon({
           />
         </div>
 
-        <div className="flex flex-col justify-center px-4 md:px-8 py-7">
+        <div className="flex min-w-0 flex-col justify-center px-4 md:px-8 py-7">
           <p className="cifra text-apoyo text-tinta-tenue">
             Nº {String(dex).padStart(3, "0")} · Gen {generacion}
           </p>
@@ -120,7 +120,7 @@ export default function FichaPokemon({
             {forma.nombre}
           </h1>
 
-          <div className="mt-3.5 flex items-center gap-2">
+          <div className="mt-3.5 flex flex-wrap items-center gap-2">
             {forma.tipos.map((t) => (
               <span
                 key={t}
@@ -162,7 +162,7 @@ export default function FichaPokemon({
 
       <div className="grid md:grid-cols-[320px_1fr]">
         {/* Columna de identidad: datos duros, uno por linea, sin tarjetas. */}
-        <aside className="border-r border-linea px-6 py-6">
+        <aside className="min-w-0 border-b border-linea px-4 py-6 md:border-b-0 md:border-r md:px-6">
           {meta ? (
             <div className="mb-6 grid grid-cols-2 gap-px bg-linea">
               <div className="bg-panel py-3 text-center">
@@ -185,7 +185,7 @@ export default function FichaPokemon({
             {identidad.map((d) => (
               <div key={d.rotulo} className="flex items-baseline gap-3 py-2">
                 <dt className="rotulo w-[104px] shrink-0">{d.rotulo}</dt>
-                <dd className="cifra flex-1 text-right text-cuerpo">
+                <dd className="cifra min-w-0 flex-1 break-words text-right text-cuerpo">
                   {d.valor}
                 </dd>
               </div>
@@ -227,7 +227,7 @@ export default function FichaPokemon({
           ) : null}
         </aside>
 
-        <section className="px-4 md:px-8 py-6">
+        <section className="min-w-0 px-4 md:px-8 py-6">
           <Pestanias
             activa={pestania}
             onCambiar={setPestania}
@@ -247,7 +247,7 @@ export default function FichaPokemon({
                       titulo="Defensas por tipo"
                       pie="Lo que recibe de cada tipo de ataque, ya multiplicados sus dos tipos."
                     />
-                    <div className="col-span-2">
+                    <div className="min-w-0 lg:col-span-2">
                       <CalculadoraStats
                         slug={
                           forma.clave === "base"

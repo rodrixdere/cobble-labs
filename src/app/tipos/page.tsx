@@ -94,7 +94,7 @@ export default function Tipos() {
           ))}
         </ul>
 
-        <div className="mt-8 grid grid-cols-2 gap-x-12 border-t border-linea pt-7">
+        <div className="mt-8 grid gap-y-7 border-t border-linea pt-7 md:grid-cols-2 md:gap-x-12 md:gap-y-0">
           <div>
             <h3 className="font-display text-guia">
               Atacar y defender son dos tablas distintas

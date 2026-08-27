@@ -150,9 +150,14 @@ export function Optimizacion({
   return (
     <ul className="divide-y divide-linea border-t border-linea">
       {reemplazos.map((r) => (
-        <li key={r.sale.pokemon.slug} className="flex items-center gap-5 px-4 md:px-8 py-3.5">
-          <span className="flex items-center gap-2.5">
-            <span className="flex h-9 w-10 items-center justify-center opacity-55">
+        // En angosto el cambio se lee en tres renglones: quien sale por quien
+        // entra, el motivo, y abajo lo que suma con el boton.
+        <li
+          key={r.sale.pokemon.slug}
+          className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3.5 md:flex-nowrap md:gap-5 md:px-8"
+        >
+          <span className="flex min-w-0 flex-1 items-center gap-2.5 md:flex-none">
+            <span className="flex h-9 w-10 shrink-0 items-center justify-center opacity-55">
               <Retrato
                 assets={r.sale.pokemon.assets}
                 nombre={r.sale.nombre}
@@ -160,17 +165,17 @@ export function Optimizacion({
                 escalaMaxima={2}
               />
             </span>
-            <span className="w-[104px] text-lectura text-tinta-media line-through">
+            <span className="min-w-0 flex-1 truncate text-lectura text-tinta-media line-through md:w-[104px] md:flex-none">
               {r.sale.nombre}
             </span>
           </span>
 
-          <span aria-hidden className="text-tinta-tenue">
+          <span aria-hidden className="shrink-0 text-tinta-tenue">
             →
           </span>
 
-          <span className="flex items-center gap-2.5">
-            <span className="flex h-9 w-10 items-center justify-center">
+          <span className="flex min-w-0 flex-1 items-center gap-2.5 md:flex-none">
+            <span className="flex h-9 w-10 shrink-0 items-center justify-center">
               <Retrato
                 assets={r.entra.pokemon.assets}
                 nombre={r.entra.pokemon.nombre}
@@ -178,12 +183,12 @@ export function Optimizacion({
                 escalaMaxima={2}
               />
             </span>
-            <span className="w-[104px] text-lectura font-semibold">
+            <span className="min-w-0 flex-1 truncate text-lectura font-semibold md:w-[104px] md:flex-none">
               {r.entra.pokemon.nombre}
             </span>
           </span>
 
-          <span className="min-w-0 flex-1 truncate text-cuerpo text-tinta-media">
+          <span className="min-w-0 basis-full text-cuerpo leading-snug text-tinta-media md:flex-1 md:basis-auto md:truncate">
             {r.entra.razones[0]}
           </span>
 
@@ -194,7 +199,7 @@ export function Optimizacion({
           <button
             type="button"
             onClick={() => onCambiar(r)}
-            className="shrink-0 rounded-pieza border border-linea-fuerte px-3 py-1.5 text-cuerpo font-semibold text-tinta-media transition-colors duration-150 hover:border-tinta-tenue hover:text-tinta"
+            className="ml-auto shrink-0 rounded-pieza border border-linea-fuerte px-3 py-1.5 md:ml-0 text-cuerpo font-semibold text-tinta-media transition-colors duration-150 hover:border-tinta-tenue hover:text-tinta"
           >
             Hacer el cambio
           </button>

@@ -58,7 +58,7 @@ export default function CalculadoraStats({
               type="button"
               aria-pressed={conjunto.nivel === n}
               onClick={() => setConjunto({ ...conjunto, nivel: n })}
-              className={`cifra rounded-pieza px-2 py-1 text-apoyo transition-colors duration-150 ${
+              className={`cifra rounded-pieza px-2 py-1.5 text-apoyo transition-colors duration-150 ${
                 conjunto.nivel === n
                   ? "bg-tinta font-semibold text-white"
                   : "text-tinta-media hover:bg-hueco hover:text-tinta"
@@ -69,12 +69,12 @@ export default function CalculadoraStats({
           ))}
         </span>
 
-        <label className="flex items-center gap-2">
-          <span className="rotulo">Naturaleza</span>
+        <label className="flex min-w-0 items-center gap-2">
+          <span className="rotulo shrink-0">Naturaleza</span>
           <select
             value={conjunto.naturaleza}
             onChange={(e) => setConjunto({ ...conjunto, naturaleza: e.target.value })}
-            className="rounded-pieza border border-linea-fuerte bg-panel px-2 py-1 text-cuerpo outline-none focus:border-acento"
+            className="min-w-0 rounded-pieza border border-linea-fuerte bg-panel px-2 py-1 text-cuerpo outline-none focus:border-acento"
           >
             {NATURALEZAS.map((n) => (
               <option key={n.clave} value={n.clave}>
@@ -88,10 +88,10 @@ export default function CalculadoraStats({
         </label>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-x-10">
+      <div className="mt-4 grid gap-y-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0">
         <RepartoIvEv base={base} conjunto={conjunto} onCambiar={setConjunto} />
 
-        <div>
+        <div className="min-w-0">
           <h4 className="rotulo border-b border-linea pb-2">
             Margen a nivel {conjunto.nivel}
           </h4>

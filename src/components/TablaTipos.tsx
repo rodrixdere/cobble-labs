@@ -32,7 +32,7 @@ export default function TablaTipos() {
 
   return (
     <>
-      <div className="flex items-center gap-2 border-b border-linea px-4 md:px-8 py-3">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-2 border-b border-linea px-4 md:px-8 py-3">
         <span className="rotulo">Resaltar</span>
         <div className="flex flex-wrap gap-1">
           {TIPOS.map((t) => (
@@ -41,7 +41,7 @@ export default function TablaTipos() {
               type="button"
               aria-pressed={elegido === t}
               onClick={() => setElegido(elegido === t ? null : t)}
-              className={`cifra px-2 py-[3px] text-menuda font-bold text-white transition-opacity duration-150 ${
+              className={`cifra px-2 py-1.5 text-menuda font-bold text-white transition-opacity duration-150 ${
                 elegido && elegido !== t ? "opacity-35" : "opacity-100"
               }`}
               style={{ background: `var(--color-tipo-${t})` }}
@@ -54,7 +54,7 @@ export default function TablaTipos() {
           <button
             type="button"
             onClick={() => setElegido(null)}
-            className="ml-auto text-cuerpo text-tinta-media underline underline-offset-4 transition-colors duration-150 hover:text-tinta"
+            className="text-cuerpo text-tinta-media underline underline-offset-4 transition-colors duration-150 hover:text-tinta sm:ml-auto"
           >
             Quitar el resaltado
           </button>

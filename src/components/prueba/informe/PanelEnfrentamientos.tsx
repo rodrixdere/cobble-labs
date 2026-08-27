@@ -17,7 +17,12 @@ export default function PanelEnfrentamientos({
 
       <ul className="mt-3 divide-y divide-linea border-y border-linea">
         {resultado.porRival.map((r) => (
-          <li key={r.id} className="flex items-center gap-4 py-2.5">
+          // En angosto la barra baja a su propia linea: el resto de la fila son
+          // palabras y numeros que no se pueden achicar.
+          <li
+            key={r.id}
+            className="flex flex-wrap items-center gap-x-3 gap-y-2 py-2.5 sm:flex-nowrap sm:gap-4"
+          >
             <span className="cifra w-[52px] shrink-0 text-lectura font-bold">
               {r.porcentaje.toFixed(0)} %
             </span>
@@ -27,10 +32,10 @@ export default function PanelEnfrentamientos({
               alto="fino"
               tono={r.porcentaje >= 50 ? "acento" : "alarma"}
               etiqueta={`Victorias contra ${r.nombre}`}
-              ubicacion="w-[90px] shrink-0"
+              ubicacion="order-last w-full sm:order-none sm:w-[90px] sm:shrink-0"
             />
 
-            <span className="w-[150px] shrink-0 truncate text-lectura">
+            <span className="min-w-0 flex-1 truncate text-lectura sm:w-[150px] sm:flex-none">
               {r.nombre}
             </span>
             <span className="min-w-0 flex-1 text-cuerpo text-tinta-media">

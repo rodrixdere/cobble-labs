@@ -213,7 +213,7 @@ export default async function Ficha({
       <nav aria-label="Migas de pan" className="px-4 md:px-8 pt-5">
         <Link
           href="/"
-          className="text-cuerpo text-tinta-media transition-colors duration-150 hover:text-tinta"
+          className="-my-1 inline-block py-1 text-cuerpo text-tinta-media transition-colors duration-150 hover:text-tinta"
         >
           Pokédex
         </Link>

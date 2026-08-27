@@ -28,7 +28,7 @@ export default function AnalisisEquipo({
 
       {/* Sinergia: el número con sus partes a la vista, no una nota mágica. */}
       <div className="grid gap-px border-t border-linea bg-linea lg:grid-cols-[260px_1fr]">
-        <div className="bg-panel px-6 py-5 text-center">
+        <div className="min-w-0 bg-panel px-4 py-5 text-center md:px-6">
           <p className="rotulo">Sinergia</p>
           <p className="cifra mt-2 text-heroe text-acento-hondo">
             {sinergia.total}
@@ -38,14 +38,19 @@ export default function AnalisisEquipo({
           </p>
         </div>
 
-        <div className="bg-panel px-6 py-5">
+        <div className="min-w-0 bg-panel px-4 py-5 md:px-6">
           <ul className="space-y-2">
+            {/* En angosto el nombre se queda con la primera linea entera y la
+                barra con sus dos cifras bajan a la segunda. */}
             {sinergia.componentes.map((c) => (
-              <li key={c.nombre} className="flex items-center gap-3">
-                <span className="w-[190px] shrink-0 text-cuerpo text-tinta-media">
+              <li
+                key={c.nombre}
+                className="flex flex-wrap items-center gap-x-3 gap-y-1 sm:flex-nowrap"
+              >
+                <span className="w-full text-cuerpo text-tinta-media sm:w-[190px] sm:shrink-0">
                   {c.nombre}
                 </span>
-                <span className="h-[7px] flex-1 bg-hueco">
+                <span className="h-[7px] min-w-0 flex-1 bg-hueco">
                   <span
                     className={`block h-full ${
                       c.valor >= 60 ? "bg-acento" : c.valor >= 35 ? "bg-ambar" : "bg-alarma"
@@ -56,7 +61,7 @@ export default function AnalisisEquipo({
                 <span className="cifra w-[38px] shrink-0 text-right text-cuerpo">
                   {Math.round(c.valor)}
                 </span>
-                <span className="cifra w-[52px] shrink-0 text-right text-menuda text-tinta-tenue">
+                <span className="cifra w-[58px] shrink-0 whitespace-nowrap text-right text-menuda text-tinta-tenue">
                   peso {c.peso}
                 </span>
               </li>
@@ -65,7 +70,7 @@ export default function AnalisisEquipo({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-10 border-t border-linea px-4 md:px-8 py-6">
+      <div className="grid gap-y-8 border-t border-linea px-4 md:px-8 py-6 md:grid-cols-2 md:gap-x-10 md:gap-y-0">
         <RejillaDefensas
           valores={cobertura.map((c) => ({ tipo: c.tipo, x: c.mejor }))}
           sentido="ataque"
@@ -112,7 +117,7 @@ export default function AnalisisEquipo({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-x-10 border-t border-linea px-4 md:px-8 py-6">
+      <div className="grid gap-y-8 border-t border-linea px-4 md:px-8 py-6 md:grid-cols-2 md:gap-x-10 lg:grid-cols-3">
         <div>
           <h3 className="rotulo border-b border-linea pb-2">Lo que está flojo</h3>
           <ul className="mt-3 space-y-2 text-lectura leading-relaxed text-tinta-media">
@@ -250,7 +255,7 @@ export default function AnalisisEquipo({
             equipo.
           </p>
         ) : (
-          <ul className="mt-3 grid grid-cols-3 gap-x-10 gap-y-2">
+          <ul className="mt-3 grid gap-y-2 md:grid-cols-2 md:gap-x-10 lg:grid-cols-3">
             {amenazas.map((a) => (
               <li key={a.slug} className="flex items-baseline gap-3">
                 <span

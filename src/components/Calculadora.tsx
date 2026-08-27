@@ -22,7 +22,7 @@ import {
   type Terreno,
 } from "@/engine/calculo-dano";
 import { ABREV_TIPO, NOMBRE_TIPO } from "@/data/pokemon";
-import { etiquetaMultiplicador } from "@/engine/tabla-tipos";
+import { etiquetaMultiplicador } from "@/engine/tabla-tipos";
 import Opcion from "@/ui/Opcion";
 import FilaElegible from "@/ui/FilaElegible";
 
@@ -293,64 +293,68 @@ export default function Calculadora({
             El atacante no tiene movimientos cargados.
           </p>
         ) : (
-          <ul className="mt-1 divide-y divide-linea">
-            {resultados.map(({ movimiento: m, resultado: r }) => {
-              const activo = elegido?.movimiento.clave === m.clave;
-              return (
-                <li key={m.clave}>
-                  <FilaElegible
-                    puesta={activo}
-                    onElegir={() => setMovimientoElegido(m.clave)}
-                  >
-                    <span
-                      className="cifra w-[36px] shrink-0 py-[3px] text-center text-nota font-bold text-white"
-                      style={{ background: `var(--color-tipo-${m.tipo})` }}
+          // Ocho columnas alineadas: corre a lo ancho como la tabla de tipos en
+          // vez de partir la fila, que es lo que deja comparar una con otra.
+          <div className="overflow-x-auto">
+            <ul className="mt-1 min-w-[640px] divide-y divide-linea">
+              {resultados.map(({ movimiento: m, resultado: r }) => {
+                const activo = elegido?.movimiento.clave === m.clave;
+                return (
+                  <li key={m.clave}>
+                    <FilaElegible
+                      puesta={activo}
+                      onElegir={() => setMovimientoElegido(m.clave)}
                     >
-                      {ABREV_TIPO[m.tipo]}
-                    </span>
-                    <span className="w-[160px] shrink-0 truncate text-lectura font-semibold">
-                      {m.nombre}
-                    </span>
-                    <span className="cifra w-[46px] shrink-0 text-apoyo text-tinta-tenue">
-                      {m.potencia}
-                    </span>
-                    <span className="w-[62px] shrink-0 text-apoyo text-tinta-media">
-                      {m.categoria === "physical" ? "Físico" : "Especial"}
-                    </span>
-
-                    <span className="h-[8px] flex-1 bg-hueco">
                       <span
-                        className={`block h-full ${
-                          (r?.porcentajeMax ?? 0) >= 100 ? "bg-alarma" : "bg-acento"
-                        }`}
-                        style={{ width: `${Math.min(100, r?.porcentajeMax ?? 0)}%` }}
-                      />
-                    </span>
+                        className="cifra w-[36px] shrink-0 py-[3px] text-center text-nota font-bold text-white"
+                        style={{ background: `var(--color-tipo-${m.tipo})` }}
+                      >
+                        {ABREV_TIPO[m.tipo]}
+                      </span>
+                      <span className="w-[160px] shrink-0 truncate text-lectura font-semibold">
+                        {m.nombre}
+                      </span>
+                      <span className="cifra w-[46px] shrink-0 text-apoyo text-tinta-tenue">
+                        {m.potencia}
+                      </span>
+                      <span className="w-[62px] shrink-0 text-apoyo text-tinta-media">
+                        {m.categoria === "physical" ? "Físico" : "Especial"}
+                      </span>
 
-                    <span className="cifra w-[124px] shrink-0 text-right text-cuerpo">
-                      {r
-                        ? `${r.porcentajeMin.toFixed(1)}-${r.porcentajeMax.toFixed(1)} %`
-                        : "-"}
-                    </span>
-                    <span className="cifra w-[68px] shrink-0 text-right text-apoyo">
-                      {r && r.probabilidadOHKO > 0 ? (
-                        <span className="text-alarma">
-                          {(r.probabilidadOHKO * 100).toFixed(0)} % OHKO
-                        </span>
-                      ) : r?.golpesParaTumbar ? (
-                        <span className="text-tinta-tenue">
-                          {r.golpesParaTumbar} golpes
-                        </span>
-                      ) : null}
-                    </span>
-                    <span className="cifra w-[34px] shrink-0 text-right text-apoyo text-tinta-media">
-                      ×{etiquetaMultiplicador(r?.efectividad ?? 1)}
-                    </span>
-                  </FilaElegible>
-                </li>
-              );
-            })}
-          </ul>
+                      <span className="h-[8px] flex-1 bg-hueco">
+                        <span
+                          className={`block h-full ${
+                            (r?.porcentajeMax ?? 0) >= 100 ? "bg-alarma" : "bg-acento"
+                          }`}
+                          style={{ width: `${Math.min(100, r?.porcentajeMax ?? 0)}%` }}
+                        />
+                      </span>
+
+                      <span className="cifra w-[124px] shrink-0 text-right text-cuerpo">
+                        {r
+                          ? `${r.porcentajeMin.toFixed(1)}-${r.porcentajeMax.toFixed(1)} %`
+                          : "-"}
+                      </span>
+                      <span className="cifra w-[68px] shrink-0 text-right text-apoyo">
+                        {r && r.probabilidadOHKO > 0 ? (
+                          <span className="text-alarma">
+                            {(r.probabilidadOHKO * 100).toFixed(0)} % OHKO
+                          </span>
+                        ) : r?.golpesParaTumbar ? (
+                          <span className="text-tinta-tenue">
+                            {r.golpesParaTumbar} golpes
+                          </span>
+                        ) : null}
+                      </span>
+                      <span className="cifra w-[34px] shrink-0 text-right text-apoyo text-tinta-media">
+                        ×{etiquetaMultiplicador(r?.efectividad ?? 1)}
+                      </span>
+                    </FilaElegible>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         )}
 
         {elegido?.resultado ? (

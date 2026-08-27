@@ -21,7 +21,7 @@ export default function RejillaDefensas({
   const bueno = sentido === "ataque" ? "text-acento-hondo" : "text-alarma";
   const malo = sentido === "ataque" ? "text-tinta-tenue" : "text-acento-hondo";
   return (
-    <div>
+    <div className="min-w-0">
       <div className="flex items-center justify-between border-b border-linea pb-2">
         <h3 className="rotulo">{titulo}</h3>
         {acciones}

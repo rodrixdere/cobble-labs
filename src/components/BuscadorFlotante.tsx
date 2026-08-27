@@ -39,6 +39,7 @@ export default function BuscadorFlotante({
           roster={roster}
           onCerrar={onCerrar}
           onElegir={onElegir}
+          alineacion="centrada"
         />
       </div>
     </div>

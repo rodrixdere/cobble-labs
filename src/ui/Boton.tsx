@@ -20,7 +20,7 @@ const POR_VARIANTE: Record<Variante, string> = {
   plano:
     "rounded-pieza px-2.5 py-1.5 text-cuerpo text-tinta-media hover:bg-hueco hover:text-tinta disabled:hover:bg-transparent",
   enlace:
-    "text-cuerpo text-tinta-media underline underline-offset-4 hover:text-tinta",
+    "py-1 text-cuerpo text-tinta-media underline underline-offset-4 hover:text-tinta",
   icono:
     "grid place-items-center rounded-pieza text-tinta-media hover:bg-hueco hover:text-tinta",
 };
@@ -34,7 +34,8 @@ const ALARMA: Record<Variante, string> = {
   icono: "hover:text-alarma",
 };
 
-const MEDIDA_ICONO = { chico: "h-5 w-5", medio: "h-7 w-7", grande: "h-8 w-8" };
+// Ninguna baja de 24px: abajo de eso no se le pega con el dedo.
+const MEDIDA_ICONO = { chico: "h-6 w-6", medio: "h-7 w-7", grande: "h-8 w-8" };
 
 type Comunes = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> & {
   children: ReactNode;

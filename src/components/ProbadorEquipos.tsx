@@ -165,9 +165,9 @@ export default function ProbadorEquipos({
         />
       </div>
 
-      <div className="mt-7 flex items-center gap-5 border-y border-linea py-3">
+      <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-linea py-3">
         <span className="rotulo">Combates</span>
-        <div className="flex gap-1">
+        <div className="flex flex-wrap gap-1">
           {TANDAS.map((t) => (
             <Opcion
               key={t}
@@ -184,7 +184,7 @@ export default function ProbadorEquipos({
           variante="principal"
           onClick={correr}
           disabled={!listos || simulando}
-          ubicacion="ml-auto"
+          ubicacion="sm:ml-auto"
         >
           {simulando ? "Simulando…" : `Correr ${combates} combates`}
         </Boton>

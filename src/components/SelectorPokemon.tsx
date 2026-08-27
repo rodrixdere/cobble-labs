@@ -9,6 +9,14 @@ import type { PokemonCombate } from "@/team/combate";
 // Buscador desplegable de Pokemon, compartido por la calculadora y el probador
 // de equipos. Muestra los primeros cuarenta hasta que se escribe algo: la lista
 // entera son 366 y no hace falta pintarla para elegir uno.
+//
+// Colgado del boton que lo abre, salvo cuando cae sobre un velo: ahi va
+// centrado, porque no hay boton del que colgarse.
+const UBICACION = {
+  izquierda: "left-8",
+  derecha: "right-8",
+  centrada: "left-1/2 -translate-x-1/2",
+};
 export default function SelectorPokemon({
   roster,
   onElegir,
@@ -18,7 +26,7 @@ export default function SelectorPokemon({
   roster: PokemonCombate[];
   onElegir: (slug: string) => void;
   onCerrar: () => void;
-  alineacion?: "izquierda" | "derecha";
+  alineacion?: keyof typeof UBICACION;
 }) {
   const [busqueda, setBusqueda] = useState("");
 
@@ -36,9 +44,7 @@ export default function SelectorPokemon({
 
   return (
     <div
-      className={`absolute z-20 mt-2 w-[320px] border border-linea-fuerte bg-panel shadow-[0_8px_24px_rgb(11_13_18/0.08)] ${
-        alineacion === "derecha" ? "right-8" : "left-8"
-      }`}
+      className={`absolute z-20 mt-2 w-[min(320px,calc(100vw-4rem))] border border-linea-fuerte bg-panel shadow-[0_8px_24px_rgb(11_13_18/0.08)] ${UBICACION[alineacion]}`}
     >
       <label className="flex items-center gap-2 border-b border-linea px-3 py-2">
         <MagnifyingGlass size={14} aria-hidden className="text-tinta-tenue" />

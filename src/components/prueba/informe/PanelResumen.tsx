@@ -17,53 +17,55 @@ export default function PanelResumen({
   diagnostico: Diagnostico | null;
 }) {
   return (
-    <div className="grid gap-x-10 lg:grid-cols-2 border-t border-linea px-4 md:px-8 py-6">
-      <div>
+    <div className="grid gap-y-8 border-t border-linea px-4 md:px-8 py-6 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-0">
+      <div className="min-w-0">
         <h3 className="rotulo border-b border-linea pb-2">
           Contra cada tipo de equipo
         </h3>
-        <table className="mt-2 w-full text-left">
-          <thead>
-            <tr className="border-b border-linea">
-              {COLUMNAS.map((c, i) => (
-                <th
-                  key={c}
-                  scope="col"
-                  className={cx("rotulo py-1.5 font-normal", i > 0 && "text-right")}
-                >
-                  {c}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {resultado.porArquetipo.map((a) => (
-              <tr key={a.arquetipo} className="border-b border-linea last:border-0">
-                <th scope="row" className="py-1.5 font-normal">
-                  <span className="text-lectura">{a.arquetipo}</span>
-                  <EtiquetaOrigen real={a.esDatoReal} />
-                </th>
-                <td className="cifra py-1.5 text-right text-cuerpo text-tinta-media">
-                  {a.combates}
-                </td>
-                <td className="cifra py-1.5 text-right text-cuerpo text-tinta-media">
-                  {a.ganados}
-                </td>
-                <td
-                  className={cx(
-                    "cifra py-1.5 text-right text-lectura font-bold",
-                    a.porcentaje >= 50 ? "text-acento-hondo" : "text-alarma"
-                  )}
-                >
-                  {a.porcentaje.toFixed(0)} %
-                </td>
+        <div className="overflow-x-auto">
+          <table className="mt-2 w-full min-w-[340px] text-left">
+            <thead>
+              <tr className="border-b border-linea">
+                {COLUMNAS.map((c, i) => (
+                  <th
+                    key={c}
+                    scope="col"
+                    className={cx("rotulo py-1.5 font-normal", i > 0 && "pl-3 text-right")}
+                  >
+                    {c}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {resultado.porArquetipo.map((a) => (
+                <tr key={a.arquetipo} className="border-b border-linea last:border-0">
+                  <th scope="row" className="py-1.5 font-normal">
+                    <span className="text-lectura">{a.arquetipo}</span>
+                    <EtiquetaOrigen real={a.esDatoReal} />
+                  </th>
+                  <td className="cifra py-1.5 pl-3 text-right text-cuerpo text-tinta-media">
+                    {a.combates}
+                  </td>
+                  <td className="cifra py-1.5 pl-3 text-right text-cuerpo text-tinta-media">
+                    {a.ganados}
+                  </td>
+                  <td
+                    className={cx(
+                      "cifra py-1.5 pl-3 text-right text-lectura font-bold",
+                      a.porcentaje >= 50 ? "text-acento-hondo" : "text-alarma"
+                    )}
+                  >
+                    {a.porcentaje.toFixed(0)} %
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <div>
+      <div className="min-w-0">
         {diagnostico ? (
           <>
             <h3 className="rotulo border-b border-linea pb-2">Por qué se pierde</h3>

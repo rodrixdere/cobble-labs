@@ -205,6 +205,18 @@ label {
   image-rendering: pixelated;
 }
 
+/* La tira que corre a lo ancho cuando su contenido no entra, como la de
+   pestañas. Sin barra a la vista: en una fila de controles se lee como un
+   error, y el borde recortado ya avisa que sigue. */
+.tira {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tira::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

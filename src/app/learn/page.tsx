@@ -245,9 +245,11 @@ export default function Learn() {
       </div>
 
       <div className="grid border-t border-linea lg:grid-cols-[280px_1fr]">
+        {/* El indice se pega al costado solo cuando hay columna para el: en una
+            sola columna un sticky viaja sobre el articulo y lo tapa. */}
         <nav
           aria-label="Índice"
-          className="sticky top-[var(--alto-cabecera)] h-[calc(100dvh-var(--alto-cabecera))] overflow-y-auto border-r border-linea px-6 py-6"
+          className="min-w-0 border-b border-linea px-4 py-5 md:px-6 lg:sticky lg:top-[var(--alto-cabecera)] lg:h-[calc(100dvh-var(--alto-cabecera))] lg:overflow-y-auto lg:border-b-0 lg:border-r"
         >
           <h2 className="rotulo border-b border-linea pb-2">Índice</h2>
           <ol className="mt-2">
@@ -267,12 +269,12 @@ export default function Learn() {
           </ol>
         </nav>
 
-        <div>
+        <div className="min-w-0">
           {CAPITULOS.map((c) => (
             <section
               key={c.id}
               id={c.id}
-              className="border-b border-linea px-10 py-9 [scroll-margin-top:calc(var(--alto-cabecera)+8px)] last:border-b-0"
+              className="border-b border-linea px-4 py-7 md:px-10 md:py-9 [scroll-margin-top:calc(var(--alto-cabecera)+8px)] last:border-b-0"
             >
               <div className="mx-auto max-w-[720px]">
               <p className="cifra text-apoyo text-tinta-tenue">{c.numero}</p>

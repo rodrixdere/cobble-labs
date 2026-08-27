@@ -83,9 +83,9 @@ export default function Modal({
           ANCHOS[ancho]
         )}
       >
-        <div className="flex shrink-0 items-center gap-4 border-b border-linea px-5 py-3">
+        <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-b border-linea px-4 py-3 sm:gap-4 sm:px-5">
           {cabecera ?? (
-            <h2 id={idTitulo} className="font-display text-guia">
+            <h2 id={idTitulo} className="min-w-0 font-display text-guia">
               {titulo}
             </h2>
           )}

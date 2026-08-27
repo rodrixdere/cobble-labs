@@ -75,8 +75,8 @@ export default function EditorConjunto({
       alto
       onCerrar={onCerrar}
       cabecera={
-        <span className="flex items-center gap-4">
-          <span className="flex h-12 w-12 items-center justify-center">
+        <span className="flex min-w-0 items-center gap-3 sm:gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center">
             <Retrato
               assets={pokemon.assets}
               forma={conjunto.forma}
@@ -85,8 +85,8 @@ export default function EditorConjunto({
               escalaMaxima={3}
             />
           </span>
-          <span>
-            <span className="block font-display text-subtitulo">
+          <span className="min-w-0">
+            <span className="block truncate font-display text-subtitulo">
               {formaActiva ? formaActiva.etiqueta : pokemon.nombre}
             </span>
             <span className="mt-1 flex gap-1">
@@ -110,12 +110,12 @@ export default function EditorConjunto({
         </Boton>
       }
       pie={
-        <div className="flex items-center justify-between px-6 py-3">
-          <p className="text-apoyo text-tinta-tenue">
+        <div className="flex items-center gap-4 px-4 py-3 sm:px-6">
+          <p className="min-w-0 flex-1 text-apoyo text-tinta-tenue">
             Fórmula del juego: IVs de 0 a 31, EVs de a 4 con techo de 252 por
             stat y 510 en total, y la naturaleza sobre la stat ya calculada.
           </p>
-          <Boton variante="principal" onClick={onCerrar}>
+          <Boton variante="principal" onClick={onCerrar} ubicacion="shrink-0">
             Listo
           </Boton>
         </div>

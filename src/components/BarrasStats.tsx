@@ -14,7 +14,7 @@ export default function BarrasStats({
   comparar?: Stats;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <div className="flex items-baseline justify-between border-b border-linea pb-2">
         <h3 className="rotulo">Stats base</h3>
         <p className="cifra text-lectura">
