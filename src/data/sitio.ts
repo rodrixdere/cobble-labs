@@ -12,3 +12,8 @@ export const SECCIONES = [
   { ruta: "/battle-bot", prioridad: 0.8 },
   { ruta: "/learn", prioridad: 0.7 },
 ] as const;
+
+// El identificador de Google Analytics 4. Vacío no carga nada: así el sitio en
+// local y cualquier clon del repo no mandan datos. El ID es público de por sí,
+// viaja en el HTML de la página, por eso va acá y no en una variable de entorno.
+export const ANALITICA_GA = "";

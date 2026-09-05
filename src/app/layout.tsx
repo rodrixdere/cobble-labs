@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Sora } from "next/font/google";
 import Link from "next/link";
 
+import Analitica from "@/components/Analitica";
 import Marca from "@/components/Marca";
 import Navegacion from "@/components/Navegacion";
 import "./globals.css";
@@ -140,6 +141,7 @@ export default function RootLayout({
             Sin relación oficial con Cobblemon ni Nintendo
           </p>
         </footer>
+        <Analitica />
       </body>
     </html>
   );
