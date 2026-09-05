@@ -12,7 +12,7 @@
 //
 // Uso:  node scripts/extraer-cobblemon.mjs
 import { createRequire } from "node:module";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const require = createRequire(import.meta.url);
@@ -58,7 +58,7 @@ const DATOS = path.resolve("src/data");
 
 // El roster del servidor. Hoy es una regla sobre las etiquetas de Cobblemon;
 // cuando haya una lista concreta, se reemplaza por esa lista y nada mas cambia.
-const GENERACIONES = new Set(["gen1", "gen2", "gen3"]);
+const GENERACIONES = new Set(["gen1", "gen2", "gen3", "gen4"]);
 
 function esSemilla(especie) {
   if (!especie.implemented) return false;
@@ -235,12 +235,40 @@ function resolverEvolucion(ev, tagsDeBioma) {
   return { ...ev, requirements: requisitos };
 }
 
+// Los aspectos que solo cambian el aspecto visual o donde aparece, nunca los
+// datos de combate. Se descartan antes de mirar nada mas.
+const ASPECTOS_COSMETICOS = [
+  "gmax",
+  "region-bias-",
+  "character-",
+  "partner-",
+  // Los gorros y comidas que agrega mega_showdown: cambian el sombrero y nada
+  // mas. Los Pikachu de disfraz no entran aca porque esos si cambian habilidad.
+  "cosmetic_item-",
+];
+
+// Formas que el jar trae pero que no se consiguen en el servidor. Rodrigo
+// confirmo que Ursaluna Luna Carmesi no esta, asi que mostrarla seria prometer
+// algo que no existe. Si algun dia se habilita, se saca de aca y vuelve sola.
+const FORMAS_FUERA = new Map([
+  ["ursaluna", ["Bloodmoon"]],
+  // Los Pikachu de disfraz cambian Estatica por Pararrayos, asi que no son
+  // cosmeticos del todo, pero no se consiguen en el servidor y ensucian la
+  // ficha con seis entradas sin retrato propio.
+  ["pikachu", ["Cosplay", "Rock-Star", "Pop-Star", "PhD", "Libre", "Belle"]],
+]);
+
 function claseDeForma(aspectos) {
   for (const a of aspectos) {
     const encontrado = TIPOS_DE_FORMA.find((t) => a.startsWith(t.prefijo));
     if (encontrado) return encontrado;
   }
-  return null;
+
+  // Cualquier otra forma entra igual, con su nombre por etiqueta: Rotom Heat,
+  // Giratina Origin, Shaymin Sky, las de Arceus. Antes se descartaban por no
+  // ser mega ni regional, y son formas de combate como cualquier otra. Lo que
+  // no cambia tipos, stats ni habilidad lo filtra quien llama.
+  return { tipo: "otra" };
 }
 
 let TAGS_DE_BIOMA = new Map();
@@ -249,7 +277,12 @@ function formasDe(especie) {
   return (especie.forms ?? [])
     .map((forma) => {
       const aspectos = forma.aspects ?? [];
-      if (aspectos.some((a) => a.startsWith("gmax"))) return null;
+      if (aspectos.some((a) => ASPECTOS_COSMETICOS.some((c) => a.startsWith(c)))) {
+        return null;
+      }
+      if (FORMAS_FUERA.get(especie.name.toLowerCase())?.includes(forma.name)) {
+        return null;
+      }
 
       const clase = claseDeForma(aspectos);
       if (!clase) return null;
@@ -263,8 +296,14 @@ function formasDe(especie) {
       const cambiaTipos =
         tipos.join("/") !==
         [especie.primaryType, especie.secondaryType].filter(Boolean).join("/");
-      const cambiaStats = Boolean(forma.baseStats);
-      const cambiaHabilidad = Boolean(forma.abilities);
+      // Se compara el contenido y no si el campo viene: los Pikachu de disfraz
+      // declaran stats y habilidades identicas a las del base, asi que "trae
+      // baseStats" no alcanza para decir que cambian algo.
+      const igual = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+      const cambiaStats =
+        Boolean(forma.baseStats) && !igual(forma.baseStats, especie.baseStats);
+      const cambiaHabilidad =
+        Boolean(forma.abilities) && !igual(forma.abilities, especie.abilities);
       if (!cambiaTipos && !cambiaStats && !cambiaHabilidad) return null;
 
       return {
@@ -298,6 +337,71 @@ function formasDe(especie) {
 }
 
 // "0001_bulbasaur" es como Cobblemon nombra la carpeta de assets de cada uno.
+// Cobblemon deja que otros mods toquen sus especies con species_additions: ahi
+// se marca implementada una especie que el mod base trae apagada, y se agregan
+// formas. El servidor arma su roster asi, con mega_showdown habilitando los
+// legendarios y zamega poniendo las megas de Legends Z-A. Leyendo solo el jar
+// de Cobblemon el sitio muestra menos de lo que el servidor tiene.
+//
+// Se recorren todos los jars de la carpeta de mods, no una lista escrita: el
+// dia que el servidor sume otro addon, entra solo.
+async function aplicarAdiciones(especies, carpetaMods) {
+  const limpiar = (n) => String(n).toLowerCase().replace(/[^a-z0-9]/g, "");
+  const porNombre = new Map(especies.map((e) => [limpiar(e.name), e]));
+
+  const jars = (await readdir(carpetaMods))
+    .filter((n) => n.endsWith(".jar") && n !== path.basename(JAR))
+    .sort();
+
+  const resumen = [];
+
+  for (const nombre of jars) {
+    let entradas;
+    try {
+      entradas = new AdmZip(path.join(carpetaMods, nombre)).getEntries();
+    } catch {
+      continue;
+    }
+
+    let habilitadas = 0;
+    let formas = 0;
+
+    for (const e of entradas) {
+      if (!e.entryName.startsWith("data/cobblemon/species_additions/")) continue;
+      if (!e.entryName.endsWith(".json")) continue;
+
+      let adicion;
+      try {
+        adicion = JSON.parse(e.getData().toString("utf8"));
+      } catch {
+        continue;
+      }
+
+      const objetivo = String(adicion.target ?? "").split(":").pop();
+      const especie = porNombre.get(limpiar(objetivo));
+      if (!especie) continue;
+
+      if (adicion.implemented === true && !especie.implemented) {
+        especie.implemented = true;
+        habilitadas += 1;
+      }
+
+      for (const forma of adicion.forms ?? []) {
+        especie.forms ??= [];
+        if (especie.forms.some((f) => f.name === forma.name)) continue;
+        especie.forms.push(forma);
+        formas += 1;
+      }
+    }
+
+    if (habilitadas || formas) {
+      resumen.push({ mod: nombre, habilitadas, formas });
+    }
+  }
+
+  return resumen;
+}
+
 function carpetaAssets(especie) {
   const n = String(especie.nationalPokedexNumber).padStart(4, "0");
   return `${n}_${especie.name.toLowerCase().replace(/[^a-z0-9]/g, "")}`;
@@ -316,6 +420,13 @@ async function main() {
     todas.push(JSON.parse(e.getData().toString("utf8")));
   }
 
+  const adiciones = await aplicarAdiciones(todas, path.dirname(JAR));
+  for (const a of adiciones) {
+    console.log(
+      `  ${a.mod}: ${a.habilitadas} especies habilitadas, ${a.formas} formas`
+    );
+  }
+
   const dentro = cerrarPorEvolucion(todas);
   const especies = todas.filter((e) =>
     dentro.has(e.name.toLowerCase().replace(/[^a-z0-9]/g, ""))
@@ -325,7 +436,7 @@ async function main() {
   const semillas = todas.filter(esSemilla).length;
   console.log(
     `  ${especies.length} especies en el roster ` +
-      `(${semillas} de gen 1 a 3 y ${especies.length - semillas} que entran por evolucion)`
+      `(${semillas} de ${[...GENERACIONES].join(", ")} y ${especies.length - semillas} que entran por evolucion)`
   );
 
   const idioma = leerIdioma(zip);
@@ -537,7 +648,14 @@ async function main() {
     (a, p) => a + p.formas.filter((f) => f.tipo === "regional").length,
     0
   );
-  console.log(`Formas: ${megas} megas y ${regionales} regionales`);
+  const otras = compacto.reduce(
+    (a, p) => a + p.formas.filter((f) => f.tipo === "otra").length,
+    0
+  );
+  console.log(
+    `Formas: ${megas} megas, ${regionales} regionales y ${otras} otras ` +
+      `(Origin, Sky, las de Arceus, las de Rotom)`
+  );
   console.log(`Con descripcion: ${compacto.filter((p) => p.descripcion).length}`);
   console.log(
     `Con apariciones: ${compacto.filter((p) => p.apariciones.length > 0).length} ` +

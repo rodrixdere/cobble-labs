@@ -147,7 +147,14 @@ export default async function Ficha({
     ...p.formas.map((f) => ({
       clave: f.nombre.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       etiqueta: f.etiqueta,
-      nombre: f.tipo === "mega" ? `${f.etiqueta} ${p.nombre}` : `${p.nombre} de ${f.etiqueta}`,
+      // "Mega Garchomp", "Marowak de Alola", y para el resto de formas el
+      // nombre pegado: "Giratina Origin", "Arceus Fire", "Rotom Heat".
+      nombre:
+        f.tipo === "mega"
+          ? `${f.etiqueta} ${p.nombre}`
+          : f.tipo === "regional"
+            ? `${p.nombre} de ${f.etiqueta}`
+            : `${p.nombre} ${f.etiqueta}`,
       tipos: f.tipos,
       stats: f.stats,
       habilidades: f.habilidades.map(conTextos),

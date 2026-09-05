@@ -88,6 +88,10 @@
       "nombre": "Aromaterapia",
       "desc": "Cura todos los problemas de estado del equipo con un suave aroma."
     },
+    "aromaticmist": {
+      "nombre": "Niebla Aromática",
+      "desc": "Consigue aumentar la Defensa Especial de un Pokémon de su equipo con una fragancia misteriosa."
+    },
     "assist": {
       "nombre": "Ayuda",
       "desc": "Usa un movimiento de un miembro del equipo elegido al azar."
@@ -99,6 +103,10 @@
     "astonish": {
       "nombre": "Impresionar",
       "desc": "Lanza un grito tan tremendo que impresiona y puede amedrentar al objetivo."
+    },
+    "attackorder": {
+      "nombre": "Al Ataque",
+      "desc": "El usuario llama a sus súbditos para que ataquen al objetivo. Suele ser crítico."
     },
     "attract": {
       "nombre": "Atracción",
@@ -308,6 +316,10 @@
       "nombre": "Encanto",
       "desc": "Engatusa al objetivo y reduce mucho su Ataque."
     },
+    "chatter": {
+      "nombre": "Cháchara",
+      "desc": "Ataca con una onda de sonido muy ruidosa compuesta por palabras y confunde al objetivo."
+    },
     "chillingwater": {
       "nombre": "Agua Fría",
       "desc": "Ataca al objetivo rociándolo con un agua gélida y desalentadora que reduce su Ataque."
@@ -428,6 +440,10 @@
       "nombre": "Garra Brutal",
       "desc": "Hace trizas al objetivo con garras afiladas y puede bajar su Defensa."
     },
+    "crushgrip": {
+      "nombre": "Agarrón",
+      "desc": "Estruja al objetivo con gran fuerza. Cuantos más PS le queden al objetivo, más fuerte será el ataque."
+    },
     "curse": {
       "nombre": "Maldición",
       "desc": "Un movimiento que tiene efectos distintos si el usuario es de tipo Fantasma o no."
@@ -444,9 +460,17 @@
       "nombre": "Pulso Umbrío",
       "desc": "Libera una horrible aura llena de malos pensamientos que puede amedrentar al objetivo."
     },
+    "darkvoid": {
+      "nombre": "Brecha Negra",
+      "desc": "El objetivo es enviado a un mundo de tinieblas que lo hace dormir."
+    },
     "dazzlinggleam": {
       "nombre": "Brillo Mágico",
       "desc": "Inflige daño a los oponentes con una potente luz."
+    },
+    "defendorder": {
+      "nombre": "A Defender",
+      "desc": "El usuario llama a sus súbditos para que formen un escudo viviente. Sube la Defensa y la Defensa Especial."
     },
     "defensecurl": {
       "nombre": "Rizo Defensa",
@@ -972,6 +996,10 @@
       "nombre": "Deseo Cura",
       "desc": "El Pokémon cae debilitado, pero su sustituto recupera su estado y los PS."
     },
+    "healorder": {
+      "nombre": "Auxilio",
+      "desc": "El usuario llama a sus súbditos para que lo curen. Recupera hasta la mitad de los PS máximos."
+    },
     "healpulse": {
       "nombre": "Pulso Cura",
       "desc": "Una onda curativa restaura la mitad de los PS máximos del objetivo."
@@ -1139,6 +1167,10 @@
     "irontail": {
       "nombre": "Cola Férrea",
       "desc": "Ataca con una cola férrea y puede bajar la Defensa del objetivo."
+    },
+    "judgment": {
+      "nombre": "Sentencia",
+      "desc": "Emite incontables haces de luz. El tipo del movimiento varía según la tabla que lleve el usuario."
     },
     "jumpkick": {
       "nombre": "Patada Salto",
@@ -1420,6 +1452,10 @@
       "nombre": "Llama Embrujada",
       "desc": "El usuario lanza por la boca una singular llama a gran temperatura con la que ataca a su oponente y baja su Ataque Especial."
     },
+    "mysticalpower": {
+      "nombre": "Poder Místico",
+      "desc": "Ataca desatando un misterioso poder, que también aumenta su Ataque Especial."
+    },
     "nastyplot": {
       "nombre": "Maquinación",
       "desc": "Estimula su cerebro pensando en cosas malas. Aumenta mucho el Ataque Especial."
@@ -1471,6 +1507,10 @@
     "ominouswind": {
       "nombre": "Viento Aciago",
       "desc": "Produce un viento horripilante. Puede subir de golpe todas las características del usuario."
+    },
+    "originpulse": {
+      "nombre": "Pulso Primigenio",
+      "desc": "Ataca al objetivo con una infinidad de rayos de luz azulada."
     },
     "outrage": {
       "nombre": "Enfado",
@@ -1607,6 +1647,10 @@
     "powerwhip": {
       "nombre": "Latigazo",
       "desc": "El usuario agita violentamente sus lianas o tentáculos para golpear al objetivo."
+    },
+    "precipiceblades": {
+      "nombre": "Filo del Abismo",
+      "desc": "Hace que el poder latente de la tierra se manifieste en forma de hojas afiladas y ataca al objetivo con ellas."
     },
     "present": {
       "nombre": "Presente",
@@ -1780,6 +1824,10 @@
       "nombre": "Rugido",
       "desc": "Asusta al objetivo, que es cambiado por otro Pokémon. Si es un Pokémon salvaje, acaba el combate."
     },
+    "roaroftime": {
+      "nombre": "Distorsión",
+      "desc": "Ataca al objetivo usando tal energía que el tiempo se distorsiona. El usuario descansa el siguiente turno."
+    },
     "rockblast": {
       "nombre": "Pedrada",
       "desc": "Lanza pedruscos al objetivo de dos a cinco veces consecutivas."
@@ -1892,6 +1940,10 @@
       "nombre": "Bomba Germen",
       "desc": "Lanza al objetivo una descarga de semillas explosivas desde arriba."
     },
+    "seedflare": {
+      "nombre": "Fogonazo",
+      "desc": "Una onda de choque se libera del cuerpo. Puede bajar mucho la Defensa Especial del objetivo."
+    },
     "seismictoss": {
       "nombre": "Sísmico",
       "desc": "Aprovecha la gravedad para derribar al objetivo. Le resta tantos PS como nivel tenga el usuario."
@@ -1907,6 +1959,10 @@
     "shadowclaw": {
       "nombre": "Garra Umbría",
       "desc": "Ataca con una garra afilada hecha de sombras. Suele ser crítico."
+    },
+    "shadowforce": {
+      "nombre": "Golpe Umbrío",
+      "desc": "En el primer turno, desaparece. En el segundo, golpea al objetivo aunque se esté protegiendo."
     },
     "shadowpunch": {
       "nombre": "Puño Sombra",
@@ -2067,6 +2123,10 @@
     "sonicboom": {
       "nombre": "Bomba Sónica",
       "desc": "Lanza ondas de choque que restan 20 PS al objetivo."
+    },
+    "spacialrend": {
+      "nombre": "Corte Vacío",
+      "desc": "Desgarra al objetivo y el espacio a su alrededor. Suele ser crítico."
     },
     "spark": {
       "nombre": "Chispa",
@@ -2614,6 +2674,10 @@
       "nombre": "Cola Armadura",
       "desc": "La extraña cola que le envuelve la cabeza impide al rival usar movimientos con prioridad contra él y sus aliados."
     },
+    "baddreams": {
+      "nombre": "Mal Sueño",
+      "desc": "Inflige daño a cualquier rival que esté dormido."
+    },
     "battlearmor": {
       "nombre": "Armadura Batalla",
       "desc": "La robusta coraza que lo protege bloquea los golpes críticos."
@@ -2682,6 +2746,10 @@
       "nombre": "Humedad",
       "desc": "Aumenta la humedad del entorno y evita que se puedan utilizar movimientos explosivos, tales como Autodestrucción."
     },
+    "darkaura": {
+      "nombre": "Aura Oscura",
+      "desc": "Aumenta la potencia de los movimientos de tipo Siniestro de todos los Pokémon."
+    },
     "defiant": {
       "nombre": "Competitivo",
       "desc": "Aumenta mucho su Ataque cuando el rival le reduce cualquiera de sus características."
@@ -2689,6 +2757,10 @@
     "deltastream": {
       "nombre": "Ráfaga Delta",
       "desc": "Altera el clima para anular las vulnerabilidades del tipo Volador."
+    },
+    "desolateland": {
+      "nombre": "Tierra del Ocaso",
+      "desc": "Altera el clima para anular los ataques de tipo Agua."
     },
     "download": {
       "nombre": "Descarga",
@@ -2722,9 +2794,21 @@
       "nombre": "Cuerpo Llama",
       "desc": "Puede quemar al mínimo contacto."
     },
+    "flareboost": {
+      "nombre": "Ímpetu Ardiente",
+      "desc": "Aumenta la potencia de sus ataques especiales cuando sufre quemaduras."
+    },
     "flashfire": {
       "nombre": "Absorbe Fuego",
       "desc": "Si lo alcanza algún movimiento de tipo Fuego, potencia sus propios movimientos de dicho tipo."
+    },
+    "flowergift": {
+      "nombre": "Don Floral",
+      "desc": "Si hace sol, aumenta su Ataque y su Defensa Especial, así como los de sus aliados."
+    },
+    "forecast": {
+      "nombre": "Predicción",
+      "desc": "Cambia a tipo Agua, Fuego o Hielo en función del tiempo atmosférico."
     },
     "forewarn": {
       "nombre": "Alerta",
@@ -2761,6 +2845,10 @@
     "healer": {
       "nombre": "Alma Cura",
       "desc": "A veces cura los problemas de estado de un aliado."
+    },
+    "heatproof": {
+      "nombre": "Ignífugo",
+      "desc": "Su cuerpo, resistente al calor, reduce a la mitad el daño recibido por movimientos de tipo Fuego."
     },
     "heavymetal": {
       "nombre": "Metal Pesado",
@@ -2806,6 +2894,10 @@
       "nombre": "Allanamiento",
       "desc": "Ataca sorteando las barreras o el sustituto del objetivo."
     },
+    "innardsout": {
+      "nombre": "Revés",
+      "desc": "Al caer debilitado, inflige al atacante un daño equivalente a los PS que le quedaran antes de recibir el golpe de gracia."
+    },
     "innerfocus": {
       "nombre": "Foco Interno",
       "desc": "Gracias a su profunda concentración, no se amedrenta ante los ataques de otros Pokémon ni sufre los efectos de Intimidación."
@@ -2829,6 +2921,10 @@
     "keeneye": {
       "nombre": "Vista Lince",
       "desc": "Su aguda vista evita que su Precisión se reduzca."
+    },
+    "klutz": {
+      "nombre": "Zoquete",
+      "desc": "No puede usar objetos equipados."
     },
     "leafguard": {
       "nombre": "Defensa Hoja",
@@ -2878,6 +2974,10 @@
       "nombre": "Megadisparador",
       "desc": "Aumenta la potencia de algunos movimientos de pulsos y auras."
     },
+    "mindseye": {
+      "nombre": "Ojo mental",
+      "desc": "Alcanza a Pokémon de tipo Fantasma con movimientos de tipo Normal o Lucha. Su Precisión no se puede reducir e ignora los cambios en la Evasión del objetivo."
+    },
     "minus": {
       "nombre": "Menos",
       "desc": "Potencia su Ataque Especial si un Pokémon aliado tiene la habilidad Más o Menos."
@@ -2905,6 +3005,10 @@
     "multiscale": {
       "nombre": "Multiescamas",
       "desc": "Reduce el daño que sufre si sus PS están al máximo."
+    },
+    "multitype": {
+      "nombre": "Multitipo",
+      "desc": "Cambia su tipo al de la tabla que lleve."
     },
     "naturalcure": {
       "nombre": "Cura Natural",
@@ -2985,6 +3089,10 @@
     "pressure": {
       "nombre": "Presión",
       "desc": "Presiona al rival de tal manera que este consume más PP al usar sus movimientos."
+    },
+    "primordialsea": {
+      "nombre": "Mar del Albor",
+      "desc": "Altera el clima para anular los ataques de tipo Fuego."
     },
     "protean": {
       "nombre": "Mutatipo",
@@ -3102,6 +3210,10 @@
       "nombre": "Encadenado",
       "desc": "Ejecuta siempre los movimientos múltiples con el número máximo de golpes."
     },
+    "slowstart": {
+      "nombre": "Inicio Lento",
+      "desc": "Baja a la mitad su Ataque y su Velocidad durante cinco turnos."
+    },
     "slushrush": {
       "nombre": "Quitanieves",
       "desc": "Aumenta su Velocidad cuando nieva."
@@ -3137,6 +3249,10 @@
     "stall": {
       "nombre": "Rezagado",
       "desc": "Ejecuta su movimiento tras todos los demás."
+    },
+    "stalwart": {
+      "nombre": "Acérrimo",
+      "desc": "Impide que el rival pueda atraer ataques hacia sí mismo por efecto de su habilidad o sus movimientos."
     },
     "static": {
       "nombre": "Elec. Estática",
@@ -3229,6 +3345,10 @@
     "trace": {
       "nombre": "Rastro",
       "desc": "Al entrar en combate copia la habilidad del rival."
+    },
+    "transistor": {
+      "nombre": "Transistor",
+      "desc": "Potencia los movimientos de tipo Eléctrico."
     },
     "truant": {
       "nombre": "Ausente",
@@ -19719,6 +19839,36 @@
         2
       ]
     },
+    "sacredfire": {
+      "tipo": "fire",
+      "categoria": "physical",
+      "potencia": 100,
+      "precision": 95,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 50,
+        "estado": "brn",
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
     "aeroblast": {
       "tipo": "flying",
       "categoria": "special",
@@ -19762,36 +19912,6 @@
       "cambiosAlUsar": {
         "spa": -2
       },
-      "drenaje": null,
-      "retroceso": null,
-      "multiGolpe": null,
-      "efectoDeLado": null,
-      "efectoDeCampo": null,
-      "clima": null,
-      "terreno": null,
-      "curacion": null
-    },
-    "sacredfire": {
-      "tipo": "fire",
-      "categoria": "physical",
-      "potencia": 100,
-      "precision": 95,
-      "pp": 5,
-      "prioridad": 0,
-      "objetivo": "normal",
-      "protegible": true,
-      "contacto": false,
-      "sonido": false,
-      "estado": null,
-      "volatil": null,
-      "cambiosPropios": null,
-      "secundario": {
-        "probabilidad": 50,
-        "estado": "brn",
-        "cambios": null,
-        "volatil": null
-      },
-      "cambiosAlUsar": null,
       "drenaje": null,
       "retroceso": null,
       "multiGolpe": null,
@@ -20183,6 +20303,56 @@
       "terreno": null,
       "curacion": null
     },
+    "originpulse": {
+      "tipo": "water",
+      "categoria": "special",
+      "potencia": 110,
+      "precision": 85,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allAdjacentFoes",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "precipiceblades": {
+      "tipo": "ground",
+      "categoria": "physical",
+      "potencia": 120,
+      "precision": 85,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allAdjacentFoes",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
     "dragonascent": {
       "tipo": "flying",
       "categoria": "physical",
@@ -20231,6 +20401,169 @@
         "def": -1,
         "spd": -1
       },
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "healorder": {
+      "tipo": "bug",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "self",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": [
+        1,
+        2
+      ]
+    },
+    "aromaticmist": {
+      "tipo": "fairy",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 20,
+      "prioridad": 0,
+      "objetivo": "adjacentAlly",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": {
+        "spd": 1
+      },
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "defendorder": {
+      "tipo": "bug",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "self",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": {
+        "def": 1,
+        "spd": 1
+      },
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "attackorder": {
+      "tipo": "bug",
+      "categoria": "physical",
+      "potencia": 90,
+      "precision": 100,
+      "pp": 15,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "chatter": {
+      "tipo": "flying",
+      "categoria": "special",
+      "potencia": 65,
+      "precision": 100,
+      "pp": 20,
+      "prioridad": 0,
+      "objetivo": "any",
+      "protegible": true,
+      "contacto": false,
+      "sonido": true,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 100,
+        "estado": null,
+        "cambios": null,
+        "volatil": "confusion"
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "partingshot": {
+      "tipo": "dark",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": 100,
+      "pp": 20,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": true,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
       "drenaje": null,
       "retroceso": null,
       "multiGolpe": null,
@@ -20315,6 +20648,218 @@
       "terreno": null,
       "curacion": null
     },
+    "mysticalpower": {
+      "tipo": "psychic",
+      "categoria": "special",
+      "potencia": 70,
+      "precision": 90,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 100,
+        "estado": null,
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "roaroftime": {
+      "tipo": "dragon",
+      "categoria": "special",
+      "potencia": 150,
+      "precision": 90,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "spacialrend": {
+      "tipo": "dragon",
+      "categoria": "special",
+      "potencia": 100,
+      "precision": 95,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "crushgrip": {
+      "tipo": "normal",
+      "categoria": "physical",
+      "potencia": 0,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "shadowforce": {
+      "tipo": "ghost",
+      "categoria": "physical",
+      "potencia": 120,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": false,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "darkvoid": {
+      "tipo": "dark",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": 50,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allAdjacentFoes",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": "slp",
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "seedflare": {
+      "tipo": "grass",
+      "categoria": "special",
+      "potencia": 120,
+      "precision": 85,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 40,
+        "estado": null,
+        "cambios": {
+          "spd": -2
+        },
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "judgment": {
+      "tipo": "normal",
+      "categoria": "special",
+      "potencia": 100,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
     "obstruct": {
       "tipo": "dark",
       "categoria": "status",
@@ -20328,31 +20873,6 @@
       "sonido": false,
       "estado": null,
       "volatil": "obstruct",
-      "cambiosPropios": null,
-      "secundario": null,
-      "cambiosAlUsar": null,
-      "drenaje": null,
-      "retroceso": null,
-      "multiGolpe": null,
-      "efectoDeLado": null,
-      "efectoDeCampo": null,
-      "clima": null,
-      "terreno": null,
-      "curacion": null
-    },
-    "partingshot": {
-      "tipo": "dark",
-      "categoria": "status",
-      "potencia": 0,
-      "precision": 100,
-      "pp": 20,
-      "prioridad": 0,
-      "objetivo": "normal",
-      "protegible": true,
-      "contacto": false,
-      "sonido": true,
-      "estado": null,
-      "volatil": null,
       "cambiosPropios": null,
       "secundario": null,
       "cambiosAlUsar": null,

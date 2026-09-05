@@ -9,8 +9,14 @@ instalado, que es lo que de verdad resuelve los combates ahí. Cuando Cobblemon
 implementa una especie distinto a como está en los juegos, acá aparece como la
 implementa Cobblemon.
 
-En la configuración actual cubre 410 especies, 86 megaevoluciones y formas
-regionales, y 644 movimientos.
+En la configuración actual cubre 487 especies, 142 formas (62 megaevoluciones,
+44 regionales y 36 más, como Giratina Origin o las de Arceus) y 659
+movimientos.
+
+Los datos no salen solo del jar de Cobblemon: los mods que el servidor suma
+encima (`mega_showdown`, `zamega`) habilitan legendarios y agregan megas con
+`species_additions`, y el extractor los lee también. Sin eso, el sitio mostraría
+menos de lo que el servidor tiene.
 
 ## Qué hay adentro
 
@@ -84,6 +90,12 @@ instancia:
 npm run retratos
 ```
 
+Al terminar lista las formas que ese pack no dibuja, que son las megas nuevas de
+Legends Z-A y las que inventan los mods del servidor. Mientras no tengan icono
+propio muestran el de su especie. Para ponerles uno, se deja el PNG en
+`retratos-propios/` con el nombre exacto que el script indica y entra en la
+próxima corrida.
+
 Y ya:
 
 ```bash
@@ -133,7 +145,7 @@ Todas las páginas declaran canónica hacia el dominio. Hace falta porque el
 mismo contenido se sirve también en `cobble-labs.rodrixdere.workers.dev`, y sin
 esa señal Google elige por su cuenta cuál indexar.
 
-`sitemap.ts` se arma del roster, no de una lista a mano: son 415 URLs y las
+`sitemap.ts` se arma del roster, no de una lista a mano: son 492 URLs y las
 fichas nuevas entran solas cuando se actualiza el mod.
 
 La tarjeta social es `public/og.png`, un PNG estático. **No** se usa la ruta
