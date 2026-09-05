@@ -13,7 +13,7 @@
 //
 // Uso:  node scripts/retratos.mjs
 import { createRequire } from "node:module";
-import { mkdir, writeFile, rm, stat } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile, rm, stat } from "node:fs/promises";
 import path from "node:path";
 
 const require = createRequire(import.meta.url);
@@ -25,10 +25,22 @@ const PACK_URL =
   "https://cdn.modrinth.com/data/fOzKqjMA/versions/oTpUSp6D/dCIM%201.0.4.zip";
 const CACHE = path.resolve(".cache/dcim-1.0.4.zip");
 const SALIDA = path.resolve("public/cobblemon/retratos");
+// Los retratos puestos a mano, para las formas que ningun pack dibuja.
+const PROPIOS = path.resolve("retratos-propios");
 const MEDIDAS = path.resolve("src/data/retratos.json");
 const RAIZ = "assets/cobblemon/textures/entity_icon/";
 
 const roster = require("../src/data/pokemon.json");
+
+// La carpeta puede no existir, y eso no es un error: quiere decir que nadie
+// puso ningun retrato a mano todavia.
+async function listarPropios() {
+  try {
+    return (await readdir(PROPIOS)).filter((n) => n.toLowerCase().endsWith(".png"));
+  } catch {
+    return [];
+  }
+}
 
 async function existe(ruta) {
   try {
@@ -91,15 +103,25 @@ function elegirForma(archivos, aspectos, carpeta) {
   const piezas = (aspectos ?? []).map(normalizar).filter(Boolean);
   if (piezas.length === 0) return null;
 
-  const candidatos = archivos
+  const base = archivos
     .filter((a) => !a.nombre.includes("_shiny"))
-    .map((a) => ({ a, tokens: a.nombre.replace(/\.png$/, "").split("_") }))
-    .filter(({ tokens }) =>
-      piezas.every((p) => p.split("_").every((t) => tokens.includes(t)))
-    )
-    .sort((x, y) => x.tokens.length - y.tokens.length);
+    .map((a) => ({ a, tokens: a.nombre.replace(/\.png$/, "").split("_") }));
 
-  if (candidatos.length > 0) return candidatos[0].a;
+  const buscar = (partes) =>
+    base
+      .filter(({ tokens }) => partes.every((p) => tokens.includes(p)))
+      .sort((x, y) => x.tokens.length - y.tokens.length)[0]?.a ?? null;
+
+  // Primero con el aspecto entero.
+  const exacto = buscar(piezas.flatMap((p) => p.split("_")));
+  if (exacto) return exacto;
+
+  // Y si no, con la primera palabra de cada aspecto. El jar dice de que va la
+  // forma ("fighting_plate", "heat_appliance", "origin_forme") y el pack la
+  // nombra corta ("arceus_fighting", "rotom_heat", "giratina_origin"): sin
+  // esto, Arceus, Rotom, Giratina y Shaymin se quedaban sin icono propio.
+  const cabezas = buscar(piezas.map((p) => p.split("_")[0]));
+  if (cabezas) return cabezas;
 
   const rescate = MAL_NOMBRADOS[carpeta]?.[piezas[0]];
   return rescate ? (archivos.find((a) => a.nombre === rescate) ?? null) : null;
@@ -184,16 +206,49 @@ async function main() {
     }
   }
 
+  // Las megas que estrenó Legends Z-A y las que se inventan los mods no estan
+  // en ningun pack de iconos, asi que para esas el retrato se pone a mano: un
+  // PNG en retratos-propios con el mismo nombre del archivo que falta
+  // ("0149_dragonite_mega.png") y entra en la proxima corrida. Va aparte de la
+  // carpeta de salida porque esa se borra entera en cada pasada.
+  let propios = 0;
+  for (const archivo of await listarPropios()) {
+    const datos = await readFile(path.join(PROPIOS, archivo));
+    const clave = archivo.replace(/\.png$/i, "");
+    await writeFile(path.join(SALIDA, `${clave}.png`), datos);
+    tabla[clave] = medidas(datos);
+    bytes += datos.length;
+    propios++;
+  }
+
   await writeFile(MEDIDAS, `${JSON.stringify(tabla)}
 `);
 
   const totalFormas = roster.reduce((n, p) => n + (p.formas?.length ?? 0), 0);
   console.log(`  ${escritos}/${roster.length} especies`);
   console.log(`  ${formas}/${totalFormas} formas (megas y regionales)`);
+  if (propios) console.log(`  ${propios} puestos a mano desde retratos-propios/`);
   console.log(`  ${Math.round(bytes / 1024)} KB en total`);
+
+  // Se listan con el nombre exacto del archivo que hay que dejar caer en
+  // retratos-propios para taparlos.
+  const faltan = [];
+  for (const p of roster) {
+    for (const f of p.formas ?? []) {
+      const clave = `${p.assets}_${claveDeForma(f.nombre)}`;
+      if (clave in tabla) continue;
+      faltan.push(`${p.nombre} ${f.etiqueta} (${clave}.png)`);
+    }
+  }
+
   if (sinIcono.length) {
-    console.log(`  sin icono: ${sinIcono.join(", ")}`);
+    console.log(`  especies sin icono en el pack: ${sinIcono.join(", ")}`);
     process.exitCode = 1;
+  }
+
+  if (faltan.length) {
+    console.log(`  sin icono propio, cae al de la especie:`);
+    for (const f of faltan) console.log(`    ${f}`);
   }
 }
 
