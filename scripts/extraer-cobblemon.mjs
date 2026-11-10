@@ -58,7 +58,7 @@ const DATOS = path.resolve("src/data");
 
 // El roster del servidor. Hoy es una regla sobre las etiquetas de Cobblemon;
 // cuando haya una lista concreta, se reemplaza por esa lista y nada mas cambia.
-const GENERACIONES = new Set(["gen1", "gen2", "gen3", "gen4"]);
+const GENERACIONES = new Set(["gen1", "gen2", "gen3", "gen4", "gen5"]);
 
 function esSemilla(especie) {
   if (!especie.implemented) return false;
@@ -150,7 +150,12 @@ function leerTagsDeBioma(zip) {
 
     try {
       const datos = JSON.parse(e.getData().toString("utf8"));
-      tags.set(`#cobblemon:${ruta}`, datos.values ?? []);
+      // Los valores opcionales vienen como { id, required: false } y apuntan a
+      // biomas de otros mods, que el servidor puede no tener.
+      tags.set(
+        `#cobblemon:${ruta}`,
+        (datos.values ?? []).filter((v) => typeof v === "string")
+      );
     } catch {
       // Un tag roto no vale la pena romper la extraccion.
     }

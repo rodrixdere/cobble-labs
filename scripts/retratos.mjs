@@ -86,8 +86,12 @@ function elegirBase(archivos, nombre) {
 const claveDeForma = (nombre) => nombre.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 // El jar dice "blaze-breed" donde el pack dice "blaze", y separa con guion
-// donde el pack separa con guion bajo.
-const normalizar = (aspecto) => aspecto.replace(/-breed$/, "").replace(/-/g, "_");
+// donde el pack separa con guion bajo. Tambien dice "bluestriped" por
+// "bluestripe", y "standard-mode" es la forma por defecto: el pack no lo nombra.
+const normalizar = (aspecto) =>
+  aspecto === "standard-mode"
+    ? ""
+    : aspecto.replace(/-breed$/, "").replace(/striped$/, "stripe").replace(/-/g, "_");
 
 // dCIM 1.0.4 guardo el Sandslash de Alola como "n.png": el nombre quedo
 // truncado a su ultima letra. Se reconoce porque mide lo mismo que su version

@@ -9,8 +9,8 @@ instalado, que es lo que de verdad resuelve los combates ahí. Cuando Cobblemon
 implementa una especie distinto a como está en los juegos, acá aparece como la
 implementa Cobblemon.
 
-En la configuración actual cubre 487 especies, 142 formas (62 megaevoluciones,
-44 regionales y 36 más, como Giratina Origin o las de Arceus) y 659
+En la configuración actual cubre 629 especies, 164 formas (69 megaevoluciones,
+54 regionales y 41 más, como Giratina Origin o las de Arceus) y 679
 movimientos.
 
 Los datos no salen solo del jar de Cobblemon: los mods que el servidor suma

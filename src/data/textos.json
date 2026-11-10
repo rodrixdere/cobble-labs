@@ -200,6 +200,10 @@
       "nombre": "Bloqueo",
       "desc": "Le corta el paso al objetivo para que no pueda escapar."
     },
+    "blueflare": {
+      "nombre": "Llama Azul",
+      "desc": "Ataca con una bella pero potente llama azul que rodea al objetivo. Puede quemarlo."
+    },
     "bodypress": {
       "nombre": "Plancha Corporal",
       "desc": "El usuario usa el cuerpo para lanzar su ataque e infligir un daño directamente proporcional a su Defensa."
@@ -207,6 +211,10 @@
     "bodyslam": {
       "nombre": "Golpe Cuerpo",
       "desc": "Salta sobre el objetivo con todo su peso y puede llegar a paralizarlo."
+    },
+    "boltstrike": {
+      "nombre": "Ataque Fulgor",
+      "desc": "Ataca envolviéndose de una gran carga eléctrica y embistiendo al objetivo con ella. Puede paralizar."
     },
     "boneclub": {
       "nombre": "Hueso Palo",
@@ -728,6 +736,10 @@
       "nombre": "Aguijón Letal",
       "desc": "Si se derrota al objetivo utilizando este movimiento, aumenta muchísimo el Ataque del usuario."
     },
+    "fierydance": {
+      "nombre": "Danza Llama",
+      "desc": "Envuelve en llamas y daña al objetivo. Puede aumentar el Ataque Especial de quien lo usa."
+    },
     "finalgambit": {
       "nombre": "Sacrificio",
       "desc": "El usuario se sacrifica causándole un daño al objetivo equivalente a sus propios PS perdidos."
@@ -739,6 +751,10 @@
     "firefang": {
       "nombre": "Colmillo Ígneo",
       "desc": "El usuario muerde al objetivo con colmillos en llamas y puede hacer que se amedrente o sufra quemaduras."
+    },
+    "firelash": {
+      "nombre": "Látigo Ígneo",
+      "desc": "Golpea al oponente con un látigo incandescente y reduce su Defensa."
     },
     "firepledge": {
       "nombre": "Voto Fuego",
@@ -868,6 +884,14 @@
       "nombre": "Golpes Furia",
       "desc": "Araña rápidamente de dos a cinco veces."
     },
+    "fusionbolt": {
+      "nombre": "Rayo Fusión",
+      "desc": "Ataca con una enorme descarga eléctrica. Aumenta su potencia si es influenciada por una gigantesca llamarada."
+    },
+    "fusionflare": {
+      "nombre": "Llama Fusión",
+      "desc": "Ataca con una llamarada gigantesca. Aumenta su potencia si es influenciada por una gran energía eléctrica."
+    },
     "futuresight": {
       "nombre": "Premonición",
       "desc": "Concentra energía psíquica para golpear al objetivo dos turnos después."
@@ -876,6 +900,14 @@
       "nombre": "Bilis",
       "desc": "El usuario arroja sus jugos biliares al objetivo, lo que anula el efecto de la habilidad en uso."
     },
+    "geargrind": {
+      "nombre": "Rueda Doble",
+      "desc": "Rota dos engranajes de hierro sobre el objetivo. Golpea dos veces."
+    },
+    "gearup": {
+      "nombre": "Piñón Auxiliar",
+      "desc": "Cambia de marcha y logra aumentar el Ataque y el Ataque Especial de los Pokémon aliados que cuenten con las habilidades Más y Menos."
+    },
     "gigadrain": {
       "nombre": "Gigadrenado",
       "desc": "Un ataque que absorbe nutrientes. Quien lo usa recupera la mitad de los PS del daño que produce."
@@ -883,6 +915,10 @@
     "gigaimpact": {
       "nombre": "Gigaimpacto",
       "desc": "El usuario carga contra el objetivo con toda la fuerza que tiene y descansa durante el siguiente turno."
+    },
+    "glaciate": {
+      "nombre": "Mundo Gélido",
+      "desc": "Ataque con aire helado que baja la Velocidad del objetivo."
     },
     "glare": {
       "nombre": "Deslumbrar",
@@ -976,6 +1012,10 @@
       "nombre": "Golpe Cabeza",
       "desc": "Potente cabezazo que puede amedrentar al objetivo."
     },
+    "headcharge": {
+      "nombre": "Ariete",
+      "desc": "Propina un tremendo cabezazo. También daña al usuario un poco."
+    },
     "headlongrush": {
       "nombre": "Arremetida",
       "desc": "El usuario arremete con todas sus fuerzas, pero se reducen su Defensa y su Defensa Especial."
@@ -1059,6 +1099,10 @@
     "horndrill": {
       "nombre": "Perforador",
       "desc": "Ataque con un cuerno giratorio que fulmina de un solo golpe al objetivo si lo alcanza."
+    },
+    "hornleech": {
+      "nombre": "Asta Drenaje",
+      "desc": "Un golpe que drena energía. El Pokémon recupera la mitad de los PS arrebatados al objetivo."
     },
     "howl": {
       "nombre": "Aullido",
@@ -1200,6 +1244,10 @@
       "nombre": "Última Baza",
       "desc": "Este movimiento solo puede utilizarse tras haber usado al menos una vez todos los demás conocidos por el Pokémon."
     },
+    "lastrespects": {
+      "nombre": "Homenaje Póstumo",
+      "desc": "Ataca para vengar a sus compañeros caídos y aplacar su desazón. Cuantos más miembros del equipo se hayan debilitado, mayor será la potencia del movimiento."
+    },
     "lavaplume": {
       "nombre": "Humareda",
       "desc": "Un infierno de llamas daña a los Pokémon adyacentes en combate. Puede quemar."
@@ -1307,6 +1355,10 @@
     "magnitude": {
       "nombre": "Magnitud",
       "desc": "Sacudida sísmica de intensidad variable que afecta a todos los Pokémon a su alrededor."
+    },
+    "matblock": {
+      "nombre": "Escudo Tatami",
+      "desc": "El usuario usa un tatami para escudarse de los ataques enemigos. Protege también a los aliados. No funciona contra movimientos de estado."
     },
     "meanlook": {
       "nombre": "Mal de Ojo",
@@ -1471,6 +1523,10 @@
     "needlearm": {
       "nombre": "Brazo Pincho",
       "desc": "Pega con brazos de pinchos y puede hacer retroceder al objetivo."
+    },
+    "nightdaze": {
+      "nombre": "Pulso Noche",
+      "desc": "Ataca al objetivo con una onda siniestra. Puede bajar su Precisión."
     },
     "nightmare": {
       "nombre": "Pesadilla",
@@ -1796,6 +1852,10 @@
       "nombre": "Alivio",
       "desc": "Descansa para curar parálisis, envenenamiento o quemaduras."
     },
+    "relicsong": {
+      "nombre": "Canto Arcaico",
+      "desc": "Ataca conmoviendo a los rivales de alrededor con un antiguo canto. Puede dormirlos."
+    },
     "rest": {
       "nombre": "Descanso",
       "desc": "Restaura todos los PS y cura todos los problemas de estado del usuario, que se duerme los dos turnos siguientes."
@@ -1932,9 +1992,17 @@
       "nombre": "Chirrido",
       "desc": "Alarido agudo que reduce mucho la Defensa del objetivo."
     },
+    "searingshot": {
+      "nombre": "Bomba Ígnea",
+      "desc": "Un infierno de llamas daña a los Pokémon adyacentes en combate. Puede quemar."
+    },
     "secretpower": {
       "nombre": "Daño Secreto",
       "desc": "Ataque cuyos efectos secundarios varían según el entorno de combate."
+    },
+    "secretsword": {
+      "nombre": "Sable Místico",
+      "desc": "Ensarta al objetivo con un largo cuerno dotado de un poder místico que provoca daño físico."
     },
     "seedbomb": {
       "nombre": "Bomba Germen",
@@ -1987,6 +2055,10 @@
     "shellsmash": {
       "nombre": "Rompecoraza",
       "desc": "El usuario rompe su coraza y baja su Defensa y Defensa Especial, pero aumenta mucho su Ataque, Ataque Especial y Velocidad."
+    },
+    "shiftgear": {
+      "nombre": "Cambio de Marcha",
+      "desc": "Al hacer girar los engranajes, el usuario mejora su Ataque y aumenta mucho su Velocidad."
     },
     "shockwave": {
       "nombre": "Onda Voltio",
@@ -2352,6 +2424,10 @@
       "nombre": "Ojos Llorosos",
       "desc": "Mira al objetivo con ojos llorosos para hacerle perder su espíritu combativo y reduce su Ataque y Ataque Especial."
     },
+    "technoblast": {
+      "nombre": "Tecno Shock",
+      "desc": "Ataca al objetivo con un gran láser. El tipo del ataque lo determina el cartucho que porta el usuario."
+    },
     "teeterdance": {
       "nombre": "Danza Caos",
       "desc": "Danza histérica que confunde a los Pokémon que están alrededor del usuario."
@@ -2547,6 +2623,10 @@
     "waterpulse": {
       "nombre": "Hidropulso",
       "desc": "Ataca con un potente chorro de agua. Puede confundir al objetivo."
+    },
+    "watershuriken": {
+      "nombre": "Shuriken de Agua",
+      "desc": "Golpea al oponente de dos a cinco veces con estrellas arrojadizas hechas de mucosidad. Este movimiento tiene prioridad alta."
     },
     "watersport": {
       "nombre": "Hidrochorro",
@@ -2750,6 +2830,10 @@
       "nombre": "Aura Oscura",
       "desc": "Aumenta la potencia de los movimientos de tipo Siniestro de todos los Pokémon."
     },
+    "defeatist": {
+      "nombre": "Flaqueza",
+      "desc": "Cuando sus PS se ven reducidos a la mitad, se cansa tanto que su Ataque y su Ataque Especial también se ven reducidos a la mitad."
+    },
     "defiant": {
       "nombre": "Competitivo",
       "desc": "Aumenta mucho su Ataque cuando el rival le reduce cualquiera de sus características."
@@ -2834,9 +2918,17 @@
       "nombre": "Gula",
       "desc": "Cuando sus PS se ven reducidos a la mitad, engulle la baya que normalmente solo se comería cuando le quedasen pocos PS."
     },
+    "gorillatactics": {
+      "nombre": "Monotema",
+      "desc": "Potencia su Ataque, pero solo puede usar el primer movimiento escogido."
+    },
     "guts": {
       "nombre": "Agallas",
       "desc": "Si sufre un problema de estado, se viene arriba y aumenta su Ataque."
+    },
+    "hadronengine": {
+      "nombre": "Motor Hadrónico",
+      "desc": "Crea un campo eléctrico al entrar en combate. Si hay un campo eléctrico, su Ataque Especial aumenta gracias a su motor futurista."
     },
     "harvest": {
       "nombre": "Cosecha",
@@ -2882,6 +2974,10 @@
       "nombre": "Iluminación",
       "desc": "Al iluminar el entorno, evita que su Precisión se reduzca."
     },
+    "illusion": {
+      "nombre": "Ilusión",
+      "desc": "Adopta el aspecto del último Pokémon del equipo al entrar en combate para desconcertar al rival."
+    },
     "immunity": {
       "nombre": "Inmunidad",
       "desc": "Su sistema inmunitario evita el envenenamiento."
@@ -2909,6 +3005,10 @@
     "intimidate": {
       "nombre": "Intimidación",
       "desc": "Al entrar en combate, amilana al rival de tal manera que reduce su Ataque."
+    },
+    "ironbarbs": {
+      "nombre": "Punta Acero",
+      "desc": "Inflige daño con sus púas de acero al Pokémon que lo ataque con un movimiento de contacto."
     },
     "ironfist": {
       "nombre": "Puño Férreo",
@@ -2974,6 +3074,10 @@
       "nombre": "Megadisparador",
       "desc": "Aumenta la potencia de algunos movimientos de pulsos y auras."
     },
+    "mimicry": {
+      "nombre": "Mimetismo",
+      "desc": "Cambia su tipo según el campo que haya en el terreno de combate."
+    },
     "mindseye": {
       "nombre": "Ojo mental",
       "desc": "Alcanza a Pokémon de tipo Fantasma con movimientos de tipo Normal o Lucha. Su Precisión no se puede reducir e ignora los cambios en la Evasión del objetivo."
@@ -3009,6 +3113,10 @@
     "multitype": {
       "nombre": "Multitipo",
       "desc": "Cambia su tipo al de la tabla que lleve."
+    },
+    "mummy": {
+      "nombre": "Momia",
+      "desc": "Contagia la habilidad Momia al rival que entre en contacto con él."
     },
     "naturalcure": {
       "nombre": "Cura Natural",
@@ -3326,6 +3434,10 @@
       "nombre": "Telepatía",
       "desc": "Elude los ataques de los aliados durante el combate."
     },
+    "teravolt": {
+      "nombre": "Terravoltaje",
+      "desc": "Sus movimientos no se ven afectados por la habilidad del objetivo."
+    },
     "thickfat": {
       "nombre": "Sebo",
       "desc": "Gracias a la gruesa capa de grasa que lo protege, reduce a la mitad el daño que recibe de ataques de tipo Fuego o Hielo."
@@ -3354,6 +3466,10 @@
       "nombre": "Ausente",
       "desc": "Al ejecutar un movimiento, descansará en el turno siguiente."
     },
+    "turboblaze": {
+      "nombre": "Turbollama",
+      "desc": "Sus movimientos no se ven afectados por la habilidad del objetivo."
+    },
     "unaware": {
       "nombre": "Ignorante",
       "desc": "Pasa por alto los cambios en las características de un Pokémon al atacarlo o recibir daño."
@@ -3366,6 +3482,14 @@
       "nombre": "Nerviosismo",
       "desc": "Pone nervioso al rival y le impide usar bayas."
     },
+    "unseenfist": {
+      "nombre": "Puño Invisible",
+      "desc": "Si usa un movimiento de contacto, puede infligir daño al objetivo aunque este se proteja."
+    },
+    "victorystar": {
+      "nombre": "Tinovictoria",
+      "desc": "Aumenta su Precisión y la de sus aliados."
+    },
     "vitalspirit": {
       "nombre": "Espíritu Vital",
       "desc": "Su determinación le impide quedarse dormido."
@@ -3373,6 +3497,10 @@
     "voltabsorb": {
       "nombre": "Absorbe Elec",
       "desc": "Si lo alcanza un movimiento de tipo Eléctrico, recupera PS en vez de sufrir daño."
+    },
+    "wanderingspirit": {
+      "nombre": "Alma Errante",
+      "desc": "Si le alcanza un movimiento de contacto, intercambia su habilidad con la del agresor."
     },
     "waterabsorb": {
       "nombre": "Absorbe Agua",
@@ -3401,6 +3529,10 @@
     "wonderskin": {
       "nombre": "Piel Milagro",
       "desc": "Presenta una mayor resistencia ante los movimientos de estado."
+    },
+    "zenmode": {
+      "nombre": "Modo Daruma",
+      "desc": "Cambia de forma si sus PS se ven reducidos a la mitad o menos."
     }
   },
   "fichas": {
@@ -20860,6 +20992,539 @@
       "terreno": null,
       "curacion": null
     },
+    "searingshot": {
+      "tipo": "fire",
+      "categoria": "special",
+      "potencia": 100,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "allAdjacent",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 30,
+        "estado": "brn",
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "blueflare": {
+      "tipo": "fire",
+      "categoria": "special",
+      "potencia": 130,
+      "precision": 85,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 20,
+        "estado": "brn",
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "boltstrike": {
+      "tipo": "electric",
+      "categoria": "physical",
+      "potencia": 130,
+      "precision": 85,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 20,
+        "estado": "par",
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "fusionbolt": {
+      "tipo": "electric",
+      "categoria": "physical",
+      "potencia": 100,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "fusionflare": {
+      "tipo": "fire",
+      "categoria": "special",
+      "potencia": 100,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "glaciate": {
+      "tipo": "ice",
+      "categoria": "special",
+      "potencia": 65,
+      "precision": 95,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allAdjacentFoes",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 100,
+        "estado": null,
+        "cambios": {
+          "spe": -1
+        },
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "matblock": {
+      "tipo": "fighting",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allySide",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": "matblock",
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "nightdaze": {
+      "tipo": "dark",
+      "categoria": "special",
+      "potencia": 85,
+      "precision": 95,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 40,
+        "estado": null,
+        "cambios": {
+          "accuracy": -1
+        },
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "hornleech": {
+      "tipo": "grass",
+      "categoria": "physical",
+      "potencia": 75,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": [
+        1,
+        2
+      ],
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "geargrind": {
+      "tipo": "steel",
+      "categoria": "physical",
+      "potencia": 50,
+      "precision": 85,
+      "pp": 15,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": 2,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "shiftgear": {
+      "tipo": "steel",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "self",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": {
+        "spe": 2,
+        "atk": 1
+      },
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "gearup": {
+      "tipo": "steel",
+      "categoria": "status",
+      "potencia": 0,
+      "precision": null,
+      "pp": 20,
+      "prioridad": 0,
+      "objetivo": "allySide",
+      "protegible": false,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "watershuriken": {
+      "tipo": "water",
+      "categoria": "special",
+      "potencia": 15,
+      "precision": 100,
+      "pp": 20,
+      "prioridad": 1,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": [
+        2,
+        5
+      ],
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "headcharge": {
+      "tipo": "normal",
+      "categoria": "physical",
+      "potencia": 120,
+      "precision": 100,
+      "pp": 15,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": [
+        1,
+        4
+      ],
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "firelash": {
+      "tipo": "fire",
+      "categoria": "physical",
+      "potencia": 80,
+      "precision": 100,
+      "pp": 15,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": true,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 100,
+        "estado": null,
+        "cambios": {
+          "def": -1
+        },
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "fierydance": {
+      "tipo": "fire",
+      "categoria": "special",
+      "potencia": 80,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 50,
+        "estado": null,
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "secretsword": {
+      "tipo": "fighting",
+      "categoria": "special",
+      "potencia": 85,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "relicsong": {
+      "tipo": "normal",
+      "categoria": "special",
+      "potencia": 75,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "allAdjacentFoes",
+      "protegible": true,
+      "contacto": false,
+      "sonido": true,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": {
+        "probabilidad": 10,
+        "estado": "slp",
+        "cambios": null,
+        "volatil": null
+      },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "technoblast": {
+      "tipo": "normal",
+      "categoria": "special",
+      "potencia": 120,
+      "precision": 100,
+      "pp": 5,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
     "obstruct": {
       "tipo": "dark",
       "categoria": "status",
@@ -20930,6 +21595,31 @@
         "cambios": null,
         "volatil": null
       },
+      "cambiosAlUsar": null,
+      "drenaje": null,
+      "retroceso": null,
+      "multiGolpe": null,
+      "efectoDeLado": null,
+      "efectoDeCampo": null,
+      "clima": null,
+      "terreno": null,
+      "curacion": null
+    },
+    "lastrespects": {
+      "tipo": "ghost",
+      "categoria": "physical",
+      "potencia": 50,
+      "precision": 100,
+      "pp": 10,
+      "prioridad": 0,
+      "objetivo": "normal",
+      "protegible": true,
+      "contacto": false,
+      "sonido": false,
+      "estado": null,
+      "volatil": null,
+      "cambiosPropios": null,
+      "secundario": null,
       "cambiosAlUsar": null,
       "drenaje": null,
       "retroceso": null,
