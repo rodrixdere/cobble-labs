@@ -1,0 +1,31 @@
+name: Algo no anda
+description: Un error en el sitio, un dato que no coincide con el juego o algo que se ve roto.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué pasó
+      description: Qué esperabas que pasara y qué pasó en cambio.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Cómo repetirlo
+      description: Los pasos, y si es en un equipo, pegalo exportado desde el armador.
+      placeholder: |
+        1. Entré a /equipos
+        2. Importé este equipo...
+    validations:
+      required: true
+  - type: input
+    id: pagina
+    attributes:
+      label: Página
+      placeholder: https://cobble-lab.com/battle-bot
+  - type: dropdown
+    id: dispositivo
+    attributes:
+      label: Dónde
+      options: [Computadora, Teléfono, Tablet]

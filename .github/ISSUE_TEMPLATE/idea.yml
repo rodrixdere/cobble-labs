@@ -1,0 +1,17 @@
+name: Idea o pedido
+description: Algo que te gustaría que tuviera Cobble Labs.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué te gustaría
+    validations:
+      required: true
+  - type: textarea
+    id: para
+    attributes:
+      label: Para qué lo usarías
+      description: Contar el problema ayuda más que contar la solución.
+    validations:
+      required: true
