@@ -96,7 +96,8 @@ export default function PanelDeConfiguracion({
         />
         <span className="text-cuerpo leading-snug text-tinta-media">
           Sin legendarios ni restringidos, usando las etiquetas del propio jar.
-          Con ellos adentro, la ofensiva total gana casi siempre.
+          Si los dejás entrar, cada rival lleva como mucho uno. Los rivales
+          usan solo la última etapa de cada línea y una mega como máximo.
         </span>
       </label>
 

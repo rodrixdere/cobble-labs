@@ -7,7 +7,9 @@ import {
   RECETAS,
   generarAleatorioLegal,
   generarPorArquetipo,
+  esRestringido,
 } from "@/simulation/generadores";
+import { hayErrores, validarEquipo } from "@/team/validador";
 import {
   armarPool,
   compararPruebas,
@@ -217,5 +219,50 @@ describe("comparación de dos pruebas", () => {
     const c = compararPruebas(flojo, fuerte);
     expect(c.diferencia).toBeGreaterThan(0);
     expect(c.significativo).toBe(true);
+  });
+});
+
+describe("reglas de los equipos del bot", () => {
+  // Con los legendarios permitidos, que es el caso donde las reglas pesan
+  const rivales = [1, 2, 3, 4, 5].flatMap((semilla) =>
+    armarPool(
+      { arquetipos: true, aleatorios: true, propios: false, sinRestringidos: false },
+      ROSTER,
+      CATALOGO,
+      crearAzar(semilla),
+      [],
+      porSlug
+    )
+  );
+
+  it("solo elige la última etapa de cada línea", () => {
+    for (const r of rivales) {
+      expect(r.miembros.filter((m) => porSlug.get(m.slug)!.puedeEvolucionar)).toEqual([]);
+    }
+  });
+
+  it("lleva como mucho un legendario", () => {
+    for (const r of rivales) {
+      expect(r.miembros.filter((m) => esRestringido(porSlug.get(m.slug)!)).length).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("lleva como mucho una mega y el equipo es válido", () => {
+    for (const r of rivales) {
+      expect(r.conjuntos.filter((c) => c.forma).length).toBeLessThanOrEqual(1);
+      expect(hayErrores(validarEquipo(r.conjuntos, porSlug, CATALOGO))).toBe(false);
+    }
+  });
+
+  it("si alguno tiene mega, la usa", () => {
+    expect(rivales.some((r) => r.conjuntos.some((c) => c.forma))).toBe(true);
+  });
+
+  it("sin legendarios permitidos no entra ninguno", () => {
+    const pool = armarPool(
+      { arquetipos: true, aleatorios: true, propios: false, sinRestringidos: true },
+      ROSTER, CATALOGO, crearAzar(9), [], porSlug
+    );
+    expect(pool.flatMap((r) => r.miembros).some((m) => esRestringido(porSlug.get(m.slug)!))).toBe(false);
   });
 });

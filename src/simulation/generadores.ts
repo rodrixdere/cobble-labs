@@ -34,6 +34,22 @@ export function sinRestringidos(roster: PokemonCombate[]): PokemonCombate[] {
   return roster.filter((p) => !esRestringido(p));
 }
 
+// Reglas de cualquier equipo que arma el bot: solo la ultima etapa de cada
+// linea, como mucho un legendario (si el usuario los deja entrar) y como mucho
+// una mega, que es lo que permite el juego por combate.
+const ultimaEtapa = (roster: PokemonCombate[]) => roster.filter((p) => !p.puedeEvolucionar);
+
+// Lo que ya lleva el equipo mientras se arma: con un legendario adentro, el
+// resto de los legendarios deja de ser candidato.
+type Armado = { slugs: Set<string>; conLegendario: boolean };
+const nuevoArmado = (): Armado => ({ slugs: new Set(), conLegendario: false });
+const entra = (p: PokemonCombate, a: Armado) =>
+  !a.slugs.has(p.slug) && !(a.conLegendario && esRestringido(p));
+function sumar(p: PokemonCombate, a: Armado) {
+  a.slugs.add(p.slug);
+  if (esRestringido(p)) a.conLegendario = true;
+}
+
 export type EquipoRival = {
   id: string;
   origen: Origen;
@@ -72,11 +88,11 @@ function elegir(
   filtro: Filtro,
   puntuar: (p: PokemonCombate) => number,
   cuantos: number,
-  yaElegidos: Set<string>,
+  armado: Armado,
   azar: Azar
 ): PokemonCombate[] {
   const candidatos = roster
-    .filter((p) => !yaElegidos.has(p.slug) && filtro(p, catalogo))
+    .filter((p) => !armado.slugs.has(p.slug) && filtro(p, catalogo))
     .toSorted((a, b) => puntuar(b) - puntuar(a));
 
   // De los mejores treinta se toma al azar: mantiene la identidad del
@@ -86,8 +102,9 @@ function elegir(
 
   for (const p of azar.mezclar(pozo)) {
     if (salida.length >= cuantos) break;
+    if (!entra(p, armado)) continue;
     salida.push(p);
-    yaElegidos.add(p.slug);
+    sumar(p, armado);
   }
 
   return salida;
@@ -281,24 +298,41 @@ export const RECETAS: Receta[] = [
 function completar(
   elegidos: PokemonCombate[],
   roster: PokemonCombate[],
-  yaElegidos: Set<string>,
+  armado: Armado,
   azar: Azar
 ): PokemonCombate[] {
   const salida = [...elegidos];
-  const restantes = roster.filter((p) => !yaElegidos.has(p.slug));
-  for (const p of azar.mezclar(restantes)) {
+  for (const p of azar.mezclar(roster)) {
     if (salida.length >= 6) break;
+    if (!entra(p, armado)) continue;
     salida.push(p);
-    yaElegidos.add(p.slug);
+    sumar(p, armado);
   }
   return salida;
+}
+
+const totalDe = (s: PokemonCombate["stats"]) => Object.values(s).reduce((a, b) => a + b, 0);
+
+// Si alguno puede megaevolucionar, lo hace uno solo: el que mas gana con su
+// mega. Lleva la habilidad de la mega, que es la que tiene en combate.
+function conUnaMega(elegidos: PokemonCombate[], conjuntos: Conjunto[]): Conjunto[] {
+  const opciones = elegidos.flatMap((p, i) =>
+    p.formas
+      .filter((f) => f.tipo === "mega")
+      .map((f) => ({ i, f, gana: totalDe(f.stats) - totalDe(p.stats) }))
+  );
+  if (opciones.length === 0) return conjuntos;
+  const { i, f } = opciones.reduce((a, b) => (b.gana > a.gana ? b : a));
+  return conjuntos.map((c, j) =>
+    j === i ? { ...c, forma: f.clave, habilidad: f.habilidades[0]?.clave ?? c.habilidad } : c
+  );
 }
 
 function aEquipo(
   elegidos: PokemonCombate[],
   catalogo: MovimientoCatalogo[]
 ): { miembros: Luchador[]; conjuntos: Conjunto[] } {
-  const conjuntos = elegidos.map((p) => conjuntoPorDefecto(p, catalogo));
+  const conjuntos = conUnaMega(elegidos, elegidos.map((p) => conjuntoPorDefecto(p, catalogo)));
   return {
     conjuntos,
     miembros: elegidos.map((p, i) => armarLuchador(p, conjuntos[i], catalogo)),
@@ -312,17 +346,18 @@ export function generarPorArquetipo(
   azar: Azar,
   indice: number
 ): EquipoRival {
-  const yaElegidos = new Set<string>();
+  const armado = nuevoArmado();
+  const pozo = ultimaEtapa(roster);
   let elegidos: PokemonCombate[] = [];
 
   for (const tramo of receta.tramos) {
     elegidos = [
       ...elegidos,
-      ...elegir(roster, catalogo, tramo.filtro, tramo.puntuar, tramo.cuantos, yaElegidos, azar),
+      ...elegir(pozo, catalogo, tramo.filtro, tramo.puntuar, tramo.cuantos, armado, azar),
     ];
   }
 
-  elegidos = completar(elegidos, roster, yaElegidos, azar).slice(0, 6);
+  elegidos = completar(elegidos, pozo, armado, azar).slice(0, 6);
   const { miembros, conjuntos } = aEquipo(elegidos, catalogo);
 
   return {
@@ -346,13 +381,13 @@ export function generarAleatorioLegal(
   indice: number,
   calidad: "casual" | "competitivo" = "competitivo"
 ): EquipoRival {
+  const finales = ultimaEtapa(roster);
   const pozo =
     calidad === "competitivo"
-      ? roster.toSorted((a, b) => b.total - a.total).slice(0, 140)
-      : roster;
+      ? finales.toSorted((a, b) => b.total - a.total).slice(0, 140)
+      : finales;
 
-  const yaElegidos = new Set<string>();
-  const elegidos = completar([], pozo, yaElegidos, azar).slice(0, 6);
+  const elegidos = completar([], pozo, nuevoArmado(), azar).slice(0, 6);
   const { miembros, conjuntos } = aEquipo(elegidos, catalogo);
 
   return {
