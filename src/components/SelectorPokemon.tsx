@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import Retrato from "@/components/Retrato";
 import type { PokemonCombate } from "@/team/combate";
+import { coincide, coincideNumero, porComienzo } from "@/lib/busqueda";
 
 // Buscador desplegable de Pokemon, compartido por la calculadora y el probador
 // de equipos. Muestra los primeros cuarenta hasta que se escribe algo: la lista
@@ -31,15 +32,10 @@ export default function SelectorPokemon({
   const [busqueda, setBusqueda] = useState("");
 
   const candidatos = useMemo(() => {
-    const texto = busqueda.trim().toLowerCase();
+    const texto = busqueda.trim();
     if (!texto) return roster.slice(0, 40);
-    return roster
-      .filter(
-        (p) =>
-          p.nombre.toLowerCase().includes(texto) ||
-          String(p.dex).padStart(3, "0").includes(texto)
-      )
-      .slice(0, 40);
+    const hallados = roster.filter((p) => coincide(p.nombre, texto) || coincideNumero(p.dex, texto));
+    return porComienzo(hallados, (p) => p.nombre, texto).slice(0, 40);
   }, [roster, busqueda]);
 
   return (

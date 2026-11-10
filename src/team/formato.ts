@@ -1,3 +1,4 @@
+import { normalizar } from "@/lib/busqueda";
 import { presente } from "@/lib/coleccion";
 import { IV_MAXIMO, NIVEL_COMPETITIVO, NOMBRE_STAT, ORDEN_STATS, type Stats } from "@/data/pokemon";
 import {
@@ -10,6 +11,7 @@ import {
   type Conjunto,
 } from "@/team/conjunto";
 import type { MovimientoCatalogo, PokemonCombate } from "@/team/combate";
+import { nombreConForma } from "@/team/combate";
 
 // Importar y exportar equipos en texto. El formato es el de Pokémon Showdown,
 // que es el que la gente ya copia y pega, con los nombres en español que usa el
@@ -56,7 +58,7 @@ export function exportarEquipo(
     if (!p) continue;
 
     const mega = c.forma ? p.formas.find((m) => m.clave === c.forma) : null;
-    const nombre = mega ? mega.etiqueta : p.nombre;
+    const nombre = nombreConForma(p.nombre, mega);
     const objeto = objetoPorClave(c.objeto);
     const habilidad = (mega?.habilidades ?? p.habilidades).find(
       (h) => h.clave === c.habilidad
@@ -98,13 +100,6 @@ export type ResultadoImportacion = {
   problemas: string[];
 };
 
-function normalizar(texto: string): string {
-  return texto
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .trim();
-}
 
 export function importarEquipo(
   texto: string,
@@ -138,7 +133,7 @@ export function importarEquipo(
 
     if (!pokemon && /^mega\s+/i.test(nombreCrudo)) {
       const sinMega = nombreCrudo.replace(/^mega\s+/i, "").trim();
-      const base = sinMega.replace(/\s+[XY]$/i, "").trim();
+      const base = sinMega.replace(/\s+[XYZ]$/i, "").trim();
       pokemon = porNombre.get(normalizar(base));
       if (pokemon) {
         const sufijo = sinMega.slice(base.length).trim().toLowerCase();

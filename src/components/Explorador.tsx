@@ -7,8 +7,10 @@ import { useCallback, useDeferredValue, useMemo, useState } from "react";
 import CeldaPokemon from "@/components/CeldaPokemon";
 import { NOMBRE_TIPO, TIPOS, type PokemonEnRejilla } from "@/data/pokemon";
 import Desplegable from "@/ui/Desplegable";
-import Opcion from "@/ui/Opcion";
+import Opcion from "@/ui/Opcion";
+
 import FilaElegible from "@/ui/FilaElegible";
+import { coincide, coincideNumero } from "@/lib/busqueda";
 
 type Orden = "dex" | "total" | "nombre";
 
@@ -75,14 +77,11 @@ export default function Explorador({
   // sobre los tipos ya elegidos: asi la lista sigue diciendo cuantos hay de
   // cada tipo mientras se combinan filtros.
   const previos = useMemo(() => {
-    const texto = consultaLenta.trim().toLowerCase();
+    const texto = consultaLenta.trim();
     return pokemon.filter((p) => {
       if (gensElegidas.length && !gensElegidas.includes(p.generacion)) return false;
       if (!texto) return true;
-      return (
-        p.nombre.toLowerCase().includes(texto) ||
-        String(p.dex).padStart(3, "0").includes(texto)
-      );
+      return coincide(p.nombre, texto) || coincideNumero(p.dex, texto);
     });
   }, [pokemon, consultaLenta, gensElegidas]);
 
