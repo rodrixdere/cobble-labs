@@ -8,6 +8,7 @@ import { NOMBRE_TIPO } from "@/data/pokemon";
 import { objetoPorClave, type Conjunto } from "@/team/conjunto";
 import type { IndicePokemon } from "@/team/roster";
 import { MAXIMO_MIEMBROS } from "@/team/validador";
+import { nombreConForma } from "@/team/combate";
 
 // Uno de los dos bandos del cruce. Es la version chica del hueco del armador:
 // entran seis en tres columnas, asi que solo se muestra lo que se distingue a
@@ -77,7 +78,7 @@ export default function Alineacion({
                   escalaMaxima={3}
                 />
                 <span className="max-w-full truncate text-apoyo font-semibold">
-                  {forma ? forma.etiqueta : p.nombre}
+                  {nombreConForma(p.nombre, forma)}
                 </span>
                 <span className="max-w-full truncate text-menuda text-tinta-tenue">
                   {objeto.clave === "ninguno" ? "Sin objeto" : objeto.nombre}

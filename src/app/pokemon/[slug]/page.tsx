@@ -27,6 +27,7 @@ import {
   textoDeGenero,
 } from "@/data/mundo";
 import { mejorAtaqueContraTipo } from "@/engine/tabla-tipos";
+import { nombreConForma } from "@/team/combate";
 
 export function generateStaticParams() {
   return POKEMON.map((p) => ({ slug: p.slug }));
@@ -147,14 +148,7 @@ export default async function Ficha({
     ...p.formas.map((f) => ({
       clave: f.nombre.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       etiqueta: f.etiqueta,
-      // "Mega Garchomp", "Marowak de Alola", y para el resto de formas el
-      // nombre pegado: "Giratina Origin", "Arceus Fire", "Rotom Heat".
-      nombre:
-        f.tipo === "mega"
-          ? `${f.etiqueta} ${p.nombre}`
-          : f.tipo === "regional"
-            ? `${p.nombre} de ${f.etiqueta}`
-            : `${p.nombre} ${f.etiqueta}`,
+      nombre: nombreConForma(p.nombre, f),
       tipos: f.tipos,
       stats: f.stats,
       habilidades: f.habilidades.map(conTextos),

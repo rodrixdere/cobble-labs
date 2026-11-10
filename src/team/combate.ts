@@ -17,6 +17,8 @@ export type PokemonCombate = {
   generacion: number;
   // Las etiquetas del jar: gen1, starter, legendary, restricted, mythical...
   etiquetas: string[];
+  /** Si todavia tiene una evolucion: es lo que pide el Mineral Evolutivo. */
+  puedeEvolucionar: boolean;
   habilidades: { clave: string; nombre: string; oculta: boolean }[];
   formas: {
     clave: string;
@@ -74,6 +76,21 @@ export function conjuntoPorDefecto(
   };
 }
 
+// El nombre con la forma, igual en todo el sitio: "Mega Venusaur", "Mega
+// Charizard X", "Marowak de Alola", "Giratina Origin". La etiqueta sola
+// ("Mega", "Alola") no dice de quien es.
+export function nombreConForma(
+  nombre: string,
+  forma: { tipo: string; etiqueta: string } | null | undefined
+): string {
+  if (!forma) return nombre;
+  if (forma.tipo === "mega") {
+    const resto = forma.etiqueta.replace(/^Mega\s*/, "");
+    return `Mega ${nombre}${resto ? ` ${resto}` : ""}`;
+  }
+  return forma.tipo === "regional" ? `${nombre} de ${forma.etiqueta}` : `${nombre} ${forma.etiqueta}`;
+}
+
 export function armarLuchador(
   p: PokemonCombate,
   conjunto: Conjunto,
@@ -94,9 +111,11 @@ export function armarLuchador(
 
   return {
     slug: p.slug,
-    nombre: forma ? `${p.nombre} ${forma.etiqueta}` : p.nombre,
+    nombre: nombreConForma(p.nombre, forma),
     tipos: forma?.tipos ?? p.tipos,
     stats,
+    // Una mega ya no evoluciona, aunque la especie base si pudiera.
+    puedeEvolucionar: p.puedeEvolucionar && forma?.tipo !== "mega",
     conjunto,
     movimientos,
   };
