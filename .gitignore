@@ -22,3 +22,6 @@ out/
 
 # Estado local de wrangler.
 .wrangler/
+
+# Secretos locales de wrangler. Los de produccion viven en Cloudflare.
+.dev.vars*

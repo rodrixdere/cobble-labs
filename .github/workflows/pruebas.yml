@@ -1,0 +1,27 @@
+# Lo mismo que hay que correr antes de dar un cambio por bueno: tipos, tests y
+# build. Va en cada PR y en cada push a main, y sin esto en verde no se fusiona.
+name: pruebas
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Solo lectura. Un PR desde un fork corre esto sin acceso a ningun secreto.
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      # El build va antes que los tests: los del Worker levantan el sitio de out/.
+      - run: npm run build
+      - run: npm test
