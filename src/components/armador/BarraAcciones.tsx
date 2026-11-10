@@ -5,6 +5,7 @@ import {
   Copy,
   DownloadSimple,
   FloppyDisk,
+  ShareNetwork,
   Trash,
   UploadSimple,
 } from "@phosphor-icons/react";
@@ -24,6 +25,8 @@ type Props = {
   onExportar: () => void;
   onVaciar: () => void;
   onProbar: () => void;
+  /** Solo con la comunidad abierta. */
+  onPublicar?: () => void;
 };
 
 export default function BarraAcciones({
@@ -35,6 +38,7 @@ export default function BarraAcciones({
   onExportar,
   onVaciar,
   onProbar,
+  onPublicar,
 }: Props) {
   return (
     <div className="flex flex-wrap items-center gap-x-1 gap-y-2 border-b border-linea px-4 md:px-8 py-3">
@@ -55,6 +59,12 @@ export default function BarraAcciones({
         <DownloadSimple size={13} aria-hidden />
         Exportar
       </Boton>
+      {onPublicar ? (
+        <Boton onClick={onPublicar} disabled={vacio}>
+          <ShareNetwork size={13} aria-hidden />
+          Publicar
+        </Boton>
+      ) : null}
       <Boton onClick={onVaciar} disabled={vacio} alarma>
         <Trash size={13} aria-hidden />
         Vaciar

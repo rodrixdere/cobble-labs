@@ -17,3 +17,17 @@ export const SECCIONES = [
 // local y cualquier clon del repo no mandan datos. El ID es público de por sí,
 // viaja en el HTML de la página, por eso va acá y no en una variable de entorno.
 export const ANALITICA_GA = "";
+
+// La comunidad (cuentas y equipos publicados) existe solo en la prueba local
+// hasta que el backend se publique. `npm run api` la prende al construir.
+export const COMUNIDAD_ACTIVA = process.env.NEXT_PUBLIC_COMUNIDAD === "1";
+
+/** Login de prueba en vez de Discord. Nunca en el build de produccion. */
+export const MODO_LOCAL = process.env.NEXT_PUBLIC_MODO_LOCAL === "1";
+
+// De donde se leen las listas de la comunidad: el dominio de R2 en produccion,
+// y el propio Worker en la prueba local.
+export const DATOS_URL = process.env.NEXT_PUBLIC_DATOS_URL ?? "https://datos.cobble-lab.com";
+
+/** La clave publica del widget de Turnstile. */
+export const TURNSTILE_SITEKEY = process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY ?? "";

@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Sora } from "next/font/google";
 import Link from "next/link";
 
 import Analitica from "@/components/Analitica";
+import Cuenta from "@/components/comunidad/Cuenta";
 import Marca from "@/components/Marca";
 import Navegacion from "@/components/Navegacion";
 import "./globals.css";
@@ -109,6 +110,7 @@ export default function RootLayout({
             </Link>
 
             <Navegacion />
+            <Cuenta />
           </div>
         </header>
 

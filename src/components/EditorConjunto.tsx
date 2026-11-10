@@ -3,12 +3,12 @@
 import { Minus, Plus, Trash } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 
+import SelectorObjeto from "@/components/SelectorObjeto";
 import Retrato from "@/components/Retrato";
 import type { MovimientoCatalogo, PokemonCombate } from "@/team/combate";
 import {
   HABILIDADES_SIMULADAS,
   NATURALEZAS,
-  OBJETOS,
   efectoDe,
   type Conjunto,
 } from "@/team/conjunto";
@@ -23,6 +23,8 @@ import {
   NOMBRE_STAT,
   NOMBRE_TIPO,
 } from "@/data/pokemon";
+import { coincide, porComienzo } from "@/lib/busqueda";
+import { nombreConForma } from "@/team/combate";
 
 export default function EditorConjunto({
   pokemon,
@@ -50,12 +52,12 @@ export default function EditorConjunto({
   const habilidades = formaActiva?.habilidades ?? pokemon.habilidades;
 
   const movimientos = useMemo(() => {
-    const texto = busqueda.trim().toLowerCase();
+    const texto = busqueda.trim();
     const lista = pokemon.movimientos
       .map((i) => catalogo[i])
       .toSorted((a, b) => b.potencia - a.potencia || a.nombre.localeCompare(b.nombre, "es"));
     if (!texto) return lista;
-    return lista.filter((m) => m.nombre.toLowerCase().includes(texto));
+    return porComienzo(lista.filter((m) => coincide(m.nombre, texto)), (m) => m.nombre, texto);
   }, [pokemon.movimientos, catalogo, busqueda]);
 
 
@@ -87,7 +89,7 @@ export default function EditorConjunto({
           </span>
           <span className="min-w-0">
             <span className="block truncate font-display text-subtitulo">
-              {formaActiva ? formaActiva.etiqueta : pokemon.nombre}
+              {nombreConForma(pokemon.nombre, formaActiva)}
             </span>
             <span className="mt-1 flex gap-1">
               {tipos.map((t) => (
@@ -230,23 +232,18 @@ export default function EditorConjunto({
           </select>
 
           <h3 className="rotulo mt-5">Objeto</h3>
-          <select
-            value={conjunto.objeto}
-            onChange={(e) => onCambiar({ ...conjunto, objeto: e.target.value })}
-            aria-label="Objeto"
-            className="mt-2 w-full rounded-pieza border border-linea-fuerte bg-panel px-2 py-1.5 text-cuerpo text-tinta outline-none transition-colors duration-150 focus:border-acento"
-          >
-            {OBJETOS.map((o) => (
-              <option key={o.clave} value={o.clave}>
-                {o.nombre}
-              </option>
-            ))}
-          </select>
+          <div className="mt-2">
+            <SelectorObjeto
+              valor={conjunto.objeto}
+              onCambiar={(objeto) => onCambiar({ ...conjunto, objeto })}
+              titulo="Objeto"
+            />
+          </div>
           <p className="mt-1.5 text-apoyo leading-snug text-tinta-tenue">
             {efectoDe(conjunto.objeto) ??
               (conjunto.objeto === "ninguno"
                 ? "Sin objeto"
-                : "El motor todavía no aplica este objeto")}
+                : "No cuenta en la simulación")}
           </p>
 
           {pokemon.formas.length > 0 ? (

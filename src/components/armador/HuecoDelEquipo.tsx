@@ -10,6 +10,7 @@ import { NATURALEZAS, objetoPorClave, type Conjunto } from "@/team/conjunto";
 import type { Falla } from "@/team/validador";
 import Boton from "@/ui/Boton";
 import { cx } from "@/ui/clases";
+import { nombreConForma } from "@/team/combate";
 
 // Uno de los seis huecos. Muestra el set entero de un vistazo para no tener que
 // abrir el editor: forma, tipos, habilidad, objeto, naturaleza y stats finales.
@@ -100,7 +101,7 @@ export default function HuecoDelEquipo({
         />
 
         <span className="mt-1.5 max-w-full truncate font-display text-realce font-bold">
-          {forma ? forma.etiqueta : pokemon.nombre}
+          {nombreConForma(pokemon.nombre, forma)}
         </span>
 
         <span className="mt-1 flex gap-1">

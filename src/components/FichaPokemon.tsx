@@ -194,9 +194,9 @@ export default function FichaPokemon({
 
           {meta ? (
             <div className="mt-6">
-              <h3 className="rotulo border-b border-linea pb-2">
+              <h2 className="rotulo border-b border-linea pb-2">
                 Sets sugeridos
-              </h3>
+              </h2>
               <ul className="mt-2">
                 {meta.builds.map((b) => (
                   <li key={b.nombre}>

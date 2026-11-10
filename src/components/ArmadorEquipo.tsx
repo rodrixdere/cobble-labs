@@ -5,18 +5,23 @@ import { useMemo, useState } from "react";
 
 import BuscadorFlotante from "@/components/BuscadorFlotante";
 import EditorConjunto from "@/components/EditorConjunto";
+import AjustesDeSet from "@/components/armador/AjustesDeSet";
 import AnalisisEquipo from "@/components/armador/AnalisisEquipo";
 import BarraAcciones from "@/components/armador/BarraAcciones";
 import HuecoDelEquipo, { HuecoVacio } from "@/components/armador/HuecoDelEquipo";
 import PanelExportar from "@/components/armador/PanelExportar";
 import PanelImportar from "@/components/armador/PanelImportar";
 import PanelMisEquipos from "@/components/armador/PanelMisEquipos";
+import PanelPublicar from "@/components/armador/PanelPublicar";
 import Recomendaciones, {
   Optimizacion,
 } from "@/components/armador/Recomendaciones";
 import SeccionPendientes from "@/components/armador/SeccionPendientes";
 import { analizarEquipo } from "@/analysis/equipo";
+import { COMUNIDAD_ACTIVA } from "@/data/sitio";
+import { ajustarSets } from "@/recommendations/ajustes";
 import {
+  SIN_EQUIPO,
   amenazasContra,
   estadoDelEquipo,
   optimizar,
@@ -27,7 +32,7 @@ import { guardarActual, guardarEquipo } from "@/team/almacen";
 import type { MovimientoCatalogo, PokemonCombate } from "@/team/combate";
 import { armarEquipo, indexarRoster } from "@/team/roster";
 import { useEquipo } from "@/team/useEquipo";
-import { fallasDe, hayErrores, validarEquipo, MAXIMO_MIEMBROS } from "@/team/validador";
+import { fallasDe, validarEquipo, MAXIMO_MIEMBROS } from "@/team/validador";
 import Aviso from "@/ui/Aviso";
 import { Campo } from "@/ui/Campo";
 
@@ -39,7 +44,7 @@ import { Campo } from "@/ui/Campo";
 // quien sumar, y con los seis puestos se pasa a proponer cambios. Son dos
 // preguntas distintas y no tiene sentido contestar las dos a la vez.
 
-type Panel = "misEquipos" | "importar" | "exportar";
+type Panel = "misEquipos" | "importar" | "exportar" | "publicar";
 
 export default function ArmadorEquipo({
   roster,
@@ -87,6 +92,11 @@ export default function ArmadorEquipo({
     () =>
       equipo.completo ? optimizar(miembros, roster, catalogo, criterio) : [],
     [equipo.completo, miembros, roster, catalogo, criterio]
+  );
+
+  const ajustes = useMemo(
+    () => (equipo.completo ? ajustarSets(miembros, catalogo) : []),
+    [equipo.completo, miembros, catalogo]
   );
 
   const estado = estadoDelEquipo(conjuntos.length);
@@ -159,19 +169,20 @@ export default function ArmadorEquipo({
         onExportar={() => setPanel("exportar")}
         onVaciar={equipo.vaciar}
         onProbar={probarEnBattleBot}
+        onPublicar={COMUNIDAD_ACTIVA ? () => setPanel("publicar") : undefined}
       />
 
       {aviso ? <Aviso>{aviso}</Aviso> : null}
 
-      {hayErrores(fallas)
-        ? fallas
-            .filter((f) => f.gravedad === "error")
-            .map((f) => (
-              <Aviso key={f.regla + f.indice} tono="error">
-                {f.mensaje}
-              </Aviso>
-            ))
-        : null}
+      {/* Los errores, y los avisos que son del equipo entero (como dos megas): los
+          de un solo miembro ya se ven en su hueco */}
+      {fallas
+        .filter((f) => f.gravedad === "error" || f.indice === null)
+        .map((f) => (
+          <Aviso key={f.regla + f.indice} tono={f.gravedad === "error" ? "error" : "reparo"}>
+            {f.mensaje}
+          </Aviso>
+        ))}
 
       {equipo.completo ? (
         <section className="border-t border-linea">
@@ -189,6 +200,7 @@ export default function ArmadorEquipo({
               if (i >= 0) equipo.reemplazar(i, r.entra.conjunto);
             }}
           />
+          <AjustesDeSet ajustes={ajustes} onAplicar={(a) => equipo.reemplazar(a.indice, a.conjunto)} />
         </section>
       ) : (
         <Recomendaciones
@@ -198,6 +210,7 @@ export default function ArmadorEquipo({
           onAgregar={(r) => equipo.sumar(r.conjunto)}
           titulo={estado.titulo}
           detalle={estado.detalle}
+          sinCandidatos={miembros.length === 0 ? SIN_EQUIPO[criterio] : undefined}
         />
       )}
 
@@ -259,6 +272,20 @@ export default function ArmadorEquipo({
           indice={indice}
           catalogo={catalogo}
           onCopiado={setAviso}
+          onCerrar={() => setPanel(null)}
+        />
+      ) : null}
+
+      {panel === "publicar" ? (
+        <PanelPublicar
+          conjuntos={conjuntos}
+          indice={indice}
+          catalogo={catalogo}
+          nombreInicial={nombre}
+          onPublicado={(mensaje) => {
+            setAviso(mensaje);
+            setPanel(null);
+          }}
           onCerrar={() => setPanel(null)}
         />
       ) : null}

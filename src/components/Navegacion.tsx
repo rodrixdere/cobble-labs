@@ -4,6 +4,7 @@ import { List } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { COMUNIDAD_ACTIVA } from "@/data/sitio";
 import { cx } from "@/ui/clases";
 import Desplegable from "@/ui/Desplegable";
 
@@ -12,6 +13,12 @@ const SECCIONES = [
   { href: "/equipos", nombre: "Equipos" },
   { href: "/tipos", nombre: "Tipos" },
   { href: "/battle-bot", nombre: "Battle Bot" },
+  ...(COMUNIDAD_ACTIVA
+    ? [
+        { href: "/comunidad", nombre: "Comunidad" },
+        { href: "/torneos", nombre: "Torneos" },
+      ]
+    : []),
   { href: "/learn", nombre: "Learn" },
 ];
 
@@ -22,13 +29,17 @@ const esActiva = (href: string, ruta: string) =>
 // y la seccion activa se marca con una regla de 2px al pie de la cabecera, no
 // con una pildora: la cabecera es una linea de indice, no una botonera.
 // En angosto entra por hamburguesa, porque cinco secciones no caben sin
-// achicarlas hasta que dejen de leerse.
+// achicarlas hasta que dejen de leerse. Con la comunidad son mas secciones y
+// ademas esta la cuenta: la tira completa recien entra desde lg.
+const TIRA = COMUNIDAD_ACTIVA ? "lg:flex" : "md:flex";
+const HAMBURGUESA = COMUNIDAD_ACTIVA ? "lg:hidden" : "md:hidden";
+
 export default function Navegacion() {
   const ruta = usePathname();
 
   return (
     <>
-      <nav className="hidden h-full items-stretch md:flex">
+      <nav className={cx("hidden h-full items-stretch", TIRA)}>
         {SECCIONES.map(({ href, nombre }) => {
           const activa = esActiva(href, ruta);
           return (
@@ -60,7 +71,7 @@ export default function Navegacion() {
         })}
       </nav>
 
-      <div className="ml-auto flex items-center md:hidden">
+      <div className={cx("ml-auto flex items-center", HAMBURGUESA)}>
         <Desplegable
           titulo="Secciones"
           lado="derecha"
