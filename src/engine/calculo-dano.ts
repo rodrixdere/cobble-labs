@@ -1,7 +1,8 @@
 import type { Conjunto } from "@/team/conjunto";
-import { evDe, ivDe, multiplicadorNaturaleza } from "@/team/conjunto";
+import { evDe, ivDe, multiplicadorNaturaleza, objetoPorClave } from "@/team/conjunto";
 import type { Stats } from "@/data/pokemon";
 import { defensaContra } from "@/engine/tabla-tipos";
+import { GEMAS, bayaResiste, factorDeDano, factoresDeStats, globoProtege } from "@/engine/objetos";
 
 // Calculo de daño con la formula estandar de quinta generacion en adelante, que
 // es la que corre el Showdown que resuelve los combates del servidor.
@@ -83,6 +84,8 @@ export type Golpe = {
 export type Combatiente = {
   tipos: string[];
   stats: Stats;
+  /** Para el Mineral Evolutivo. Si falta, se toma como que no. */
+  puedeEvolucionar?: boolean;
   conjunto?: Conjunto;
 };
 
@@ -114,13 +117,6 @@ function factorTerreno(terreno: Terreno, tipo: string): number {
   return 1;
 }
 
-// Las claves son las del jar, en ingles. Escribirlas en español acá las deja
-// sin coincidir nunca y el objeto no aplica.
-const OBJETO_ATAQUE: Record<string, { fisico?: number; especial?: number }> = {
-  choiceband: { fisico: 1.5 },
-  choicespecs: { especial: 1.5 },
-};
-
 export function calcularDano(
   golpe: Golpe,
   atacante: Combatiente,
@@ -150,23 +146,23 @@ export function calcularDano(
 
   const modificadores: { nombre: string; factor: number }[] = [];
 
-  // Objetos y habilidades que tocan las stats antes del calculo.
-  const objetoAtaque = conjA ? OBJETO_ATAQUE[conjA.objeto] : undefined;
-  const factorObjetoAtaque = fisico ? objetoAtaque?.fisico : objetoAtaque?.especial;
-  if (factorObjetoAtaque) {
+  // Objetos y habilidades que tocan las stats antes del calculo. La tabla es
+  // la de engine/objetos, la misma que usa el simulador.
+  const statsA = factoresDeStats(conjA?.objeto ?? "ninguno", atacante.puedeEvolucionar ?? false);
+  const statsB = factoresDeStats(conjB?.objeto ?? "ninguno", defensor.puedeEvolucionar ?? false);
+  const factorObjetoAtaque = fisico ? statsA.ataque : statsA.ataqueEspecial;
+  if (conjA && factorObjetoAtaque !== 1) {
     ataque = Math.floor(ataque * factorObjetoAtaque);
-    modificadores.push({
-      nombre: conjA?.objeto === "choiceband" ? "Cinta Elección" : "Gafas Elección",
-      factor: factorObjetoAtaque,
-    });
+    modificadores.push({ nombre: objetoPorClave(conjA.objeto).nombre, factor: factorObjetoAtaque });
   }
   if (conjA && (conjA.habilidad === "hugepower" || conjA.habilidad === "purepower") && fisico) {
     ataque *= 2;
     modificadores.push({ nombre: "Poder Bruto", factor: 2 });
   }
-  if (conjB?.objeto === "assaultvest" && !fisico) {
-    defensa = Math.floor(defensa * 1.5);
-    modificadores.push({ nombre: "Chaleco Asalto", factor: 1.5 });
+  const factorObjetoDefensa = fisico ? statsB.defensa : statsB.defensaEspecial;
+  if (conjB && factorObjetoDefensa !== 1) {
+    defensa = Math.floor(defensa * factorObjetoDefensa);
+    modificadores.push({ nombre: objetoPorClave(conjB.objeto).nombre, factor: factorObjetoDefensa });
   }
   if (campo.clima === "arena" && !fisico && defensor.tipos.includes("rock")) {
     defensa = Math.floor(defensa * 1.5);
@@ -208,14 +204,16 @@ export function calcularDano(
     });
   }
 
-  let factorObjetoDano = 1;
-  if (conjA?.objeto === "lifeorb") {
-    factorObjetoDano = 1.3;
-    modificadores.push({ nombre: "Vidasfera", factor: 1.3 });
+  // Un solo golpe: la gema y la baya cuentan como si todavia estuvieran.
+  let factorObjetoDano = conjA
+    ? factorDeDano(conjA.objeto, golpe.tipo, golpe.categoria, efectividad, GEMAS[conjA.objeto] === golpe.tipo)
+    : 1;
+  if (conjA && factorObjetoDano !== 1) {
+    modificadores.push({ nombre: objetoPorClave(conjA.objeto).nombre, factor: factorObjetoDano });
   }
-  if (conjA?.objeto === "expertbelt" && efectividad > 1) {
-    factorObjetoDano = 1.2;
-    modificadores.push({ nombre: "Cinturón Fuerza", factor: 1.2 });
+  if (conjB && bayaResiste(conjB.objeto, golpe.tipo, efectividad)) {
+    factorObjetoDano *= 0.5;
+    modificadores.push({ nombre: objetoPorClave(conjB.objeto).nombre, factor: 0.5 });
   }
 
   let factorHabilidadDefensa = 1;
@@ -224,7 +222,7 @@ export function calcularDano(
     modificadores.push({ nombre: "Sebo", factor: 0.5 });
   }
   const inmunidad = conjB ? INMUNIDAD_POR_HABILIDAD[conjB.habilidad] : undefined;
-  const anulado = inmunidad === golpe.tipo;
+  const anulado = inmunidad === golpe.tipo || (conjB ? globoProtege(conjB.objeto, golpe.tipo) : false);
 
   // Las dieciseis tiradas del motor, de 0,85 a 1,00.
   const tiradas: number[] = [];
@@ -285,7 +283,12 @@ export function compararVelocidad(
   conjA?: Conjunto,
   conjB?: Conjunto
 ) {
-  const va = conjA ? statFinal(a, conjA, "speed") : statANivel(a.speed, false);
-  const vb = conjB ? statFinal(b, conjB, "speed") : statANivel(b.speed, false);
+  // El Pañuelo Elección cuenta: es lo que decide quien pega primero.
+  const va = conjA
+    ? Math.floor(statFinal(a, conjA, "speed") * factoresDeStats(conjA.objeto, false).velocidad)
+    : statANivel(a.speed, false);
+  const vb = conjB
+    ? Math.floor(statFinal(b, conjB, "speed") * factoresDeStats(conjB.objeto, false).velocidad)
+    : statANivel(b.speed, false);
   return { va, vb, gana: va === vb ? "empate" : va > vb ? "a" : "b" };
 }

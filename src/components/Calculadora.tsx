@@ -76,8 +76,18 @@ export default function Calculadora({
   const atacante = armarLuchador(pokeA, conjA, catalogo);
   const defensor = armarLuchador(pokeB, conjB, catalogo);
 
-  const combatienteA = { tipos: atacante.tipos, stats: atacante.stats, conjunto: conjA };
-  const combatienteB = { tipos: defensor.tipos, stats: defensor.stats, conjunto: conjB };
+  const combatienteA = {
+    tipos: atacante.tipos,
+    stats: atacante.stats,
+    puedeEvolucionar: atacante.puedeEvolucionar,
+    conjunto: conjA,
+  };
+  const combatienteB = {
+    tipos: defensor.tipos,
+    stats: defensor.stats,
+    puedeEvolucionar: defensor.puedeEvolucionar,
+    conjunto: conjB,
+  };
 
   // Los cuatro movimientos del set, con su resultado ya calculado.
   const resultados = useMemo(

@@ -3,13 +3,13 @@
 import { ArrowsClockwise, Minus, Plus } from "@phosphor-icons/react";
 import { useState } from "react";
 
+import SelectorObjeto from "@/components/SelectorObjeto";
 import Retrato from "@/components/Retrato";
 import SelectorPokemon from "@/components/SelectorPokemon";
 import type { MovimientoCatalogo, PokemonCombate } from "@/team/combate";
 import {
   HABILIDADES_SIMULADAS,
   NATURALEZAS,
-  OBJETOS,
   efectoDe,
   type Conjunto,
 } from "@/team/conjunto";
@@ -23,6 +23,7 @@ import {
   ORDEN_STATS,
   type Stats,
 } from "@/data/pokemon";
+import { nombreConForma } from "@/team/combate";
 
 // El lado de la calculadora: quien es, con que set pelea y con que stats
 // termina. Es el mismo panel para el que ataca y para el que recibe.
@@ -95,7 +96,7 @@ export default function PanelCombatiente({
 
         <span className="min-w-0 flex-1">
           <span className="block truncate font-display text-subtitulo">
-            {mega ? mega.etiqueta : pokemon.nombre}
+            {nombreConForma(pokemon.nombre, mega)}
           </span>
           <span className="mt-2 flex gap-1">
             {tipos.map((t) => (
@@ -167,26 +168,21 @@ export default function PanelCombatiente({
           </select>
         </Campo>
 
-        <Campo etiqueta="Objeto">
-          <select
-            value={conjunto.objeto}
-            onChange={(e) => onCambiarConjunto({ ...conjunto, objeto: e.target.value })}
-            aria-label={`Objeto de ${pokemon.nombre}`}
-            className="w-full rounded-pieza border border-linea-fuerte bg-panel px-2 py-1.5 text-cuerpo text-tinta outline-none transition-colors duration-150 focus:border-acento"
-          >
-            {OBJETOS.map((o) => (
-              <option key={o.clave} value={o.clave}>
-                {o.nombre}
-              </option>
-            ))}
-          </select>
-        </Campo>
+        {/* div y no Campo: el selector es un botón con su panel, no un control que un label envuelva */}
+        <div>
+          <span className="rotulo mb-1 block">Objeto</span>
+          <SelectorObjeto
+            valor={conjunto.objeto}
+            onCambiar={(objeto) => onCambiarConjunto({ ...conjunto, objeto })}
+            titulo={`Objeto de ${pokemon.nombre}`}
+          />
+        </div>
       </div>
 
       <p className="mt-1.5 px-5 text-apoyo leading-snug text-tinta-tenue">
         {HABILIDADES_SIMULADAS[conjunto.habilidad] ?? "La habilidad no entra en el cálculo"}
         {conjunto.objeto !== "ninguno"
-          ? ` · ${efectoDe(conjunto.objeto) ?? "objeto sin efecto en el cálculo"}`
+          ? ` · ${efectoDe(conjunto.objeto) ?? "el objeto no entra en el cálculo"}`
           : ""}
       </p>
 

@@ -1,4 +1,5 @@
 import { NIVEL, statANivel, statFinal } from "@/engine/calculo-dano";
+import { GEMAS, bayaResiste, factorDeDano, factoresDeStats, globoProtege } from "@/engine/objetos";
 import type { Conjunto } from "@/team/conjunto";
 import type { Stats } from "@/data/pokemon";
 import { defensaContra } from "@/engine/tabla-tipos";
@@ -8,8 +9,8 @@ import { AZAR_LIBRE, type Azar } from "@/simulation/azar";
 //
 // Que modela: stats a nivel 50 con los 66 puntos repartidos y la naturaleza,
 // los cuatro movimientos elegidos, la megaevolucion, la tabla de tipos, el
-// STAB, el orden por velocidad, la variacion aleatoria de cada golpe, siete
-// objetos y las dieciseis habilidades marcadas como simuladas.
+// STAB, el orden por velocidad, la variacion aleatoria de cada golpe, los
+// objetos de engine/objetos y las dieciseis habilidades marcadas como simuladas.
 //
 // Que NO modela: el resto de las habilidades, estados alterados, clima,
 // terreno, movimientos de apoyo, prioridad, criticos y cambios voluntarios. Es
@@ -28,6 +29,8 @@ export type Luchador = {
   nombre: string;
   tipos: string[];
   stats: Stats;
+  /** Para el Mineral Evolutivo. Si falta, se toma como que no. */
+  puedeEvolucionar?: boolean;
   conjunto: Conjunto;
   movimientos: MovimientoSim[];
 };
@@ -45,32 +48,31 @@ type Preparado = {
   tipos: string[];
   habilidad: string;
   objeto: string;
+  /** Gemas, bayas, Globo Helio y Seguro Debilidad se gastan: despues ya no cuentan. */
+  objetoGastado: boolean;
 };
 
 export function preparar(l: Luchador): Preparado {
   const c = l.conjunto;
   const stats = l.stats;
 
-  let ataque = statFinal(stats, c, "attack");
-  let defensaEspecial = statFinal(stats, c, "special_defence");
-  let ataqueEspecial = statFinal(stats, c, "special_attack");
+  const f = factoresDeStats(c.objeto, l.puedeEvolucionar ?? false);
 
+  let ataque = statFinal(stats, c, "attack");
   if (c.habilidad === "hugepower" || c.habilidad === "purepower") ataque *= 2;
-  if (c.objeto === "choiceband") ataque = Math.floor(ataque * 1.5);
-  if (c.objeto === "choicespecs") ataqueEspecial = Math.floor(ataqueEspecial * 1.5);
-  if (c.objeto === "assaultvest") defensaEspecial = Math.floor(defensaEspecial * 1.5);
 
   return {
     luchador: l,
     psMaximo: statFinal(stats, c, "hp"),
-    ataque,
-    ataqueEspecial,
-    defensa: statFinal(stats, c, "defence"),
-    defensaEspecial,
-    velocidad: statFinal(stats, c, "speed"),
+    ataque: Math.floor(ataque * f.ataque),
+    ataqueEspecial: Math.floor(statFinal(stats, c, "special_attack") * f.ataqueEspecial),
+    defensa: Math.floor(statFinal(stats, c, "defence") * f.defensa),
+    defensaEspecial: Math.floor(statFinal(stats, c, "special_defence") * f.defensaEspecial),
+    velocidad: Math.floor(statFinal(stats, c, "speed") * f.velocidad),
     tipos: l.tipos,
     habilidad: c.habilidad,
     objeto: c.objeto,
+    objetoGastado: false,
   };
 }
 
@@ -102,6 +104,7 @@ export function danoDe(
   rollo: number
 ): number {
   if (INMUNIDADES[defensor.habilidad] === golpe.tipo) return 0;
+  if (!defensor.objetoGastado && globoProtege(defensor.objeto, golpe.tipo)) return 0;
 
   const efectividad = defensaContra(defensor.tipos, golpe.tipo);
   if (efectividad === 0) return 0;
@@ -130,8 +133,16 @@ export function danoDe(
   }
   if (defensor.habilidad === "dryskin" && golpe.tipo === "fire") modificador *= 1.25;
 
-  if (atacante.objeto === "lifeorb") modificador *= 1.3;
-  if (atacante.objeto === "expertbelt" && efectividad > 1) modificador *= 1.2;
+  modificador *= factorDeDano(
+    atacante.objeto,
+    golpe.tipo,
+    golpe.categoria,
+    efectividad,
+    !atacante.objetoGastado && GEMAS[atacante.objeto] === golpe.tipo
+  );
+  if (!defensor.objetoGastado && bayaResiste(defensor.objeto, golpe.tipo, efectividad)) {
+    modificador *= 0.5;
+  }
 
   return Math.max(1, Math.floor(base * rollo * modificador));
 }
@@ -151,6 +162,16 @@ function mejorGolpe(
     }
   }
   return mejor;
+}
+
+function finDeTurno(p: Preparado, ps: number[], i: number) {
+  if (ps[i] <= 0) return;
+  const dieciseisavo = Math.max(1, Math.floor(p.psMaximo / 16));
+  if (p.objeto === "leftovers" || (p.objeto === "blacksludge" && p.tipos.includes("poison"))) {
+    ps[i] = Math.min(p.psMaximo, ps[i] + dieciseisavo);
+  } else if (p.objeto === "blacksludge") {
+    ps[i] -= Math.max(1, Math.floor(p.psMaximo / 8));
+  }
 }
 
 // Una foto del combate al final de cada turno: sirve para reproducirlo con las
@@ -200,7 +221,8 @@ export function simularCombate(
     psAtacante: number,
     psDefensor: number,
     indiceDefensor: number,
-    ps: number[]
+    ps: number[],
+    ladoAtacante?: { ps: number[]; indice: number }
   ) => {
     const golpe = mejorGolpe(atacante, defensor, psAtacante);
     if (!golpe) return;
@@ -213,7 +235,11 @@ export function simularCombate(
       0.85 + azar.siguiente() * 0.15
     );
 
+    const efectividad = defensaContra(defensor.tipos, golpe.tipo);
     let restante = psDefensor - dano;
+    const nota = (texto: string) => {
+      if (conRegistro) registro.push(texto);
+    };
 
     // La Banda Focus aguanta con 1 PS, pero solo desde la vida llena.
     if (
@@ -230,6 +256,53 @@ export function simularCombate(
     }
 
     ps[indiceDefensor] = restante;
+
+    // Lo que se gasta con este golpe: la gema de quien pega, y la baya o el
+    // globo de quien lo recibe.
+    if (dano > 0 && !atacante.objetoGastado && GEMAS[atacante.objeto] === golpe.tipo) {
+      atacante.objetoGastado = true;
+      nota(`${atacante.luchador.nombre} gasta su gema`);
+    }
+    if (dano > 0 && !defensor.objetoGastado) {
+      if (bayaResiste(defensor.objeto, golpe.tipo, efectividad)) {
+        defensor.objetoGastado = true;
+        nota(`${defensor.luchador.nombre} come su baya y aguanta mejor el golpe`);
+      } else if (defensor.objeto === "airballoon") {
+        defensor.objetoGastado = true;
+        nota(`El Globo Helio de ${defensor.luchador.nombre} explota`);
+      }
+    }
+
+    if (restante > 0 && dano > 0) {
+      if (defensor.objeto === "sitrusberry" && !defensor.objetoGastado && restante <= defensor.psMaximo / 2) {
+        defensor.objetoGastado = true;
+        ps[indiceDefensor] = Math.min(defensor.psMaximo, restante + Math.floor(defensor.psMaximo / 4));
+        nota(`${defensor.luchador.nombre} come su Baya Zidra y recupera vida`);
+      }
+      if (defensor.objeto === "weaknesspolicy" && !defensor.objetoGastado && efectividad > 1) {
+        defensor.objetoGastado = true;
+        defensor.ataque *= 2;
+        defensor.ataqueEspecial *= 2;
+        nota(`El Seguro Debilidad de ${defensor.luchador.nombre} le sube el Ataque y el Ataque Especial`);
+      }
+    }
+
+    // Lo que le pasa a quien pega despues de hacer daño.
+    if (dano > 0 && ladoAtacante) {
+      const psPropio = ladoAtacante.ps[ladoAtacante.indice];
+      if (atacante.objeto === "shellbell") {
+        ladoAtacante.ps[ladoAtacante.indice] = Math.min(
+          atacante.psMaximo,
+          psPropio + Math.max(1, Math.floor(Math.min(dano, psDefensor) / 8))
+        );
+      }
+      if (atacante.objeto === "lifeorb") {
+        ladoAtacante.ps[ladoAtacante.indice] -= Math.max(1, Math.floor(atacante.psMaximo / 10));
+        if (ladoAtacante.ps[ladoAtacante.indice] <= 0) {
+          nota(`${atacante.luchador.nombre} cae por el retroceso de la Vidasfera`);
+        }
+      }
+    }
 
     if (conRegistro) {
       const linea =
@@ -256,7 +329,7 @@ export function simularCombate(
     for (const lado of orden) {
       if (psA[ia] <= 0 || psB[ib] <= 0) break;
       if (lado === "a") {
-        golpear(activoA, activoB, psA[ia], psB[ib], ib, psB);
+        golpear(activoA, activoB, psA[ia], psB[ib], ib, psB, { ps: psA, indice: ia });
         if (psB[ib] <= 0) {
           bajas.push({
             verdugo: activoA.luchador.slug,
@@ -265,7 +338,7 @@ export function simularCombate(
           });
         }
       } else {
-        golpear(activoB, activoA, psB[ib], psA[ia], ia, psA);
+        golpear(activoB, activoA, psB[ib], psA[ia], ia, psA, { ps: psB, indice: ib });
         if (psA[ia] <= 0) {
           bajas.push({
             verdugo: activoB.luchador.slug,
@@ -276,13 +349,9 @@ export function simularCombate(
       }
     }
 
-    // Los Restos curan al final del turno, si siguen en pie.
-    if (psA[ia] > 0 && a[ia].objeto === "leftovers") {
-      psA[ia] = Math.min(a[ia].psMaximo, psA[ia] + Math.floor(a[ia].psMaximo / 16));
-    }
-    if (psB[ib] > 0 && b[ib].objeto === "leftovers") {
-      psB[ib] = Math.min(b[ib].psMaximo, psB[ib] + Math.floor(b[ib].psMaximo / 16));
-    }
+    // Al final del turno: Restos y Lodo Negro, si siguen en pie.
+    finDeTurno(a[ia], psA, ia);
+    finDeTurno(b[ib], psB, ib);
 
     if (conRegistro) {
       instantes.push({

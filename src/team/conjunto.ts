@@ -1,5 +1,6 @@
 import objetos from "@/data/objetos.json";
 import textos from "@/data/textos.json";
+import { describirEfecto } from "@/engine/objetos";
 import {
   EV_TOTAL_MAXIMO,
   IV_MAXIMO,
@@ -91,28 +92,19 @@ export const SIN_OBJETO: Objeto = {
 
 export const OBJETOS: Objeto[] = [SIN_OBJETO, ...CATALOGO];
 
+// Lo que se ofrece para elegir: solo los objetos que la simulacion aplica. Un
+// objeto sin efecto no cambia nada al probar el equipo. OBJETOS sigue completo
+// para leer equipos viejos o importados que traigan cualquier otra cosa.
+export const OBJETOS_CON_EFECTO: Objeto[] = CATALOGO.filter((o) => describirEfecto(o.clave) !== null);
+
 export function objetoPorClave(clave: string): Objeto {
   return OBJETOS.find((o) => o.clave === clave) ?? SIN_OBJETO;
 }
 
-// Lo que el motor aplica de verdad, y como. Agregar uno es agregar una linea
-// aca mas su caso en el calculo, no tocar la interfaz.
-export const EFECTOS_DE_OBJETO: Record<string, string> = {
-  lifeorb: "Sube el daño un 30 %",
-  choiceband: "Ataque ×1.5",
-  choicespecs: "Ataque Especial ×1.5",
-  choicescarf: "Velocidad ×1.5",
-  assaultvest: "Defensa Especial ×1.5",
-  expertbelt: "×1.2 cuando el golpe es súper efectivo",
-  leftovers: "Recupera 1/16 de la vida por turno",
-  focussash: "Aguanta con 1 PS un golpe que lo tumbaría desde la vida llena",
-  eviolite: "Defensas ×1.5 si todavía puede evolucionar",
-  muscleband: "Sube el daño físico un 10 %",
-  wiseglasses: "Sube el daño especial un 10 %",
-};
-
+// Lo que el motor aplica de verdad sale de engine/objetos, que es la misma
+// tabla que usan la calculadora y el simulador: asi no se pueden desfasar.
 export function efectoDe(clave: string): string | null {
-  return EFECTOS_DE_OBJETO[clave] ?? null;
+  return describirEfecto(clave);
 }
 
 // Habilidades que el simulador aplica de verdad. El resto se puede elegir

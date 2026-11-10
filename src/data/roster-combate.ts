@@ -62,6 +62,7 @@ export const ROSTER: PokemonCombate[] = POKEMON.map((p) => {
     total: suma(p.stats),
     generacion: generacionDe(p),
     etiquetas: p.etiquetas,
+    puedeEvolucionar: p.evoluciones.length > 0,
     habilidades: habilidadesUnicas(p).map((h) => ({
       clave: h.nombre,
       nombre: habilidad(h.nombre).nombre,
