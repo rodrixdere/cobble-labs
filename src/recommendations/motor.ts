@@ -1,3 +1,4 @@
+import { NOMBRE_CLIMA, poneClima } from "@/analysis/campo";
 import { analizarEquipo, type AnalisisDeEquipo } from "@/analysis/equipo";
 import type { Rol } from "@/analysis/roles";
 import {
@@ -15,7 +16,11 @@ import {
   type Candidato,
   type Contexto,
 } from "@/recommendations/contexto";
-import { REGLAS, type Aporte } from "@/recommendations/reglas";
+import {
+  REGLAS,
+  movimientoDeVelocidad,
+  type Aporte,
+} from "@/recommendations/reglas";
 import { pesosDe, type Criterio, type Pesos } from "@/recommendations/pesos";
 
 // Motor de recomendaciones. La pregunta no es "cual es el mejor Pokemon" sino
@@ -40,8 +45,6 @@ export type Recomendacion = {
   desglose: { motivo: string; puntos: number }[];
 };
 
-const TOTAL_MAXIMO = 720;
-
 /** Cuantas amenazas del rival se tienen en cuenta al puntuar. */
 const AMENAZAS_QUE_PESAN = 6;
 
@@ -59,7 +62,7 @@ export function recomendar(
   analisis?: AnalisisDeEquipo
 ): Recomendacion[] {
   if (equipo.length === 0) {
-    return mejoresPorSiSolos(roster, catalogo, cuantas);
+    return mejoresPorSiSolos(roster, catalogo, criterio, cuantas);
   }
 
   const pesos = pesosDe(criterio);
@@ -106,32 +109,130 @@ function puntuar(
   };
 }
 
-/**
- * Con el equipo vacio no hay nada que complementar: se contesta con lo que mas
- * rinde por si solo, y se dice que el criterio es ese.
- */
+// Con el equipo vacio no hay huecos que tapar: cada criterio mide lo que el
+// Pokemon rinde solo. Amenazas no esta porque sin equipo no hay contra que medir.
+type Medida = { motivo: string; valor: number; razon: string };
+type MedirSolo = (c: Candidato, catalogo: MovimientoCatalogo[]) => Medida | null;
+
+const aguante = (p: PokemonCombate) =>
+  p.stats.hp + p.stats.defence + p.stats.special_defence;
+
+// Lo que protege o acelera a todo el lado propio. Las trampas quedan afuera:
+// esas apuntan al rival, no cuidan al equipo.
+const APOYO_DE_LADO = new Set([
+  "tailwind",
+  "reflect",
+  "lightscreen",
+  "auroraveil",
+  "wideguard",
+  "quickguard",
+  "safeguard",
+]);
+
+const POR_SI_SOLO: Partial<Record<Criterio, MedirSolo>> = {
+  general: ({ pokemon }) => ({
+    motivo: "Total de stats base",
+    valor: pokemon.total,
+    razon: `Total de stats ${pokemon.total}, de los más altos del roster`,
+  }),
+  ofensivo: ({ pokemon }) => {
+    const { attack, special_attack } = pokemon.stats;
+    const cual = special_attack > attack ? "Ataque Especial" : "Ataque";
+    const valor = Math.max(attack, special_attack);
+    return {
+      motivo: `${cual} base`,
+      valor,
+      razon: `${cual} base ${valor}, de los más altos del roster`,
+    };
+  },
+  defensivo: ({ pokemon }) => {
+    const valor = aguante(pokemon);
+    return {
+      motivo: "PS y defensas base",
+      valor,
+      razon: `PS, Defensa y Defensa Especial suman ${valor}`,
+    };
+  },
+  velocidad: ({ pokemon }, catalogo) => {
+    const movimiento = movimientoDeVelocidad(pokemon, catalogo);
+    if (!movimiento) return null;
+    return {
+      motivo: "Velocidad base",
+      valor: pokemon.stats.speed,
+      razon: `Puede aprender ${movimiento.nombre}, con ${pokemon.stats.speed} de velocidad base`,
+    };
+  },
+  apoyo: ({ pokemon }, catalogo) => {
+    const porEfecto = new Map<string, string>();
+    for (const i of pokemon.movimientos) {
+      const m = catalogo[i];
+      if (m.efectoDeLado && APOYO_DE_LADO.has(m.efectoDeLado)) {
+        porEfecto.set(m.efectoDeLado, m.nombre);
+      }
+    }
+    if (porEfecto.size === 0) return null;
+    return {
+      motivo: "Movimientos de apoyo al equipo",
+      valor: porEfecto.size,
+      razon: `Puede aprender ${[...porEfecto.values()].join(", ")}`,
+    };
+  },
+  clima: ({ pokemon, conjunto }) => {
+    const clima = poneClima(conjunto.habilidad);
+    if (!clima) return null;
+    return {
+      motivo: "Total de stats base",
+      valor: pokemon.total,
+      razon: `Pone ${NOMBRE_CLIMA[clima]} al entrar`,
+    };
+  },
+  espacioraro: ({ pokemon }, catalogo) => {
+    const movimiento = pokemon.movimientos
+      .map((i) => catalogo[i])
+      .find((m) => m.efectoDeCampo === "trickroom");
+    if (!movimiento) return null;
+    const valor = aguante(pokemon);
+    return {
+      motivo: "PS y defensas base",
+      valor,
+      razon: `Puede aprender ${movimiento.nombre}, y entre PS y defensas suma ${valor} para aguantar hasta ponerlo`,
+    };
+  },
+};
+
+/** Por que la lista queda vacia con un criterio que necesita equipo. */
+export const SIN_EQUIPO: Partial<Record<Criterio, string>> = {
+  amenazas:
+    "Las amenazas se miden contra tu equipo. Elegí el primero y aparecen los que les responden.",
+};
+
 function mejoresPorSiSolos(
   roster: PokemonCombate[],
   catalogo: MovimientoCatalogo[],
+  criterio: Criterio,
   cuantas: number
 ): Recomendacion[] {
-  return roster
-    .toSorted((a, b) => b.total - a.total)
-    .slice(0, cuantas)
-    .map((pokemon) => {
-      const { conjunto, roles } = prepararCandidato(pokemon, catalogo);
-      return {
-        pokemon,
-        conjunto,
-        puntaje: Math.min(100, Math.round((pokemon.total / TOTAL_MAXIMO) * 100)),
-        roles,
-        razones: [
-          `Total de stats ${pokemon.total}, de los más altos del roster`,
-          "Con el equipo vacío todavía no hay huecos que tapar",
-        ],
-        desglose: [{ motivo: "Total de stats base", puntos: pokemon.total }],
-      };
+  const medir = POR_SI_SOLO[criterio];
+  if (!medir) return [];
+
+  const recomendaciones: Recomendacion[] = [];
+
+  for (const pokemon of roster) {
+    const candidato = prepararCandidato(pokemon, catalogo);
+    const medida = medir(candidato, catalogo);
+    if (!medida) continue;
+
+    recomendaciones.push({
+      pokemon,
+      conjunto: candidato.conjunto,
+      puntaje: medida.valor,
+      roles: candidato.roles,
+      razones: [medida.razon, "Con el equipo vacío todavía no hay huecos que tapar"],
+      desglose: [{ motivo: medida.motivo, puntos: medida.valor }],
     });
+  }
+
+  return conVariedad(recomendaciones, cuantas);
 }
 
 /**

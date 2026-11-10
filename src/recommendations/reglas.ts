@@ -119,7 +119,7 @@ const equilibraElDano: Regla = ({ pokemon }, ctx, pesos) => {
 
 // --- Lo que el equipo no sabe hacer ------------------------------------------
 
-function movimientoDeVelocidad(
+export function movimientoDeVelocidad(
   p: PokemonCombate,
   catalogo: MovimientoCatalogo[]
 ): MovimientoCatalogo | null {

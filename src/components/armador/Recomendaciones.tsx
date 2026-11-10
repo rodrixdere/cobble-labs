@@ -22,6 +22,7 @@ export default function Recomendaciones({
   onAgregar,
   titulo,
   detalle,
+  sinCandidatos = "Con ese criterio no hay ningún candidato que aporte algo que el equipo no tenga ya.",
 }: {
   recomendaciones: Recomendacion[];
   criterio: Criterio;
@@ -29,6 +30,8 @@ export default function Recomendaciones({
   onAgregar: (r: Recomendacion) => void;
   titulo: string;
   detalle: string;
+  /** Lo que se muestra si la lista queda vacía. */
+  sinCandidatos?: string;
 }) {
   return (
     <section className="border-t border-linea">
@@ -58,8 +61,7 @@ export default function Recomendaciones({
 
       {recomendaciones.length === 0 ? (
         <p className="border-t border-linea px-4 md:px-8 py-10 text-center text-lectura text-tinta-tenue">
-          Con ese criterio no hay ningún candidato que aporte algo que el equipo
-          no tenga ya.
+          {sinCandidatos}
         </p>
       ) : (
         <ul className="grid gap-px border-t border-linea bg-linea sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

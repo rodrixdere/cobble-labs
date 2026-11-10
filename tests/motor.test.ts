@@ -11,7 +11,7 @@ import {
 } from "@/engine/calculo-dano";
 import { defensaContra, multiplicador } from "@/engine/tabla-tipos";
 import { analizarEquipo, coberturaOfensiva, debilidadesCompartidas } from "@/analysis/equipo";
-import { analizarCampo } from "@/analysis/campo";
+import { analizarCampo, poneClima } from "@/analysis/campo";
 import { rolesDe } from "@/analysis/roles";
 import { armarMiembro, conjuntoPorDefecto } from "@/team/combate";
 import { conjuntoVacio } from "@/team/conjunto";
@@ -378,5 +378,26 @@ describe("recomendaciones", () => {
     const r = recomendar([], ROSTER, CATALOGO, "general", 5);
     expect(r).toHaveLength(5);
     expect(r[0].razones.join(" ")).toContain("vacío");
+  });
+
+  it("con el equipo vacío cada criterio da su propia lista", () => {
+    const criterios = [
+      "general", "ofensivo", "defensivo", "velocidad", "apoyo", "clima", "espacioraro",
+    ] as const;
+    const listas = criterios.map((criterio) => {
+      const r = recomendar([], ROSTER, CATALOGO, criterio, 5);
+      expect(r.length, criterio).toBeGreaterThan(0);
+      return r.map((x) => x.pokemon.slug).join(",");
+    });
+    expect(new Set(listas).size).toBe(criterios.length);
+  });
+
+  it("con el equipo vacío, clima solo trae a quien lo pone", () => {
+    const r = recomendar([], ROSTER, CATALOGO, "clima", 5);
+    for (const x of r) expect(poneClima(x.conjunto.habilidad)).not.toBeNull();
+  });
+
+  it("sin equipo no inventa amenazas", () => {
+    expect(recomendar([], ROSTER, CATALOGO, "amenazas", 5)).toEqual([]);
   });
 });
